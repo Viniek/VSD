@@ -1,9 +1,10 @@
 import React from 'react'
 import  { Link } from 'react-router-dom'
-import { FaHospitalSymbol } from "react-icons/fa";
+import { FaHospitalSymbol } from "react-icons/fa"; 
+import useUserStore from '../../../Store/userStore';
 import './Header.css'
 function Header(icon) {
-
+const user = useUserStore((state)=>state.user)
   function handleToggleNav(){
 const navigationIcon = document.getElementById('nav')
 navigationIcon.classList.toggle('open')
@@ -12,7 +13,7 @@ navigationIcon.classList.toggle('open')
   return (
     <header className='app-header'>
         <h3>Lorem ipsum dolor <span className='span'>sit amet</span></h3>
-        <p>Welcome back Victory</p>
+        <p>Welcome back {user.email}</p>
         
 <nav>
         <ul className='nav-list'>
