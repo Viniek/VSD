@@ -9,7 +9,15 @@ import Home from './Pages/Home/Home';
 import Login from './Pages/Login/Login';
 import Signup from './Pages/Signup/Signup';
 import useUserStore from '../Store/userStore';
-// import { useState } from 'react'
+import About from './Components/About/About';
+import Schedules from './Components/Schedules/Schedules';
+import Statistics from './Components/Statistics/Statistics';
+import Help from './Components/Help/Help';
+import HealthCenters from './Components/HealthCenters/HealthCenters';
+import Emergencies from './Components/Emergencies/Emergencies';
+import Notifications from './Components/Notifications/Notifications';
+import History from './Components/History/History';
+import Dashboard from './Components/Dashboard/dashboard';
 function App() {
   const user = useUserStore((state)=>state.user)
   const [isUser,setisUser]= useState(false)
@@ -19,6 +27,7 @@ function App() {
   return (
   <BrowserRouter>
   {isUser && <Header/>}
+  {isUser && <Dashboard/> }
   <Routes>
   <Route path="/" element={<Login />} />
   <Route path="/Home" element={<Home />} />
@@ -26,6 +35,15 @@ function App() {
   <Route path="/Profile" element={<Profile />} />
   <Route path="/Login" element={<Login />} />
   <Route path="/Signup" element={<Signup/>} />
+
+  <Route path="/About" element={<About />} />
+  <Route path="/Schedules" element={<Schedules />} />
+  <Route path="/Statistics" element={<Statistics />} />
+  <Route path="/Help" element={<Help />} />
+  <Route path="/HealthCenters" element={<HealthCenters/>} />
+  <Route path="/Emergencies" element={<Emergencies />} />
+  <Route path="Notifications/" element={<Notifications />} />
+  <Route path="/History" element={<History />} />
   </Routes>
   </BrowserRouter>  
   )
