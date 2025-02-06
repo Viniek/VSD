@@ -97,6 +97,7 @@ width: 100%;
     display: flex;
     justify-content: space-between;
     padding: 1rem;
+    padding-bottom: 6rem;
     
 }
 @media screen and (max-width:58.75em){
@@ -113,7 +114,10 @@ width: 100%;
 .home-form-inputs-button{
     display: flex;
     justify-content: center;
-    
+    position: absolute;
+    bottom: 100px;
+    left: -300px;
+    width: 100%;
 }
 
 .home-form-inputs-button button{
