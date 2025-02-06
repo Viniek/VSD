@@ -25,7 +25,7 @@ navigationIcon.classList.toggle('open')
   }
   return (
     <header className='app-header'>
-        <h3>Lorem ipsum dolor <span className='span'>sit amet</span></h3>
+        <h3>ventricular Septal  <span className='span'>Defect</span> Analysis System</h3>
         <p>Welcome back {user.email}</p>
         
 <nav>
@@ -33,7 +33,7 @@ navigationIcon.classList.toggle('open')
         <li><Link to={'/Home'}>Home</Link></li>
         <li><Link to={'/Records'}>My Records</Link></li>
         <li><Link to={'/Profile'}>Profile</Link></li>
-        <button onClick={handleLogout} style={{paddingLeft:"1rem",paddingRight:"1rem", backgroundColor:"red",color:"white"}}>Logout</button>
+        <button className='logout-btn' onClick={handleLogout}>Logout</button>
         </ul>
 </nav>
 

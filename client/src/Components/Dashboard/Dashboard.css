@@ -22,10 +22,7 @@
     text-decoration: underline;
     color: rgb(8, 134, 156);
 }
-.dark{
-    color: white;
 
-}
 .actions{
     display: flex;
     flex-direction: row-reverse;

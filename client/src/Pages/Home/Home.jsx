@@ -5,7 +5,7 @@ function Home() {
   return (
    <>
    <h3  className='home-heading'>Test your <span> VSD </span> status here</h3>
-    <div className='home'>
+    <div className='home' id='home'>
 <section className='home-section'> 
 <div className='result-area'>
 
@@ -18,10 +18,10 @@ function Home() {
 </div>
 
 <div className='home-form-section'>
-  <form >
+  <form  className='home-form'>
 <div className="form-section1">
 <div className='home-from-inputs'>
-    <label>Age</label>
+    <label id='label'>Age</label>
     <input type="number" />
     </div>
 

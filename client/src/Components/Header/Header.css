@@ -32,6 +32,12 @@
     text-transform: capitalize;    
     font-weight: 600;
 }
+.logout-btn{
+    padding-left:1rem;
+    padding-right:1rem; 
+    background-color:rgb(218, 81, 81);
+    color:white;
+}
 .open{
     display: none;
 }

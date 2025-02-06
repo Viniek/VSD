@@ -9,11 +9,14 @@ import { FaCircleUser } from "react-icons/fa6";
 function Dashboard() {
 
   function handleChangeTheme (){
-   const settings = document.getElementsById("settings")
+   const settings = document.getElementById("home")
+  //  const labels = document.getElementById("label")
+
    settings.classList.toggle("dark")
+
   }
   return (
-<div className="dashboard" id='settings'>
+<div className="dashboard" >
 <ul>
       <div className='actions'><li><Link to={"/History"}>History</Link></li><GoHistory/></div>
       <div className="actions"><li><Link to={"/Notifications"}>Notifications</Link></li> <GoHistory/> </div>
@@ -24,7 +27,7 @@ function Dashboard() {
       <div className="actions"><li><Link to={"/Schedules"}>Schedules</Link></li> <FaHeartbeat/> </div>
       <div className="actions"><li><Link to={"/Profile"}>Manage Account</Link></li> <FaCircleUser/> </div>
       <div className="actions"><li><Link to={"/About"}>About</Link></li> <GoHistory/> </div>
-      <div  id='settings' ><li onClick={handleChangeTheme}><p>mode <GoHistory/></p></li></div>
+      <div id='h'><li ><button  onClick={handleChangeTheme}>mode <GoHistory/></button ></li></div>
     </ul>
 </div>
   )

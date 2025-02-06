@@ -6,3 +6,12 @@
     --skyblue:rgb(0, 217, 255);
     --grey:#6a6c6d;
     }
+
+    .dark{
+        background-color: #5c5b5b;
+        color: white;
+    
+    }
+    .light{
+        color: white;
+    }
