@@ -32,7 +32,7 @@ navigationIcon.classList.toggle('open')
         <li><Link to={'/'}>Home</Link></li>
         <li><Link to={'/Records'}>My Records</Link></li>
         <li><Link to={'/Profile'}>Profile</Link></li>
-        <button onClick={handleLogout}>Logout</button>
+        <button onClick={handleLogout} style={{paddingLeft:"1rem",paddingRight:"1rem", backgroundColor:"red",color:"white"}}>Logout</button>
         </ul>
 </nav>
 
