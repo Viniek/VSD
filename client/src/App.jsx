@@ -1,4 +1,5 @@
 import React from 'react'
+import '../Globals.css'
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Header from './Components/Header/Header';
 import Records from './Pages/Records/Records';

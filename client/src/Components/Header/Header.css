@@ -3,8 +3,17 @@
     padding-left: 20px;
     padding-right: 20px;
     justify-content: space-between;
-    margin-top: 3px;
+    /* margin-top: 3px; */
+    background-color: var(--grey);
+    padding: 2rem;
+    color: var(--white);
 }
+@media screen and (max-width:38em){
+    .app-header h3{
+        display:none;
+    }
+}
+
 .app-header span{
     color: rgb(0, 217, 255);
     text-transform: capitalize;
@@ -17,7 +26,33 @@
     text-transform: capitalize;    
     font-weight: 600;
 }
+.open{
+    display: none;
+}
+#nav-icon{
+    display: none;
+}
+.close{
+    display: none;
+}
+@media screen and (max-width:37.5em){
+    .app-header ul{
+        display: none;
+    }
+    #nav-icon{
+        display: block;
+    }
+    .open{
+        display: block;
+        position: relative;
+        color: var(--grey);
+    }
+}
+
 .app-header a{
     text-decoration: none;
-    color: var(--black);
+    color: var(--white);
+}
+.app-header p{
+    font-size: 2rem;
 }
