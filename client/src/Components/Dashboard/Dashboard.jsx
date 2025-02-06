@@ -5,6 +5,7 @@ import { FaHospitalSymbol } from "react-icons/fa";
 import { GoHistory } from "react-icons/go";
 import { BiSolidAmbulance } from "react-icons/bi";
 import { FaHeartbeat } from "react-icons/fa";
+import { FaCircleUser } from "react-icons/fa6";
 function Dashboard() {
 
   function handleChangeTheme (){
@@ -21,7 +22,7 @@ function Dashboard() {
       <div className="actions"><li><Link to={"/Help"}>help</Link></li> <GoHistory/> </div>
       <div className="actions"><li><Link to={"/Statistics"}>statistics</Link></li> <GoHistory/> </div>
       <div className="actions"><li><Link to={"/Schedules"}>Schedules</Link></li> <FaHeartbeat/> </div>
-      <div className="actions"><li><Link to={"/Profile"}>Manage Account</Link></li> <GoHistory/> </div>
+      <div className="actions"><li><Link to={"/Profile"}>Manage Account</Link></li> <FaCircleUser/> </div>
       <div className="actions"><li><Link to={"/About"}>About</Link></li> <GoHistory/> </div>
       <div  id='settings' ><li onClick={handleChangeTheme}><p>mode <GoHistory/></p></li></div>
     </ul>

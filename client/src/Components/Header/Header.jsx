@@ -4,6 +4,7 @@ import { FaHospitalSymbol } from "react-icons/fa";
 import useUserStore from '../../../Store/userStore';
 import './Header.css'
 import { useNavigate} from 'react-router-dom'
+import { FaCircleUser } from "react-icons/fa6";
 import {useEffect } from 'react'
 function Header(icon) {
   const navigate = useNavigate()
@@ -29,7 +30,7 @@ navigationIcon.classList.toggle('open')
         
 <nav>
         <ul className='nav-list'>
-        <li><Link to={'/'}>Home</Link></li>
+        <li><Link to={'/Home'}>Home</Link></li>
         <li><Link to={'/Records'}>My Records</Link></li>
         <li><Link to={'/Profile'}>Profile</Link></li>
         <button onClick={handleLogout} style={{paddingLeft:"1rem",paddingRight:"1rem", backgroundColor:"red",color:"white"}}>Logout</button>
@@ -42,7 +43,7 @@ navigationIcon.classList.toggle('open')
         <ol className='nav-list'>
         <li><Link to={'/'}>Home</Link></li>
         <li><Link to={'/Records'}>My Records</Link></li>
-        <li><Link to={'/Profile'}>Profile</Link></li>
+       <div className="actions"> <li><Link to={'/Profile'}>My Account</Link></li><FaCircleUser/></div>
         <li><Link to={'/'}>Logout</Link></li>
         </ol>
 </nav>
