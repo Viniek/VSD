@@ -8,6 +8,12 @@
     padding: 2rem;
     color: var(--white);
 }
+@media screen and (max-width:37.5em){
+   .app-header{
+    max-height: 10vh;
+    max-width: 100%;
+   } 
+}
 @media screen and (max-width:38em){
     .app-header h3{
         display:none;
@@ -44,8 +50,13 @@
     }
     .open{
         display: block;
-        position: relative;
-        color: var(--grey);
+        position: absolute;
+        height: 50vh;
+        /* width: 20%; */
+        background-color: var(--grey);
+        margin: 0;
+        right: 0rem;
+        padding: 2rem;
     }
 }
 

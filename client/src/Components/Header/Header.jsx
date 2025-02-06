@@ -7,11 +7,6 @@ function Header(icon) {
   function handleToggleNav(){
 const navigationIcon = document.getElementById('nav')
 navigationIcon.classList.toggle('open')
-navigationIcon.classList.add("close")
-// const openNav = document.getElementById("#nav")
-// openNav.classList.toggle("close")
-
-
 
   }
   return (
@@ -30,7 +25,7 @@ navigationIcon.classList.add("close")
 
 <div id='nav-icon'>
 <p onClick={handleToggleNav}><FaHospitalSymbol/></p>
-<nav id='nav'>
+<nav id='nav' className='close'>
         <ol className='nav-list'>
         <li><Link to={'/'}>Home</Link></li>
         <li><Link to={'/Records'}>My Records</Link></li>
