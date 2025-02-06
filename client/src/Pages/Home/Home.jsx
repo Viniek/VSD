@@ -13,7 +13,21 @@ function Home() {
 
 
 <div className='result-section'>
- <div></div>
+ <div>
+  <div className="results">
+  <p className='titles'>Status:</p>
+  <p>has vsd</p>
+  </div>
+  <div className="results">
+  <p className='titles'>Severiality:</p>
+  <p>Minimal</p>
+  </div>
+ <div className="results">
+ <p className='titles'>Recomendations:</p>
+ <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Numquam, facere aperiam repellat consequatur dolor atque nostrum vero quos magni corporis illum saepe minima quo temporibus odit accusamus voluptate? Velit, accusantium!</p>
+ </div>
+
+ </div>
 </div>
 </div>
 
