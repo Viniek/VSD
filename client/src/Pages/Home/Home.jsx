@@ -22,65 +22,68 @@ function Home() {
 <div className="form-section1">
 <div className='home-from-inputs'>
     <label>Age</label>
-    <input type="text" />
+    <input type="number" />
     </div>
 
     <div className='home-from-inputs'>
     <label>Gender</label>
-    <input type="text" />
+    <select name="" id="">
+      <option value="Male">Male</option>
+      <option value="Female">Female</option>
+    </select>
     </div>
 
     <div className='home-from-inputs'>
-    <label>Oxygen saturation</label>
-    <input type="text" />
+    <label>Oxygen saturation  (%)</label>
+    <input type="number" />
     </div>
 
 
     <div className='home-from-inputs'>
-    <label>Ejection Fraction</label>
-    <input type="text" />
+    <label>Ejection Fraction (%)</label>
+    <input type="number" />
     </div>
 
     <div className='home-from-inputs'>
-    <label>Weignt</label>
-    <input type="text" />
+    <label>Weignt (Kg)</label>
+    <input type="number" />
     </div>
 
     <div className='home-from-inputs'>
     <label>choresterol</label>
-    <input type="text" />
+    <input type="number" />
     </div>
 </div>
     {/* ...................................................... */}
     <div className='form-section1'>
     <div className='home-from-inputs'>
-    <label>height</label>
-    <input type="text" />
+    <label>height  (Cm)</label>
+    <input type="number" />
     </div>
 
     <div className='home-from-inputs'>
-    <label>heart rate</label>
-    <input type="text" />
+    <label>heart rate (Bpm)</label>
+    <input type="number" />
     </div>
 
     <div className='home-from-inputs'>
     <label>Cyanosis</label>
-    <input type="text" />
+    <input type="number" />
     </div>
 
     <div className='home-from-inputs'>
     <label>murmur</label>
-    <input type="text" />
+    <input type="number" />
     </div>
 
     <div className='home-from-inputs'>
     <label>Systolic</label>
-    <input type="text" />
+    <input type="number" />
     </div>
 
     <div className='home-from-inputs'>
     <label>Diastoric</label>
-    <input type="text" />
+    <input type="number" max={1} min={0} />
     </div>
     </div>
 
