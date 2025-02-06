@@ -22,6 +22,10 @@ function Header(icon) {
 const navigationIcon = document.getElementById('nav')
 navigationIcon.classList.toggle('open')
 
+
+
+console.log(labelss);
+
   }
   return (
     <header className='app-header'>

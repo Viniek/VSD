@@ -140,7 +140,7 @@ width: 100%;
 }
 .form-section1 label{
     font-weight: 800;
-    color:var(--black);
+    /* color:var(--black); */
     text-transform: capitalize;
 }
 .home-from-inputs{

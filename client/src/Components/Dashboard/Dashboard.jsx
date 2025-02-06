@@ -10,7 +10,9 @@ function Dashboard() {
 
   function handleChangeTheme (){
    const settings = document.getElementById("home")
-  //  const labels = document.getElementById("label")
+   const labelss = document.getElementById("label")
+
+labelss.classList.toggle("light")
 
    settings.classList.toggle("dark")
 
