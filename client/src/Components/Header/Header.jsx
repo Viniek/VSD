@@ -4,6 +4,9 @@ import './Header.css'
 function Header() {
   return (
     <header className='app-header'>
+        <h3>Lorem ipsum dolor <span className='span'>sit amet</span>.</h3>
+        <p>Welcome back Victory</p>
+        \
 <nav>
         <ul className='nav-list'>
         <li><Link to={'/'}>Home</Link></li>
