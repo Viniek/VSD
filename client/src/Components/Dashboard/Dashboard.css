@@ -1,0 +1,19 @@
+.dashboard{
+    display: block;
+    padding: 1rem;
+    background-color: rgb(220, 224, 224);
+}
+.dashboard ul{
+    display: flex;
+    justify-content: space-evenly;
+    text-transform: capitalize;
+    text-decoration: none;
+    list-style: none;
+}
+.dashboard a{
+    text-decoration: none;
+    color: var(--black);
+    font-family: sans-serif;
+    text-transform: capitalize;
+    font-weight: 700;
+}

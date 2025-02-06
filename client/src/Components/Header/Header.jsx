@@ -3,8 +3,20 @@ import  { Link } from 'react-router-dom'
 import { FaHospitalSymbol } from "react-icons/fa"; 
 import useUserStore from '../../../Store/userStore';
 import './Header.css'
+import { useNavigate} from 'react-router-dom'
+import {useEffect } from 'react'
 function Header(icon) {
-const user = useUserStore((state)=>state.user)
+  const navigate = useNavigate()
+  const clearuser = useUserStore((state)=>state.clearUserInformation)
+  const user = useUserStore((state)=>state.user)
+
+  function handleLogout(){
+  navigate("/")
+  clearuser()
+  
+}
+
+   
   function handleToggleNav(){
 const navigationIcon = document.getElementById('nav')
 navigationIcon.classList.toggle('open')
@@ -20,7 +32,7 @@ navigationIcon.classList.toggle('open')
         <li><Link to={'/'}>Home</Link></li>
         <li><Link to={'/Records'}>My Records</Link></li>
         <li><Link to={'/Profile'}>Profile</Link></li>
-        <li><Link to={'/'}>Logout</Link></li>
+        <button onClick={handleLogout}>Logout</button>
         </ul>
 </nav>
 
