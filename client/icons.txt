@@ -1,0 +1,13 @@
+import { FaHospitalSymbol } from "react-icons/fa";
+
+import { GoHistory } from "react-icons/go";
+
+
+import { BiSolidAmbulance } from "react-icons/bi";
+
+import { FaHeartbeat } from "react-icons/fa";
+
+import { FaCircleUser } from "react-icons/fa6";
+
+import { TbLockPassword } from "react-icons/tb";
+
