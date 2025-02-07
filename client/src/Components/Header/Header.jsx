@@ -73,7 +73,7 @@ navigationIcon.classList.toggle('open')
       <div className="actionss"><li><Link to={"/Schedules"}>Schedules</Link></li> <FaHeartbeat/> </div>
       <div className="actionss"><li><Link to={"/Profile"}>Manage Account</Link></li> <FaCircleUser/> </div>
       <div className="actionss"><li><Link to={"/About"}>About</Link></li> <GoHistory/> </div>
-      <div id='home' className="actionss"><li ><button  onClick={handleChangeTheme}>mode <GoHistory/></button ></li></div>
+      <div id='homee' className="actionss"><li ><button  onClick={handleChangeTheme}>mode <GoHistory/></button ></li></div>
       <div><li ><button  onClick={handleLogout} className='logout-btnn'>Logout </button ></li></div>
     </ol>
 </nav>
