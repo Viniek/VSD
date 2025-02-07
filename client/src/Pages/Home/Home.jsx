@@ -29,7 +29,7 @@ diastoric:"",
   })
   return (
    <>
-   <h3  className='home-heading'>Test your <span> VSD </span> status here</h3>
+   {/* <h3  className='home-heading'>Test your <span> VSD </span> status here</h3> */}
     <div className='home' id='home'>
 <section className='home-section'> 
 <div className='result-area'>
@@ -58,6 +58,7 @@ diastoric:"",
 
 <div className='home-form-section'>
   <form  className='home-form' onSubmit={formik.handleSubmit}>
+
 <div className="form-section1">
 <div className='home-from-inputs'>
     <label id='label'>Age</label>
@@ -198,11 +199,15 @@ diastoric:"",
     value={formik.values.diastoric}
     />
     </div>
-    </div>
-
     <div className="home-form-inputs-button">
     <button>  run test</button>
     </div>
+
+    </div>
+
+
+
+
     </form>
 
 </div>
