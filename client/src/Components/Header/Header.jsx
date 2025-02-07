@@ -5,19 +5,24 @@ import useUserStore from '../../../Store/userStore';
 import './Header.css'
 import { useNavigate} from 'react-router-dom'
 import { FaCircleUser } from "react-icons/fa6";
+import Login from '../../Pages/Login/Login';
 import {useEffect } from 'react'
 function Header(icon) {
+  const changeUserInformation = useUserStore( (state) => state.changeUserInformation );
   const navigate = useNavigate()
-  const clearuser = useUserStore((state)=>state.clearUserInformation)
+  const clearUser = useUserStore((state)=>state.clearUserInformation)
   const user = useUserStore((state)=>state.user)
 
 
 
-const handleLogout = ()=>{
-    
-    clearuser()
-    // navigate("/Login")
-  }
+  const handleLogout = () => {
+    changeUserInformation(null);
+    clearUser(); 
+    navigate("/");
+  };
+
+  const isLoginPage = location.pathname === "/Login";
+
   
 
 
@@ -41,7 +46,7 @@ console.log(labelss);
         <li><Link to={'/Home'}>Home</Link></li>
         <li><Link to={'/Records'}>My Records</Link></li>
         <li><Link to={'/Profile'}>my account</Link></li>
-        <li  className='logout-btn' onClick={handleLogout}><Link to={'/Home'}>Logout</Link></li>
+        <button  className='logout-btn' onClick={handleLogout}>Logout</button>
         
         </ul>
 </nav>

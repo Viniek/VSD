@@ -22,7 +22,7 @@ function Login() {
     // console.log(user);
 
     const formik = useFormik({
-        initialValues:{
+        initialValues:{ 
             email:"",
             password:"",
         },onSubmit:handleSubmit,

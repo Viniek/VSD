@@ -1,7 +1,7 @@
-import React, { Children }  from 'react'
+import React from 'react'
 import { useState, useEffect } from 'react';
 import '../Globals.css'
-import { BrowserRouter, Routes, Route,Navigate, useNavigate } from "react-router-dom";
+import { BrowserRouter, Routes, Route} from "react-router-dom";
 import Header from './Components/Header/Header';
 import Records from './Pages/Records/Records';
 import Profile from './Pages/Profile/Profile';
@@ -25,7 +25,7 @@ function App() {
   const [isUser,setisUser]= useState(false)
 
 useEffect(()=>{
-  if(user){setisUser(true)}
+  if(user){setisUser(true)} else(setisUser(false))
 },[user])
 
   return (
@@ -34,14 +34,15 @@ useEffect(()=>{
   {isUser && <Dashboard/> }
   
   <Routes>
-
+  <><Route path="/" element={<Login />} /></>
+{isUser ?
  <>
  
  <Route path="/Home" element={<Home />} />
  <Route path="/Records" element={<Records />} />
  <Route path="/Profile" element={<Profile />} />
  <Route path="/Signup" element={<Signup/>} />
- <Route path="/" element={<Login />} />
+ 
  <Route path="/About" element={<About />} />
  <Route path="/Schedules" element={<Schedules />} />
  <Route path="/Statistics" element={<Statistics />} />
@@ -51,6 +52,10 @@ useEffect(()=>{
  <Route path="Notifications/" element={<Notifications />} />
  <Route path="/History" element={<History />} />
  </>
+
+:<><Route path="/" element={<Login />} /></>
+}
+
 
 
   </Routes>
