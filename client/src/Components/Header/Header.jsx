@@ -53,7 +53,6 @@ navigationIcon.classList.toggle('open')
         <li><Link to={'/Records'}>My Records</Link></li>
         <li><Link to={'/Profile'}>my account</Link></li>
         <button  className='logout-btn' onClick={handleLogout}>Logout</button>
-        
         </ul>
 </nav>
 
