@@ -1,5 +1,5 @@
 .dashboard{
-    display: block;
+    display: flex;
     padding: 1rem;
     background-color: rgb(220, 224, 224);
     /* margin-bottom: 5rem; */
@@ -13,6 +13,7 @@
     text-transform: capitalize;
     text-decoration: none;
     list-style: none;
+    flex-wrap: wrap;
 }
 .dashboard a{
     text-decoration: none;
