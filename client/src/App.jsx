@@ -17,7 +17,8 @@ import HealthCenters from './Components/HealthCenters/HealthCenters';
 import Emergencies from './Components/Emergencies/Emergencies';
 import Notifications from './Components/Notifications/Notifications';
 import History from './Components/History/History';
-import Dashboard from './Components/Dashboard/dashboard';
+import Dashboard from './Components/Dashboard/Dashboard';
+
 
 function App() {
   const user = useUserStore((state)=>state.user)
