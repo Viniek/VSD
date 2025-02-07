@@ -1,5 +1,5 @@
 .dashboard{
-    display: flex;
+    display: block;
     padding: 1rem;
     background-color: rgb(220, 224, 224);
     /* margin-bottom: 5rem; */

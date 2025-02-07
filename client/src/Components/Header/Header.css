@@ -54,7 +54,7 @@
 .open{
     display: none;
 }
-.nav-list li{list-style: none;margin-bottom: 2.5rem;border-bottom: var(--white) 1px solid;width: 100%;}
+.nav-list1 li{list-style: none;margin-bottom: 2.5rem;border-bottom: var(--white) 1px solid;width: 100%;}
 
 #nav-icon{
     display: none;

@@ -60,7 +60,7 @@ navigationIcon.classList.toggle('open')
 <div id='nav-icon'>
 <p onClick={handleToggleNav}><IoIosStats/></p>
 <nav id='nav' className='close'>
-    <ol className='nav-list'>
+    <ol className='nav-list1'>
       
       <div className="actionss"><li><Link to={'/'}>Home</Link></li><FaCircleUser/></div> 
       <div className="actionss"><li><Link to={'/Records'}>My Records</Link></li><FaCircleUser/></div> 
