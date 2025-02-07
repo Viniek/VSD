@@ -2,9 +2,6 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
-    /* background-image: url(../../assets/img5.jpg); */
-    /* background-color: rgb(236, 235, 229); */
-    height: 77vh;
     background-size: cover;
    
 
@@ -31,7 +28,6 @@
 
 .result-area{
     width: 50%;
-    height: 100%;
     border: var(--black) dashed 2px;
     background-color: rgb(204, 221, 223);
     color: var(--black);
@@ -91,7 +87,6 @@
 }
 .form-section1 label{
     font-weight: 800;
-    /* color:var(--black); */
     text-transform: capitalize;
 }
 .home-from-inputs{
@@ -105,10 +100,6 @@
 select{
     padding: .7rem;
     }
-.result{
-   min-height: 100%;
-    min-width: 100%;
-}
 .action-btns{
     display: flex;
     justify-content: space-around;
