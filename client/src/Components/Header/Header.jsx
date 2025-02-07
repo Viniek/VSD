@@ -1,19 +1,30 @@
 import React from 'react'
 import  { Link, Navigate } from 'react-router-dom'
-import { FaHospitalSymbol } from "react-icons/fa"; 
 import useUserStore from '../../../Store/userStore';
 import './Header.css'
 import { useNavigate} from 'react-router-dom'
 import { FaCircleUser } from "react-icons/fa6";
-import Login from '../../Pages/Login/Login';
-import {useEffect } from 'react'
+import { FaHospitalSymbol } from "react-icons/fa";
+import { GoHistory } from "react-icons/go";
+import { BiSolidAmbulance } from "react-icons/bi";
+import { FaHeartbeat } from "react-icons/fa";
+import { IoIosStats } from "react-icons/io";
+
 function Header(icon) {
   const changeUserInformation = useUserStore( (state) => state.changeUserInformation );
   const navigate = useNavigate()
   const clearUser = useUserStore((state)=>state.clearUserInformation)
   const user = useUserStore((state)=>state.user)
 
-
+  function handleChangeTheme (){
+    const settings = document.getElementById("home")
+    const labelss = document.getElementById("label")
+ 
+ labelss.classList.toggle("light")
+ 
+    settings.classList.toggle("dark")
+ 
+   }
 
   const handleLogout = () => {
     changeUserInformation(null);
@@ -29,9 +40,6 @@ function Header(icon) {
 const navigationIcon = document.getElementById('nav')
 navigationIcon.classList.toggle('open')
 
-
-
-console.log(labelss);
 
   }
   return (
@@ -50,14 +58,25 @@ console.log(labelss);
 </nav>
 
 <div id='nav-icon'>
-<p onClick={handleToggleNav}><FaHospitalSymbol/></p>
+<p onClick={handleToggleNav}><IoIosStats/></p>
 <nav id='nav' className='close'>
-        <ol className='nav-list'>
-        <li><Link to={'/'}>Home</Link></li>
-        <li><Link to={'/Records'}>My Records</Link></li>
-       <div className="actions"> <li><Link to={'/Profile'}>My Account</Link></li><FaCircleUser/></div>
-        <li><Link to={'/'}>Logout</Link></li>
-        </ol>
+    <ol className='nav-list'>
+      
+      <div className="actionss"><li><Link to={'/'}>Home</Link></li><FaCircleUser/></div> 
+      <div className="actionss"><li><Link to={'/Records'}>My Records</Link></li><FaCircleUser/></div> 
+      <div className="actionss"> <li><Link to={'/Profile'}>My Account</Link></li><FaCircleUser/></div>    
+      <div className='actionss'><li><Link to={"/History"}>History</Link></li><GoHistory/></div>
+      <div className="actionss"><li><Link to={"/Notifications"}>Notifications</Link></li> <GoHistory/> </div>
+      <div className="actionss"><li><Link to={"/Emergencies"}>Emergencies</Link></li> <BiSolidAmbulance/> </div>
+      <div className="actionss"><li><Link to={"/HealthCenters"}>Health centers</Link></li> <FaHospitalSymbol/> </div>
+      <div className="actionss"><li><Link to={"/Help"}>help</Link></li> <GoHistory/> </div>
+      <div className="actionss"><li><Link to={"/Statistics"}>statistics</Link></li> <GoHistory/> </div>
+      <div className="actionss"><li><Link to={"/Schedules"}>Schedules</Link></li> <FaHeartbeat/> </div>
+      <div className="actionss"><li><Link to={"/Profile"}>Manage Account</Link></li> <FaCircleUser/> </div>
+      <div className="actionss"><li><Link to={"/About"}>About</Link></li> <GoHistory/> </div>
+      <div id='home' className="actionss"><li ><button  onClick={handleChangeTheme}>mode <GoHistory/></button ></li></div>
+      <div><li ><button  onClick={handleLogout} className='logout-btnn'>Logout </button ></li></div>
+    </ol>
 </nav>
 </div>
     </header>

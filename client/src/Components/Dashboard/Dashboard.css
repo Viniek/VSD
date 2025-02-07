@@ -4,6 +4,9 @@
     background-color: rgb(220, 224, 224);
     /* margin-bottom: 5rem; */
 }
+@media screen  and (max-width:37.5em){
+    .dashboard{display: none;}
+}
 .dashboard ul{
     display: flex;
     justify-content: space-evenly;

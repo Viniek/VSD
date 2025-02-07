@@ -29,7 +29,7 @@ labelss.classList.toggle("light")
       <div className="actions"><li><Link to={"/Schedules"}>Schedules</Link></li> <FaHeartbeat/> </div>
       <div className="actions"><li><Link to={"/Profile"}>Manage Account</Link></li> <FaCircleUser/> </div>
       <div className="actions"><li><Link to={"/About"}>About</Link></li> <GoHistory/> </div>
-      <div id='h'><li ><button  onClick={handleChangeTheme}>mode <GoHistory/></button ></li></div>
+      <div id='home'><li ><button  onClick={handleChangeTheme}>mode <GoHistory/></button ></li></div>
     </ul>
 </div>
   )
