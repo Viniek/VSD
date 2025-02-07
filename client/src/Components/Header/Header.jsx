@@ -1,5 +1,5 @@
 import React from 'react'
-import  { Link } from 'react-router-dom'
+import  { Link, Navigate } from 'react-router-dom'
 import { FaHospitalSymbol } from "react-icons/fa"; 
 import useUserStore from '../../../Store/userStore';
 import './Header.css'
@@ -11,11 +11,15 @@ function Header(icon) {
   const clearuser = useUserStore((state)=>state.clearUserInformation)
   const user = useUserStore((state)=>state.user)
 
-  function handleLogout(){
-  navigate("/")
-  clearuser()
+
+
+const handleLogout = ()=>{
+    
+    clearuser()
+    // navigate("/Login")
+  }
   
-}
+
 
    
   function handleToggleNav(){
@@ -30,14 +34,15 @@ console.log(labelss);
   return (
     <header className='app-header'>
         <h3>ventricular Septal  <span className='span'>Defect</span> Analysis System</h3>
-        <p>Welcome back {user.email}</p>
+        <p>Welcome back { user && user.email}</p>
         
 <nav>
         <ul className='nav-list'>
         <li><Link to={'/Home'}>Home</Link></li>
         <li><Link to={'/Records'}>My Records</Link></li>
-        <li><Link to={'/Profile'}>Profile</Link></li>
-        <button className='logout-btn' onClick={handleLogout}>Logout</button>
+        <li><Link to={'/Profile'}>my account</Link></li>
+        <li  className='logout-btn' onClick={handleLogout}><Link to={'/Home'}>Logout</Link></li>
+        
         </ul>
 </nav>
 

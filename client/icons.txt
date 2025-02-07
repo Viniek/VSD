@@ -11,3 +11,7 @@ import { FaCircleUser } from "react-icons/fa6";
 
 import { TbLockPassword } from "react-icons/tb";
 
+import { BiAdjust } from "react-icons/bi";
+
+import { IoIosStats } from "react-icons/io";
+

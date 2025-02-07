@@ -201,7 +201,7 @@ diastoric:"",
     </div>
 
     <div className="home-form-inputs-button">
-    <button>  submit</button>
+    <button>  run test</button>
     </div>
     </form>
 
