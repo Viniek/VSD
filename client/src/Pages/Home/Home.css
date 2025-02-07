@@ -20,11 +20,17 @@
     display: flex;
     flex-direction: row-reverse;
     justify-content: center;
-    margin: 0 1rem;
-    
-
+    margin: 0 1rem; 
 }
-
+@media screen and (max-width:53.5em){
+    .home-section{
+        display: flex;
+        flex-direction: column-reverse;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+    }
+}
 
 .result-area{
     width: 50%;
@@ -38,6 +44,15 @@
     width: 50%;
     border: black solid 1px;
     margin-right: 1rem;
+}
+
+@media screen and (max-width:53.5em){
+    .result-area, .home-form-section{
+        width: 100%;
+        align-items: center;
+        justify-content: center;
+        margin: 1rem;
+    }
 }
 
 
@@ -61,7 +76,20 @@
     padding-bottom: 6rem;
     
 }
-
+@media screen and (max-width:53.5em){
+    .home-form-section form{
+        gap: 1rem;
+        width: 100%;
+    }
+}
+@media screen and (max-width:27em){
+    .home-form-section form{
+display: flex;
+flex-direction: column;
+justify-content: center;
+align-items: center;
+    }
+}
 
 .home-form-inputs-button{
     margin-top: 
@@ -84,6 +112,11 @@
     width: 100%;
     margin-left: 2rem;
     margin-right: 2rem;
+}
+@media screen and (max-width:53.5em){
+   .form-section1{
+    margin: 0;
+   } 
 }
 .form-section1 label{
     font-weight: 800;

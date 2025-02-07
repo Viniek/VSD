@@ -21,12 +21,10 @@ function Header(icon) {
     navigate("/");
   };
 
-  const isLoginPage = location.pathname === "/Login";
+  // const isLoginPage = location.pathname === "/Login";
 
   
-
-
-   
+ 
   function handleToggleNav(){
 const navigationIcon = document.getElementById('nav')
 navigationIcon.classList.toggle('open')

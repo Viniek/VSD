@@ -1,7 +1,7 @@
 import React from 'react'
 import { useState, useEffect } from 'react';
 import '../Globals.css'
-import { BrowserRouter, Routes, Route} from "react-router-dom";
+import { BrowserRouter, Routes, Route,useNavigate, Navigate} from "react-router-dom";
 import Header from './Components/Header/Header';
 import Records from './Pages/Records/Records';
 import Profile from './Pages/Profile/Profile';
@@ -21,11 +21,12 @@ import Dashboard from './Components/Dashboard/Dashboard';
 
 
 function App() {
+  // const navigate  = useNavigate()
   const user = useUserStore((state)=>state.user)
   const [isUser,setisUser]= useState(false)
 
 useEffect(()=>{
-  if(user){setisUser(true)} else(setisUser(false))
+  if(user){setisUser(true)} else(setisUser(false) ,<Navigate to = "/"/>)
 },[user])
 
   return (
