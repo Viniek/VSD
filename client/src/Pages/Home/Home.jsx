@@ -57,7 +57,7 @@ diastoric:"",
  <h4>Results will apper here</h4>
 
 <div className='result-section'>
- <div>
+ <div>  
   <div className="results">
   <p className='titles'>Status:</p>
   <p>has vsd</p>

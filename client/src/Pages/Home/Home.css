@@ -72,9 +72,7 @@
 .home-form-section form{
     display: flex;
     justify-content: space-between;
-    padding: 1rem;
-    padding-bottom: 6rem;
-    
+    padding: 1rem;    
 }
 @media screen and (max-width:53.5em){
     .home-form-section form{
@@ -96,7 +94,7 @@ align-items: center;
     1rem;
 }
 .home-form-inputs-button button{
-    width: 30%;
+    width: 100%;
     padding: .8rem;
     text-transform: capitalize;
     background-color: var(--skyblue);
