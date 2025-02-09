@@ -2,6 +2,10 @@
     display: block;
     padding: 1rem;
     background-color: rgb(220, 224, 224);
+    /* margin-bottom: 5rem; */
+}
+@media screen  and (max-width:37.5em){
+    .dashboard{display: none;}
 }
 .dashboard ul{
     display: flex;
@@ -9,6 +13,7 @@
     text-transform: capitalize;
     text-decoration: none;
     list-style: none;
+    flex-wrap: wrap;
 }
 .dashboard a{
     text-decoration: none;

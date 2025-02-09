@@ -24,6 +24,19 @@
     color: rgb(0, 217, 255);
     text-transform: capitalize;
 }
+.actionss{
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: center;
+    text-transform: capitalize;
+    gap: 1rem;    
+}
+.actionss:hover{
+    background-color: white;
+}
+.actionss ul{
+    list-style: none;
+}
 .app-header ul{
     display: flex;
     justify-content: flex-end;
@@ -41,9 +54,11 @@
 .open{
     display: none;
 }
+.nav-list1 li{list-style: none;margin-bottom: 2.5rem;border-bottom: var(--white) 1px solid;width: 100%;}
+
 #nav-icon{
     display: none;
-}
+} 
 .close{
     display: none;
 }
@@ -54,10 +69,12 @@
     #nav-icon{
         display: block;
     }
-    .open{
-        display: block;
+
+        .open{
+        display: flex;
+        flex-direction: column;
         position: absolute;
-        height: 50vh;
+        height: 100vh;
         /* width: 20%; */
         background-color: var(--grey);
         margin: 0;
@@ -72,4 +89,11 @@
 }
 .app-header p{
     font-size: 2rem;
+}
+.logout-btnn{
+    background-color:red;
+    padding: 1rem;
+    color: var(--white);
+    width: 100%;
+    font-weight: 600;
 }

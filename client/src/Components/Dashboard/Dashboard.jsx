@@ -14,7 +14,7 @@ function Dashboard() {
 
 labelss.classList.toggle("light")
 
-   settings.classList.toggle("dark")
+settings.classList.toggle("dark")
 
   }
   return (

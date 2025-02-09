@@ -25,6 +25,26 @@ diastoric:"",
 
 },
     onSubmit:handleSubmit,
+    validate:function(values){
+      const errors = {};
+      if(!values.age) errors.age = "Age is required"
+      if(!values.gender) errors.gender = "gender is required"
+      if(!values.oxygenSaturation) errors.oxygenSaturation = "oxygenSaturation is required"
+      if(!values.ejectionFraction) errors.ejectionFraction = "AejectionFractionis required"
+      if(!values.weight) errors.weight = "weight is required"
+      if(values.weight <1)errors.weight = "weight must be greater than 1Kg"
+      if(values.weight >150) errors.weight = "Weight must not exceed 150Kg"
+      if(!values.choresterol) errors.choresterol = "choresterol is required"
+      if(!values.height) errors.height = "height is required"
+      if(!values.heartRate) errors.heartRate = "heartRate is required"
+      if(!values.cyanosis) errors.cyanosis = "cyanosis is required"
+      if(!values.murmur) errors.murmur ="murmur is required"
+      if(!values.systolic) errors.systolic = "systolic is required"
+      if(!values.diastoric) errors.diastoric = "diastoric is required"
+
+
+      return errors;
+    }
     
   })
   return (
@@ -36,9 +56,8 @@ diastoric:"",
 
  <h4>Results will apper here</h4>
 
-
 <div className='result-section'>
- <div>
+ <div>  
   <div className="results">
   <p className='titles'>Status:</p>
   <p>has vsd</p>
@@ -58,6 +77,7 @@ diastoric:"",
 
 <div className='home-form-section'>
   <form  className='home-form' onSubmit={formik.handleSubmit}>
+
 <div className="form-section1">
 <div className='home-from-inputs'>
     <label id='label'>Age</label>
@@ -67,7 +87,11 @@ diastoric:"",
     onChange={formik.handleChange}
     onBlur={formik.handleBlur}
     value={formik.values.age}
+    required
+    max={150}
+    min={0}
     />
+    {formik.touched.age && formik.errors.age && (<p  className='errors'>{formik.errors.age}</p>)}
     </div>
 
     <div className='home-from-inputs'>
@@ -77,7 +101,9 @@ diastoric:"",
      onChange={formik.handleChange}
      onBlur={formik.handleBlur}
      value={formik.values.gender}
+     required
      >
+
       <option value="Male">Male</option>
       <option value="Female">Female</option>
     </select>
@@ -91,7 +117,11 @@ diastoric:"",
     onChange={formik.handleChange}
     onBlur={formik.handleBlur}
     value={formik.values.oxygenSaturation}
+    required
+    max={100}
+    min={1}
     />
+    {formik.touched.oxygenSaturation && formik.errors.oxygenSaturation && (<p  className='errors'>{formik.errors.oxygenSaturation}</p>)}
     </div>
 
 
@@ -103,7 +133,11 @@ diastoric:"",
     onChange={formik.handleChange}
     onBlur={formik.handleBlur}
     value={formik.values.ejectionFraction}
+    required
+    max={100}
+    min={1}
     />
+    {formik.touched.ejectionFraction && formik.errors.ejectionFraction && (<p  className='errors'>{formik.errors.ejectionFraction}</p>)}
     </div>
 
     <div className='home-from-inputs'>
@@ -114,7 +148,11 @@ diastoric:"",
      onChange={formik.handleChange}
      onBlur={formik.handleBlur}
      value={formik.values.weight}
+     required
+     max={250}
+     min={2}
      />
+     {formik.touched.weight && formik.errors.weight && (<p  className='errors'>{formik.errors.weight}</p>)}
     </div>
 
     <div className='home-from-inputs'>
@@ -125,7 +163,11 @@ diastoric:"",
     onChange={formik.handleChange}
     onBlur={formik.handleBlur}
     value={formik.values.choresterol}
+    required
+    max={1}
+    min={0}
     />
+    {formik.touched.choresterol && formik.errors.choresterol && (<p  className='errors'>{formik.errors.choresterol}</p>)}
     </div>
 </div>
     {/* ...................................................... */}
@@ -138,7 +180,11 @@ diastoric:"",
     onChange={formik.handleChange}
     onBlur={formik.handleBlur}
     value={formik.values.height}
+    required
+    max={250}
+    min={30}
     />
+    {formik.touched.height && formik.errors.height && (<p  className='errors'>{formik.errors.height}</p>)}
     </div>
 
     <div className='home-from-inputs'>
@@ -149,7 +195,11 @@ diastoric:"",
     onChange={formik.handleChange}
     onBlur={formik.handleBlur}
     value={formik.values.heartRate}
+    required
+    max={200}
+    min={10}
     />
+    {formik.touched.heartRate && formik.errors.heartRate && (<p  className='errors'>{formik.errors.heartRate}</p>)}
     </div>
 
     <div className='home-from-inputs'>
@@ -160,7 +210,11 @@ diastoric:"",
     onChange={formik.handleChange}
     onBlur={formik.handleBlur}
     value={formik.values.cyanosis}
+    required
+    max={1}
+    min={0}
     />
+    {formik.touched.cyanosis && formik.errors.cyanosis && (<p  className='errors'>{formik.errors.cyanosis}</p>)}
     </div>
 
     <div className='home-from-inputs'>
@@ -171,7 +225,11 @@ diastoric:"",
     onChange={formik.handleChange}
     onBlur={formik.handleBlur}
     value={formik.values.murmur}
+    required
+    max={1}
+    min={0}
     />
+    {formik.touched.murmur && formik.errors.murmur && (<p  className='errors'>{formik.errors.murmur}</p>)}
     </div>
 
     <div className='home-from-inputs'>
@@ -182,8 +240,12 @@ diastoric:"",
     onChange={formik.handleChange}
     onBlur={formik.handleBlur}
     value={formik.values.systolic}
+    required
+    max={259}
+    min={0}
 
     />
+    {formik.touched.systolic && formik.errors.systolic && (<p  className='errors'>{formik.errors.systolic}</p>)}
     </div>
 
     <div className='home-from-inputs'>
@@ -196,13 +258,20 @@ diastoric:"",
     onChange={formik.handleChange}
     onBlur={formik.handleBlur}
     value={formik.values.diastoric}
+    required
+    
     />
+    {formik.touched.diastoric && formik.errors.diastoric && (<p  className='errors'>{formik.errors.diastoric}</p>)}
     </div>
-    </div>
-
     <div className="home-form-inputs-button">
     <button>  run test</button>
     </div>
+
+    </div>
+
+
+
+
     </form>
 
 </div>
