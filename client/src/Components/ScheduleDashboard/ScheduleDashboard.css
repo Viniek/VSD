@@ -1,0 +1,17 @@
+.ScheduleDashboard{
+    display: flex;
+    flex-direction: column;
+    background-color:rgb(161, 162, 163);
+    width: 14%;
+    height: 80vh;
+}
+.ScheduleDashboard ul{
+    list-style: none;
+    padding: 1rem;
+}
+.ScheduleDashboard a{
+    text-decoration: none;
+    color: var(--black);
+    font-weight: 700;
+    text-transform: capitalize;
+}

@@ -1,0 +1,52 @@
+.health-center-section{
+    display: flex;
+flex-direction: row;
+justify-content: space-between;
+}
+
+.health-center-section2{
+    display: flex;
+   
+}
+.centers-container{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 1rem;
+    gap: 2rem;
+  
+  flex-wrap: wrap;
+}
+.center-title{
+    text-transform: capitalize;
+    font-weight: 700;
+    text-decoration: underline;
+    margin-bottom: 10px;
+}
+.centers-socials{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 2rem;
+    font-size: 2rem;
+    border-top: 1px solid var(--skyblue);
+    color: grey;
+    padding-top: 1rem;
+}
+.center-wrapper{
+    display: flex;
+    flex-direction: column;
+    width: 30%;
+    border: solid 1px;
+    padding: 1rem;
+    background-color: rgb(222, 231, 231);
+}
+.center-wrapper h1{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* border-radius: 50%; */
+    color:var(--skyblue);
+    font-size: 8rem;
+    /* background-color: red; */
+}
