@@ -19,7 +19,7 @@ import Notifications from './Components/Notifications/Notifications';
 import History from './Components/History/History';
 import Dashboard from './Components/Dashboard/Dashboard';
 import Protected from './Components/Protected/Protected';
-
+// use protected routes
 function App() {
   // const navigate  = useNavigate()
   const user = useUserStore((state)=>state.user)
