@@ -1,0 +1,7 @@
+{
+  "dependencies": {
+    "flask": "^0.2.10",
+    "pandas": "^0.0.3",
+    "pickle": "^0.2.0"
+  }
+}
