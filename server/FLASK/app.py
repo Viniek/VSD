@@ -14,8 +14,40 @@ condition_model = pickle.load(open("condition_model.pkl", "rb"))
 
 # Function to make predictions
 def make_prediction(data):
+    # Remove "cholesterol" from the data if it wasn't in the training data
+    if "cholesterol" in data:
+        del data["cholesterol"]
+    
+    # Rename input fields to match training dataset
+    column_mapping = {
+        "age": "Age",
+        "gender": "Gender",
+        "oxygenSaturation": "Oxygen Saturation (%)",
+        "ejectionFraction": "Ejection Fraction (%)",
+        "weight": "Weight (kg)",
+        "height": "Height (cm)",
+        "heartRate": "Heart Rate (bpm)",
+        "cyanosis": "Cyanosis",
+        "murmur": "Murmur",
+        "systolic": "Systolic",
+        "diastolic": "Diastolic",
+        "vsdSize": "VSD Size (mm)",  # Added VSD Size
+        "familyHistory": "Family History"  # Added Family History
+    }
+
     # Convert received data to DataFrame
     df = pd.DataFrame([data])
+
+    # Rename columns to match the training data
+    df.rename(columns=column_mapping, inplace=True)
+
+    # Ensure columns are in the correct order expected by the model
+    expected_columns = [
+        "Age", "Gender", "Weight (kg)", "Height (cm)", "VSD Size (mm)", "Oxygen Saturation (%)", 
+        "Ejection Fraction (%)", "Heart Rate (bpm)", "Cyanosis", "Murmur", "Systolic", "Diastolic", 
+        "Family History"
+    ]
+    df = df[expected_columns]
 
     # Predict VSD
     vsd_pred = vsd_model.predict(df)[0]
@@ -40,8 +72,8 @@ def predict():
 
     # Validate required fields
     required_fields = ["age", "gender", "oxygenSaturation", "ejectionFraction", "weight",
-                       "choresterol", "height", "heartRate", "cyanosis", "murmur",
-                       "systolic", "diastoric"]
+                       "cholesterol", "height", "heartRate", "cyanosis", "murmur",
+                       "systolic", "diastolic", "vsdSize", "familyHistory"]
 
     for field in required_fields:
         if field not in data:

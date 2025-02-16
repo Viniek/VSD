@@ -1,7 +1,7 @@
 import React from 'react';
 import './Signup.css' ; 
 import { useFormik } from "formik";
-import useAuthStore from '../../store/authStore';
+import useAuthStore from '../../../Store/authStore';
 import { TbLockPassword } from "react-icons/tb";
 import { FaCircleUser } from "react-icons/fa6";
 import { Link, useNavigate } from 'react-router-dom';
