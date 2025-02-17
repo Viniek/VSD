@@ -122,7 +122,9 @@ function Profile() {
 
       </div>
       <div className='ovellay' id='ovellay'>
-<form action="">
+
+  
+<form action="" className='ovelay-form'>
 <div className='close-btn-wrapper'>
 <button className='close-btn' onClick={handleCloseOvellay}>X</button>
 </div>
@@ -138,7 +140,8 @@ function Profile() {
     <input type="text" placeholder='Confirm your Password' />
 
     <button className='change-password-submit-btn'>submit</button>
-  </form>    
+  </form>
+      
        </div>
        <button className='change-password-btn' onClick={handleOpenOvellay}>change password</button>
   
