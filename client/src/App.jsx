@@ -27,13 +27,13 @@ function App() {
 
 useEffect(()=>{
   if(user){setisUser(true)}
-  //  else(setisUser(false) ,<Navigate to = "/"/> )
+   else(setisUser(false) ,<Navigate to = "/"/> )
 },[user])
 
   return (
   <BrowserRouter>
   {isUser && <Header/>}
-  {isUser && <Dashboard/> }
+  {isUser && <Protected><Dashboard/></Protected> }
   
   <Routes>
   <><Route path="/" element={<Login />} /></>
@@ -49,11 +49,6 @@ useEffect(()=>{
  <Route path="/Emergencies" element={<Protected><Emergencies /></Protected>} />
  <Route path="Notifications/" element={<Protected><Notifications /></Protected>} />
  <Route path="/History" element={<Protected><History /></Protected>} />
- 
-
-
-
-
 
   </Routes>
   </BrowserRouter>  

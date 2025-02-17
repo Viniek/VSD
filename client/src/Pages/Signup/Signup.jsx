@@ -20,7 +20,7 @@ function SignUp() {
         });
         
         setTimeout(() => {
-            navigate("/Login");
+            navigate("/");
         }, 3000); // Redirect after 3 seconds
     }
 
