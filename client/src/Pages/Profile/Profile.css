@@ -78,9 +78,11 @@
     border: none;
     color: blue;
     font-weight: 700;
+    font-size: 1.8rem;
+    text-transform: capitalize;
 }
 .ovellay{
-
+    display: none;
     width: 100%;
     position: fixed;
     align-items: center;

@@ -1,21 +1,20 @@
 import React from 'react'
-import { useState } from 'react'
+import { useEffect } from 'react'
 import { useFormik } from 'formik'
 import './profile.css'
 import useUserStore from '../../../Store/userStore'
 
 function Profile() {
   const user  = useUserStore((state)=>state.user)
-
   function handleCloseOvellay ( event){
     event.preventDefault()
     const close = document.getElementById("ovellay")
-    close.classList.toggle("close")
+    close.style.display="none"
   }
  function handleOpenOvellay(){
   event.preventDefault()
   const close = document.getElementById("ovellay")
-  close.classList.toggle("close")
+  close.style.display="flex"
  }
   async function handleSubmit(values) {
     console.log(values);
@@ -42,7 +41,7 @@ function Profile() {
       <div className='welcome-wrapper'>
     
         <h1> Welcome back {user && user.email}</h1>
-        <p>Update your profile here</p>
+        <p>fields marked with * are required</p>
       </div>
 
       <div className='profile_form_section'>
