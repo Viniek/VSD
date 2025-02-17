@@ -4,7 +4,15 @@ import { useFormik, Field } from 'formik'
 import './profile.css'
 import useUserStore from '../../../Store/userStore'
 import 'react-toastify/dist/ReactToastify.css';
-import { toast } from 'react-toastify/unstyled'
+import toast, { toastConfig } from 'react-simple-toasts';
+import 'react-simple-toasts/dist/style.css';
+import 'react-simple-toasts/dist/theme/success.css';
+import 'react-simple-toasts/dist/theme/warning.css';
+import 'react-simple-toasts/dist/theme/moonlight.css';
+import 'react-simple-toasts/dist/theme/info.css';
+import 'react-simple-toasts/dist/theme/failure.css';
+// toastConfig({ theme: ['green','warning','moonlight','info']});
+
 import axios from 'axios'
 import { api_url } from '../../../utills/config'
 import { useParams } from 'react-router-dom'
@@ -47,12 +55,21 @@ useEffect(()=>{
   async function handleSubmit(values) {
 
     try {
-      const response = await axios.patch(`${api_url}api/users/update/${userid}`,values)
-      console.log("patch response",response);
+      setLoading(true)
+      const response = await axios.patch(`${api_url}api/users/update//${userid}`,values)
+      console.log("patch response",response.data.success);
+      
+      if(response.data.success==true){
+        toast(`${response.data.message}🍞`, { theme: "success" });
+      }
       
     } catch (error) {
-      console.log(error.message);
+      console.log("eerrrrr",error);
+      toast( "There Was an error",{theme:"failure"})
       
+    }finally{
+      setLoading(false)
+      setError(null)
     }
     
   }
