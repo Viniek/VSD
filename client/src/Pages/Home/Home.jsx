@@ -15,13 +15,15 @@ function Home() {
       oxygenSaturation: '',
       ejectionFraction: '',
       weight: '',
-      choresterol: '',
+      cholesterol: '',  // Fixed typo (was "choresterol")
       height: '',
       heartRate: '',
       cyanosis: '',
       murmur: '',
       systolic: '',
-      diastoric: '',
+      diastolic: '', // Fixed typo (was "diastoric")
+      vsdSize: '', // Added missing field
+      familyHistory: '', // Added missing field
     },
     validate: function (values) {
       const errors = {};
@@ -32,13 +34,15 @@ function Home() {
       if (!values.weight) errors.weight = 'Weight is required';
       if (values.weight < 1) errors.weight = 'Weight must be greater than 1Kg';
       if (values.weight > 150) errors.weight = 'Weight must not exceed 150Kg';
-      if (!values.choresterol) errors.choresterol = 'Choresterol is required';
+      if (!values.cholesterol) errors.cholesterol = 'Cholesterol is required'; // Fixed typo
       if (!values.height) errors.height = 'Height is required';
       if (!values.heartRate) errors.heartRate = 'Heart Rate is required';
       if (!values.cyanosis) errors.cyanosis = 'Cyanosis is required';
       if (!values.murmur) errors.murmur = 'Murmur is required';
       if (!values.systolic) errors.systolic = 'Systolic is required';
-      if (!values.diastoric) errors.diastoric = 'Diastoric is required';
+      if (!values.diastolic) errors.diastolic = 'Diastolic is required'; // Fixed typo
+      if (!values.vsdSize) errors.vsdSize = 'VSD Size is required'; // Added validation
+      if (!values.familyHistory) errors.familyHistory = 'Family History is required'; // Added validation
 
       return errors;
     },
@@ -74,15 +78,15 @@ function Home() {
                 <div>
                   <div className='results'>
                     <p className='titles'>Status:</p>
-                    <p>{prediction.status}</p>
+                    <p>{prediction.vsd_status}</p>
                   </div>
                   <div className='results'>
                     <p className='titles'>Severity:</p>
                     <p>{prediction.severity}</p>
                   </div>
                   <div className='results'>
-                    <p className='titles'>Recommendations:</p>
-                    <p>{prediction.recommendations}</p>
+                    <p className='titles'>Condition:</p>
+                    <p>{prediction.condition}</p>
                   </div>
                 </div>
               )}
@@ -96,7 +100,7 @@ function Home() {
                   <div className='home-from-inputs' key={key}>
                     <label>{key.replace(/([A-Z])/g, ' $1').trim()}</label>
                     <input
-                      type={key === 'gender' ? 'text' : 'number'}
+                      type={key === 'gender' || key === 'familyHistory' ? 'text' : 'number'}
                       name={key}
                       onChange={formik.handleChange}
                       onBlur={formik.handleBlur}
@@ -110,7 +114,7 @@ function Home() {
                 ))}
               </div>
               <div className='home-form-inputs-button'>
-                <button type='submit'>Run Test</button>
+                <button type='submit'>Run Test</button> {/* Explicitly set type="submit" */}
               </div>
             </form>
           </div>
