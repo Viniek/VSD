@@ -11,16 +11,12 @@ import axios from "axios";
 import { api_url } from '../../../utills/config';
 
 function Login() {
-    const [user,setUser] = useState(null)
     const [error,setError]= useState("")
     const [loading,setLoading] = useState(false)
     const navigate = useNavigate()
     const changeUserInformation = useUserStore((state)=>state.changeUserInformation)
     async function handleSubmit(values){
-        // setUser(formik.values)
-        // changeUserInformation(formik.values)
 
-        // navigate("/Home")
         try {
             setLoading(true)
             setError(null)
@@ -95,8 +91,8 @@ function Login() {
 </div>
 
 <button type='submit' disabled={loading}>{loading?"loading...":"login"}</button>
-{error && <p>{error}</p>}
-{error && <p >{error}</p>}
+{error && <p className='errors'> {error}</p>}
+
 
 </form>
 </div>
