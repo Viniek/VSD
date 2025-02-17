@@ -132,7 +132,7 @@ export async function updateUser(request,response){
                 next_of_kin_phone:true,
             },
         });
-        response.status(200).json({success:true,message:"User updated", data:updateUser})
+        response.status(200).json({success:true,message:"Profile  updated", data:updateUser})
     } catch (error) {
         console.log(error.message);
         return response.status(500).json({success:false, message:"internal server error"})

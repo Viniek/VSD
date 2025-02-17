@@ -22,9 +22,9 @@ function Login() {
             setError(null)
 
             const response = await axios.post(`${api_url}api/users/Login`,values,{withCredentials:true});
-            console.log("response",response);
+            // console.log("response",response);
             const data = response.data;
-            console.log("data",data.success);
+            // console.log("data",data.success);
           
                 navigate("/Home")
                 changeUserInformation(data.data)
@@ -33,7 +33,7 @@ function Login() {
             
             
         } catch (error) {
-            console.log("err",error);
+            // console.log("err",error);
             
            setError(error.response.data.message) 
         }finally{

@@ -27,6 +27,10 @@
     font-weight: 700;
     transition: all 400ms  ease-out;
 }
+.icon{
+    color: blue;
+    /* display: ; */
+}
 .dashboard a:hover{
     text-decoration: underline;
     color: rgb(8, 134, 156);

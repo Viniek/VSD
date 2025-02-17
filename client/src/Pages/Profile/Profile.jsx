@@ -56,7 +56,7 @@ useEffect(()=>{
 
     try {
       setLoading(true)
-      const response = await axios.patch(`${api_url}api/users/update//${userid}`,values)
+      const response = await axios.patch(`${api_url}api/users/update/${userid}`,values)
       console.log("patch response",response.data.success);
       
       if(response.data.success==true){
@@ -65,7 +65,8 @@ useEffect(()=>{
       
     } catch (error) {
       console.log("eerrrrr",error);
-      toast( "There Was an error",{theme:"failure"})
+      toast( error.message,{theme:"failure"})
+      setError(error.message)
       
     }finally{
       setLoading(false)
@@ -221,7 +222,7 @@ console.log(formik1.values);
             
         </div>
         <div className='profile-submit-btn'>
-          <button type='submit'>update profile</button>
+          <button type='submit' disabled={loading}>{loading ?"Loading...":"update profile"}</button>
         </div>
         {/* ************************************************* */}
 
@@ -250,7 +251,7 @@ console.log(formik1.values);
 {formik1.touched.confirmPassword && formik1.errors.confirmPassword && (<p className='errors'>{formik1.errors.confirmPassword}</p>)}
     <button className='change-password-submit-btn'>submit</button>
   </form>
-      
+      {error && <p className='errors'> {error}</p>}
        </div>
        <button className='change-password-btn' onClick={handleOpenOvellay}>change password</button>
   
