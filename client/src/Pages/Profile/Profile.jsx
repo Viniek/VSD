@@ -1,14 +1,38 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { useEffect } from 'react'
 import { useFormik, Field } from 'formik'
 import './profile.css'
 import useUserStore from '../../../Store/userStore'
 import 'react-toastify/dist/ReactToastify.css';
 import { toast } from 'react-toastify/unstyled'
-
+import axios from 'axios'
+import { api_url } from '../../../utills/config'
+import { useParams } from 'react-router-dom'
 
 function Profile() {
   const user  = useUserStore((state)=>state.user)
+ const [loading,setLoading]=useState(false)
+ const [error,setError] = useState(null)
+ const { userid } = useParams()
+useEffect(()=>{
+  const getUser = async ()=>{
+    try {
+      setError(null)
+      setLoading(true)
+      const response = await axios.get(`${api_url}api/users/getuser/${userid}`,{withCredentials:true})
+      console.log(response.data);
+      if(response.data.success==true){
+        formik.setValues(response.data.data);
+      }
+      
+    } catch (error) {
+      setError("error")
+    }finally{
+      setLoading(false)
+    }
+  }
+  getUser()
+},[userid])
   function handleCloseOvellay ( event){
     event.preventDefault()
     const close = document.getElementById("ovellay")

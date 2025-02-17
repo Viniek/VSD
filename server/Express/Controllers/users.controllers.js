@@ -144,3 +144,32 @@ export async function logOutUser(request,response){
     response.send("loging out user")
 }
 
+export async function getUser(request,response){
+    const {id} = request.params
+   try {
+    const user = await prisma.users.findUnique(
+        {
+            where:{id:id},
+            select:{
+                firstname:true,
+                lastname:true,
+                email:true,
+                gender:true,
+                disability:true,
+                maritual_status:true,
+                phone:true,
+                next_of_kin:true,
+                next_of_kin_phone:true,
+            }
+    }
+
+    )
+    if(!user){return response.status(400).json({success:false,message:"User not found"})}
+    response.status(200).json({success:true,data:user})
+   } catch (error) {
+    console.log(error.message);
+    return response.status(500).json({success:false, message:"internal server error"})
+    
+   }
+}
+

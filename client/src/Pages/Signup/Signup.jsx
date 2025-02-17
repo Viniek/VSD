@@ -44,6 +44,9 @@ try {
     setError(error.response.data.message)
     
 }
+finally{
+    setLoading(false)
+}
         
 // navigate("/")
     }
@@ -256,7 +259,7 @@ try {
 {error && <p className='errors'>{error}</p>}
 
                     <div className='sign-btn'>
-                    <button type="submit">Sign Up</button>
+                    <button type="submit" disabled={loading}>{loading? "Loadig..":"Submit"}</button>
                     </div>
                    
                 </form>
