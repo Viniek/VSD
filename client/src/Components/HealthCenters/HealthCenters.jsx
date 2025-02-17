@@ -61,7 +61,7 @@ function HealthCenters() {
   }
 ]
   return (
-    <div className='health-center-section'>
+    <div className='health-center-section' id='home'>
 
       <section  className='health-center-section2'>
         <div className='centers-container'>

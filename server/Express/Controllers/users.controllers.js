@@ -25,10 +25,22 @@ export async function getusers(request,response) {
 export async function SignUp(request, response) {
     const { firstname, lastname, email, gender, disability, maritual_status, password, phone, next_of_kin, next_of_kin_phone } = request.body;
 
-    console.log(request.body);
+  try {
+    const newUser = await prisma.users.create({
+        data:{
+            firstname,lastname, email, gender, disability, maritual_status, password, phone, next_of_kin, next_of_kin_phone
+
+        }
+    })
+    response.status(201).json({success:true, message:"Acccount created", data:newUser})
+  } catch (error) {
+    console.log(error.message);
+    return response.status(500).json({success:false, message:"Internal server error"})
+    
+  }
 
 
-}
+} 
 export async function loginUser(request, response){
     response.send("loging user")
 }
