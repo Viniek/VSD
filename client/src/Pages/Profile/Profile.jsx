@@ -3,6 +3,9 @@ import { useEffect } from 'react'
 import { useFormik, Field } from 'formik'
 import './profile.css'
 import useUserStore from '../../../Store/userStore'
+import 'react-toastify/dist/ReactToastify.css';
+import { toast } from 'react-toastify/unstyled'
+
 
 function Profile() {
   const user  = useUserStore((state)=>state.user)
@@ -16,7 +19,8 @@ function Profile() {
   const close = document.getElementById("ovellay")
   close.style.display="flex"
  }
-  async function handleSubmit(values) {
+  async function handleSubmit() {
+    toast("Submitted")
     console.log(formik.values);
     
   }
@@ -54,7 +58,8 @@ return errors
       newPassword:"",
       confirmPassword:""
     },
-    onSubmit:function(values){
+    onSubmit:function(){
+      toast("Submitted")
 console.log(formik1.values);
 
     },
@@ -62,6 +67,7 @@ console.log(formik1.values);
       const error = {}
       if(!values.oldPassword) error.oldPassword = "Please enter your Old Password"
       if(!values.newPassword) error.newPassword = "New Password is required"
+      if(values.oldPassword == values.newPassword) error.newPassword = "new password cannot be similar to old password "
       if(!values.confirmPassword) error.confirmPassword = "Conirm passwordis required"
       if(values.newPassword !== values.confirmPassword) error.confirmPassword="password did not match"
       return error;
@@ -120,13 +126,15 @@ console.log(formik1.values);
 
             <div className='profile_inputs'>
                 <label htmlFor="firstname">marital status *</label>
-                <select  id=""  onChange={formik.handleChange } onBlur={formik.handleBlur} value={formik.values.maritual_status}>
-                  {formik.touched.maritual_status && fromik.errors.maritual_status &&(<p className='errors'> {formik.errors.firstname}</p>)}
+                <select  id="" name='maritual_status' onChange={formik.handleChange } onBlur={formik.handleBlur} value={formik.values.maritual_status}>
+          
                   <option value="">select</option>
                 <option value="single">Single</option>
                   <option value="married">Married</option>                 
                   <option value="divorced">Divorced</option>
+                  
                 </select>
+
             </div>
 
             <div className='profile_inputs'>
@@ -143,10 +151,10 @@ console.log(formik1.values);
         <div className='profile_form_fields'>
             <div className='profile_inputs'>
                 <label htmlFor="firstname">gender *</label>
-                <select name="" id=""  onChange={formik.handleChange } onBlur={formik.handleBlur} value={formik.values.gender}>
+                <select name="gender" id=""  onChange={formik.handleChange } onBlur={formik.handleBlur} value={formik.values.gender}>
                 <option value="">select </option>
-                <option value="">Male</option>
-                  <option value="">Female</option>                 
+                <option value="male">Male</option>
+                  <option value="female">Female</option>                 
                 </select>
             </div>
 
