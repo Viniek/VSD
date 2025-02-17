@@ -15,3 +15,6 @@
     .light{
         color: white;
     }
+    .close{
+        display: none;
+    }

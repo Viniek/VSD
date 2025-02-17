@@ -5,6 +5,7 @@
     justify-content: center;
     align-items: center;
     width: 100%;
+    margin-bottom: 2rem;
 }
 .welcome-wrapper{
     display: flex;
@@ -60,8 +61,7 @@
     text-transform: capitalize;
 }
 .profile-submit-btn button:hover{
-    background-color: aqua
-    ;
+    background-color: aqua ;
 }
 .profile_form_fields{
     display: flex;
@@ -73,4 +73,79 @@
     display: flex;
     width: 20%;
     flex-direction: column;
+}
+.change-password-btn{
+    border: none;
+    color: blue;
+    font-weight: 700;
+}
+.ovellay{
+
+    width: 100%;
+    position: fixed;
+    align-items: center;
+    margin-top: 10rem;
+    height: 90vh;
+    z-index: 1000;
+background: rgba(0,0,0,0.5);
+ 
+}
+.close-btn-wrapper{
+    display: flex;
+   justify-content: right;
+   align-items: right;
+    width: 3%;
+    border-radius: 100%;
+    
+}
+.close-btn-wrapper button{
+   font-size: 2rem;
+    border-radius: 100%;
+    border: none;
+    padding: .5rem;
+    margin-bottom: 1rem;
+    font-weight: 900;
+}
+.close-btn-wrapper button:hover{
+    color: red;
+}
+.ovellay form{
+    padding: 2rem;
+ color: var(--black);
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px ;
+    border-bottom-left-radius: 10px;
+    border: 1px dashed var(--skyblue);
+    z-index: 1010;
+    width: 40%;
+    position: absolute;
+    box-shadow: 0px 8px 15px black;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    /* align-items: center; */
+    background-color: var(--white);
+    position: absolute;
+
+    top: 10rem;
+    left: 40rem;
+    right: 0rem;
+    bottom:10rem;
+}
+.ovellay p{
+    color: var(--skyblue);
+    font-weight: 600;
+    text-decoration: underline;
+    text-transform: capitalize;
+}
+.ovellay input{
+    width: 100%;
+    padding: .8rem;
+    margin-bottom: .7rem;
+}
+.change-password-submit-btn{
+    padding: .7rem;
+    background-color: var(--skyblue);
+    width: 30%;
 }

@@ -7,6 +7,16 @@ import useUserStore from '../../../Store/userStore'
 function Profile() {
   const user  = useUserStore((state)=>state.user)
 
+  function handleCloseOvellay ( event){
+    event.preventDefault()
+    const close = document.getElementById("ovellay")
+    close.classList.toggle("close")
+  }
+ function handleOpenOvellay(){
+  event.preventDefault()
+  const close = document.getElementById("ovellay")
+  close.classList.toggle("close")
+ }
   async function handleSubmit(values) {
     console.log(values);
     
@@ -109,7 +119,30 @@ function Profile() {
         {/* ************************************************* */}
 
        </form>
+
+
       </div>
+      <div className='ovellay' id='ovellay'>
+<form action="">
+<div className='close-btn-wrapper'>
+<button className='close-btn' onClick={handleCloseOvellay}>X</button>
+</div>
+  <p>Change your password</p>
+<label htmlFor="">Old Password</label>
+        <input type="text" placeholder='Enter your Old Password' />
+
+
+<label htmlFor="">New Password</label>
+<input type="text" placeholder='Enter your new password' />
+
+<label htmlFor=""> confirm Password</label>
+    <input type="text" placeholder='Confirm your Password' />
+
+    <button className='change-password-submit-btn'>submit</button>
+  </form>    
+       </div>
+       <button className='change-password-btn' onClick={handleOpenOvellay}>change password</button>
+  
     </div>
   )
 }
