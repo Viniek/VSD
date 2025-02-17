@@ -5,7 +5,7 @@ import { BiSolidAmbulance } from "react-icons/bi";
 function HealthCenters() {
 
   const centers = [{
-    icon:<BiSolidAmbulance/>,
+    img:img1,
     title:"nairobi hospital",
     description:"we have best facilities,professional and experienced doctors. We are located at Nairobi,Milimani ,opposite Kenyatta National Hospital",
     facebookIcon:<BiSolidAmbulance/>,
@@ -15,7 +15,7 @@ function HealthCenters() {
   },
 
   {
-    icon:<BiSolidAmbulance/>,
+    img:img1,
     title:"JM Kariuki Memorial Hospital",
     description:"we have best facilities,professional and experienced doctors. We are located at Nairobi,Milimani ,opposite Kenyatta National Hospital",
     facebookIcon:<BiSolidAmbulance/>,
@@ -24,7 +24,7 @@ function HealthCenters() {
 
   },
   {
-    icon:<BiSolidAmbulance/>,
+    img:img1,
     title:"Thika Hospital",
     description:"we have best facilities,professional and experienced doctors. We are located at Nairobi,Milimani ,opposite Kenyatta National Hospital",
     facebookIcon:<BiSolidAmbulance/>,
@@ -33,8 +33,26 @@ function HealthCenters() {
 
   },
   {
-    icon:<BiSolidAmbulance/>,
+    img:img1,
     title:"kikuyu pcea hospital and refferal",
+    description:"we have best facilities,professional and experienced doctors. We are located at Nairobi,Milimani ,opposite Kenyatta National Hospital",
+    facebookIcon:<BiSolidAmbulance/>,
+    TwitterIcon:<BiSolidAmbulance/>,
+    email:<BiSolidAmbulance/>,
+
+  },
+  {
+    img:img1,
+    title:"Thika Hospital",
+    description:"we have best facilities,professional and experienced doctors. We are located at Nairobi,Milimani ,opposite Kenyatta National Hospital",
+    facebookIcon:<BiSolidAmbulance/>,
+    TwitterIcon:<BiSolidAmbulance/>,
+    email:<BiSolidAmbulance/>,
+
+  },
+  {
+    img:img1,
+    title:"Thika Hospital",
     description:"we have best facilities,professional and experienced doctors. We are located at Nairobi,Milimani ,opposite Kenyatta National Hospital",
     facebookIcon:<BiSolidAmbulance/>,
     TwitterIcon:<BiSolidAmbulance/>,
@@ -49,7 +67,7 @@ function HealthCenters() {
         <div className='centers-container'>
       {centers.map((center, index) => (
         <div key={index} className='center-wrapper'>
-          <h1>{center.icon}</h1>
+     <img src={center.img} alt="" />
           <p className='center-title'> {center.title}</p>
           <p>{center.description}</p>
         <div className='centers-socials'>
