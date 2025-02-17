@@ -1,19 +1,49 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './Signup.css' ; 
 import { useFormik } from "formik";
-import useAuthStore from '../../../Store/authStore';
-import { TbLockPassword } from "react-icons/tb";
 import { FaCircleUser } from "react-icons/fa6";
 import { Link, useNavigate } from 'react-router-dom';
-import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import axios from 'axios'
+import { api_url } from '../../../utills/config';
 
 function SignUp() {
     const navigate = useNavigate();
+    const [loading,setLoading] =useState(false)
+    const [error,setError] = useState(null)
 
 
-    function handleSubmit(values) {
-        console.log(formik.values);
+   async  function handleSubmit(values) {
+    // const sringfied = {
+    //     number:String(values.number),textField:(values.textField)
+    // }
+    //   console.log("values",values);
+    const formData = {
+        firstname: values.firstname,
+        lastname: values.lastname,
+        email: values.email,
+        gender: values.gender,
+        disability: values.disability,
+        maritual_status: values.maritual_status,
+        phone: values.phone,
+        next_of_kin: values.next_of_kin,
+        next_of_kin_phone: values.next_of_kin_phone,
+        password: values.password,
+    };
+    
+      
+try {
+    setLoading(true)
+    const response = await axios.post(`${api_url}api/users/register`,formData)
+    if(response.data.success==true){
+       navigate("/") 
+    }
+    console.log("response",response);
+} catch (error) {
+    console.log(error);
+    setError(error.response.data.message)
+    
+}
         
 // navigate("/")
     }
@@ -32,7 +62,7 @@ function SignUp() {
             next_of_kin_phone:"",
             password: "",
             confirmPassword: "",
-        },
+        }, 
         onSubmit: handleSubmit,
         validate: (values) => {
             const errors = {};
@@ -223,14 +253,17 @@ function SignUp() {
 
 
 </section>
+{error && <p className='errors'>{error}</p>}
+
                     <div className='sign-btn'>
                     <button type="submit">Sign Up</button>
                     </div>
+                   
                 </form>
             </div>
 
             <div className="navigate">
-                <p>Already have an account?</p>
+                <p>Already have an account??</p>
                 <Link to="/">Login Here</Link>
             </div>
         </div>

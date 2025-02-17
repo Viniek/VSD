@@ -85,7 +85,7 @@ console.log(formik1.values);
        <form onSubmit={formik.handleSubmit}>
         <div className='profile_form_fields'>
             <div className='profile_inputs'>
-                <label htmlFor="firstname">first name *</label>
+                <label>first name *</label>
                 <input 
                 type="text" 
                 name='firstname'
@@ -97,13 +97,13 @@ console.log(formik1.values);
             </div>
 
             <div className='profile_inputs'>
-                <label htmlFor="firstname">last name *</label>
+                <label >last name *</label>
                 <input type="text" name='lastname' onChange={formik.handleChange } onBlur={formik.handleBlur} value={formik.values.lastname} />
                 {formik.touched.lastname && formik.errors.lastname && (<p className='errors'>{formik.errors.lastname}</p>)}
             </div>
 
             <div className='profile_inputs'>
-                <label htmlFor="firstname">email *</label>
+                <label >email *</label>
                 <input 
     type="text" 
     placeholder='enter your email'
@@ -119,13 +119,13 @@ console.log(formik1.values);
 
         <div className='profile_form_fields'>
             <div className='profile_inputs'>
-                <label htmlFor="firstname">phone number *</label>
+                <label >phone number *</label>
                 <input type="number" name='phone'  onChange={formik.handleChange } onBlur={formik.handleBlur} value={formik.values.phone} />
                 {formik.touched.phone && formik.errors.phone && (<p className='errors'>{formik.errors.phone}</p>)}
             </div>
 
             <div className='profile_inputs'>
-                <label htmlFor="firstname">marital status *</label>
+                <label>marital status *</label>
                 <select  id="" name='maritual_status' onChange={formik.handleChange } onBlur={formik.handleBlur} value={formik.values.maritual_status}>
           
                   <option value="">select</option>
@@ -138,7 +138,7 @@ console.log(formik1.values);
             </div>
 
             <div className='profile_inputs'>
-                <label htmlFor="firstname">any dissability *</label>
+                <label >any dissability *</label>
                 <select name="disability" id=""  onChange={formik.handleChange } onBlur={formik.handleBlur} value={formik.values.disability}>
                 <option value="">select </option>
                 <option value="no">No</option>
@@ -150,7 +150,7 @@ console.log(formik1.values);
       
         <div className='profile_form_fields'>
             <div className='profile_inputs'>
-                <label htmlFor="firstname">gender *</label>
+                <label >gender *</label>
                 <select name="gender" id=""  onChange={formik.handleChange } onBlur={formik.handleBlur} value={formik.values.gender}>
                 <option value="">select </option>
                 <option value="male">Male</option>
@@ -159,13 +159,13 @@ console.log(formik1.values);
             </div>
 
             <div className='profile_inputs'>
-                <label htmlFor="firstname">next of kin name *</label>
+                <label >next of kin name *</label>
                 <input type="text" name='next_of_kin' onChange={formik.handleChange } onBlur={formik.handleBlur} value={formik.values.next_of_kin} />
                 {formik.touched.next_of_kin && formik.errors.next_of_kin && (<p className='errors'>{formik.errors.next_of_kin}</p>)}
             </div>
 
             <div className='profile_inputs'>
-                <label htmlFor="firstname">next of kin phone number *</label>
+                <label >next of kin phone number *</label>
                 <input type="number"name='next_of_kin_phone'  onChange={formik.handleChange } onBlur={formik.handleBlur} value={formik.values.next_of_kin_phone} />
                 {formik.touched.next_of_kin_phone && formik.errors.next_of_kin_phone && (<p className='errors'>{formik.errors.next_of_kin_phone}</p>)}
             </div>

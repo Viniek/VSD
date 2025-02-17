@@ -5,9 +5,9 @@ const app = express()
 app.use(express.json())
 app.use(
     cors({
-      origin: ["http://localhost:5173"], // Replace with your frontend URL
+      origin: ["http://localhost:5173","http://localhost:5174"], // Replace with your frontend URL
       credentials: true,
-    }),
+    }), 
   );
   app.use(express.urlencoded({ extended: true }));
   app.get("/", (request, response) => {

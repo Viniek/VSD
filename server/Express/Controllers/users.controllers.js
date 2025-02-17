@@ -4,37 +4,69 @@ import jwt from "jsonwebtoken";
 
 const prisma = new PrismaClient();
 
+
+
 export async function SignUp(request, response) {
-    const { firstname, lastname, email, gender, disability, maritual_status, password, phone, next_of_kin, next_of_kin_phone } = request.body;
-    const hashedPassword = bcrypt.hashSync(password,10)
-  try {
-    const newUser = await prisma.users.create({
-        data:{
-            firstname,lastname, email, gender, disability, maritual_status, password:hashedPassword
-            , phone, next_of_kin, next_of_kin_phone
+    try {
+        const {
+            firstname, lastname, email, gender, disability, maritual_status,
+            password, phone, next_of_kin, next_of_kin_phone
+        } = request.body;
 
-        },
-        select:{
-            firstname:true,
-            lastname:true,
-            email:true,
-            gender:true,
-            disability:true,
-            maritual_status:true,
-            phone:true,
-            next_of_kin:true,
-            next_of_kin_phone:true,         
+        
+        if (!firstname || !lastname || !email || !password || !phone || !next_of_kin || !next_of_kin_phone) {
+            return response.status(400).json({ success: false, message: "All required fields must be filled" });
         }
-    })
-    response.status(201).json({success:true, message:"Acccount created", data:newUser})
-  } catch (error) {
-    console.log(error.message);
-    return response.status(500).json({success:false, message:"Internal server error"})
-    
-  }
 
+        // Ensure `password` is defined before hashing
+        if (typeof password !== 'string' || password.trim() === '') {
+            return response.status(400).json({ success: false, message: "Invalid password" });
+        }
 
-} 
+        console.log("Received password:", password); // Debugging log
+
+        // Hash the password safely
+        const hashedPassword = bcrypt.hashSync(password, 10);
+
+        // Ensure phone numbers are treated as strings
+        const userPhone = String(phone);
+        const userNextOfKinPhone = String(next_of_kin_phone);
+
+        // Create a new user
+        const newUser = await prisma.users.create({
+            data: {
+                firstname,
+                lastname,
+                email,
+                gender,
+                disability,
+                maritual_status,
+                password: hashedPassword,
+                phone: userPhone,
+                next_of_kin,
+                next_of_kin_phone: userNextOfKinPhone,
+            },
+            select: {
+                firstname: true,
+                lastname: true,
+                email: true,
+                gender: true,
+                disability: true,
+                maritual_status: true,
+                phone: true,
+                next_of_kin: true,
+                next_of_kin_phone: true,
+            },
+        });
+
+        response.status(201).json({ success: true, message: "Account created successfully", data: newUser });
+
+    } catch (error) {
+        console.error("Error in SignUp:", error.message);
+        return response.status(500).json({ success: false, message: "Internal server error" });
+    }
+}
+
 export async function loginUser(request, response){
     const {email,password} = request.body;
     try {
