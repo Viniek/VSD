@@ -4,32 +4,26 @@ import jwt from "jsonwebtoken";
 
 const prisma = new PrismaClient();
 
-export async function getusers(request,response) {
-    // respomse.send("getting users")
-    try {
-        const users = await prisma.users.findMany({
-            select:{
-                firstname:true,
-            }
-        })
-        if(!users){
-            return response.status(400).json({success:false,message:"THere are no users"})
-        } 
-        response.status(201).json({success:true,data:users})
-    } catch (error) {
-        console.log(error.message);
-        return response.status(500).json({sccess:false, message:"internal server error"})
-    }
-}
-
 export async function SignUp(request, response) {
     const { firstname, lastname, email, gender, disability, maritual_status, password, phone, next_of_kin, next_of_kin_phone } = request.body;
-
+    const hashedPassword = bcrypt.hashSync(password,10)
   try {
     const newUser = await prisma.users.create({
         data:{
-            firstname,lastname, email, gender, disability, maritual_status, password, phone, next_of_kin, next_of_kin_phone
+            firstname,lastname, email, gender, disability, maritual_status, password:hashedPassword
+            , phone, next_of_kin, next_of_kin_phone
 
+        },
+        select:{
+            firstname:true,
+            lastname:true,
+            email:true,
+            gender:true,
+            disability:true,
+            maritual_status:true,
+            phone:true,
+            next_of_kin:true,
+            next_of_kin_phone:true,         
         }
     })
     response.status(201).json({success:true, message:"Acccount created", data:newUser})
@@ -42,12 +36,37 @@ export async function SignUp(request, response) {
 
 } 
 export async function loginUser(request, response){
-    response.send("loging user")
+    const {email,password} = request.body;
+    try {
+        const user = await prisma.users.findUnique({where:{email}})
+        if(!user) {return response.status(404).json({success:false,message:"User not found"})}
+        const passwordMatch = bcrypt.compareSync(password,user.password);
+        if(!passwordMatch) {return response.status(402).json({success:false, message:"Wrong email or Password"})}
+        else {
+            const payload = {
+                id:user.id,
+                firstname:user.firstname,
+                lastname:user.lastname,
+                email:user.email,
+                gender:user.gender,
+                disability:user.disability,
+                maritual_status:user.maritual_status,
+                phone:user.phone,
+                next_of_kin:user.next_of_kin,
+                next_of_kin_phone:user.next_of_kin_phone,
+
+            }
+            const token = jwt.sign(payload,process.env.JWT_SECRET,{expiresIn:'24h'})
+            response.cookie("token",token).json({success:true,data:payload,message:"Log in succesful"})
+        }
+    } catch (error) {
+        console.log(error.message);
+        return response.status(500).json({success:false,message:"internal server error"})
+        
+    }
 }
 
-export async function deleteUser(request, response){
-    response.send("deleting user")
-}
+
 
 export async function updateUser(request,response){
     response.send("updating user")
@@ -56,7 +75,3 @@ export async function logOutUser(request,response){
     response.send("loging out user")
 }
 
-
-export async function test(req,res) {
-    res.send("testing") 
-}
