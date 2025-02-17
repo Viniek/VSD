@@ -13,19 +13,35 @@ function SignUp() {
 
 
     function handleSubmit(values) {
-navigate("/")
+        console.log(formik.values);
+        
+// navigate("/")
     }
 
     const formik = useFormik({
         initialValues: {
-            email: "",
+
+            firstname:"",
+            lastname:"",
+            email:"",
+            gender:"",
+            disability:"",
+            maritual_status:"",
+            phone:"",
+            next_of_kin:"",
+            next_of_kin_phone:"",
             password: "",
             confirmPassword: "",
         },
         onSubmit: handleSubmit,
         validate: (values) => {
             const errors = {};
+            if(!values.firstname) errors.firstname="first name is required"
+            if(!values.lastname) errors.lastname="last name is required"
+            if(!values.phone) errors.phone="phone number is required"
             if (!values.email) errors.email = "Email is required";
+            if(!values.next_of_kin) errors.next_of_kin="next of kin is required"
+            if(!values.next_of_kin_phone) errors.next_of_kin_phone="next of kin phone is required"
             if (!values.password) errors.password = "Please enter a password";
             if (values.password !== values.confirmPassword)
                 errors.confirmPassword = "Passwords must match";
@@ -49,43 +65,43 @@ navigate("/")
 <div className="sign-inputs">
     <label>first name</label>
     <input  
-        type="email"
-        placeholder='Enter your email'
-        name='text'
-        value={formik.values.email}
+        type="text"
+        placeholder='Enter your first name'
+        name='firstname'
+        value={formik.values.firstname}
         onChange={formik.handleChange}
         onBlur={formik.handleBlur}
         required
     />
-    {formik.touched.email && formik.errors.email && (<p className='errors'>{formik.errors.email}</p>)}
+    {formik.touched.firstname && formik.errors.firstname && (<p className='errors'>{formik.errors.firstname}</p>)}
 </div>
 
 <div className="sign-inputs">
     <label>last name</label>
     <input
-        type="password"
-        placeholder='Enter your password'
-        name='text'
-        value={formik.values.password}
+        type="text"
+        placeholder='Enter your last name'
+        name='lastname'
+        value={formik.values.lastname}
         onChange={formik.handleChange}
         onBlur={formik.handleBlur}
         required
     />
-    {formik.touched.password && formik.errors.password && (<p className='errors'>{formik.errors.password}</p>)}
+    {formik.touched.lastname && formik.errors.lastname && (<p className='errors'>{formik.errors.lastname}</p>)}
 </div>
 
 <div className="sign-inputs">
     <label>email</label>
     <input
         type="email"
-        placeholder='Confirm your password'
+        placeholder='enter your email'
         name='email'
-        value={formik.values.confirmPassword}
+        value={formik.values.email}
         onChange={formik.handleChange}
         onBlur={formik.handleBlur}
         required
     />
-    {formik.touched.confirmPassword && formik.errors.confirmPassword && (<p className='errors'>{formik.errors.confirmPassword}</p>)}
+    {formik.touched.email && formik.errors.email && (<p className='errors'>{formik.errors.email}</p>)}
 </div>
 
 </section>
@@ -96,32 +112,34 @@ navigate("/")
 <div className="sign-inputs">
     <label>gender</label>
 
-   <select name="gender" id="">
-    <option value="">select</option>
-    <option value="male">male</option>
-    <option value="female">female</option>
-   </select>
+    <select name="gender" id=""  onChange={formik.handleChange } onBlur={formik.handleBlur} value={formik.values.gender}>
+                <option value="">select </option>
+                <option value="male">Male</option>
+                  <option value="female">Female</option>                 
+                </select>
 </div>
 
 <div className="sign-inputs">
     <label>disability</label>
 
-  <select name="disability" id="">
-    <option value="">select</option>
-    <option value="no">No</option>
-    <option value="yes">Yes</option>
-  </select>
+    <select name="disability" id=""  onChange={formik.handleChange } onBlur={formik.handleBlur} value={formik.values.disability}>
+                <option value="">select </option>
+                <option value="no">No</option>
+                  <option value="yes">yes</option>                 
+                </select>
 </div>
 
 <div className="sign-inputs">
     <label>maritual status</label>
 
-<select name="maritual_status" id="">
-    <option value="">select</option>
-    <option value="single">single</option>
-    <option value="married">married</option>
-    <option value="divorved">divorced</option>
-</select>
+    <select  id="" name='maritual_status' onChange={formik.handleChange } onBlur={formik.handleBlur} value={formik.values.maritual_status}>
+          
+          <option value="">select</option>
+        <option value="single">Single</option>
+          <option value="married">Married</option>                 
+          <option value="divorced">Divorced</option>
+          
+        </select>
 </div>
 
 </section>
@@ -133,42 +151,42 @@ navigate("/")
     <label>phone</label>
     <input  
         type="number"
-        placeholder='Enter your email'
+        placeholder='Enter your phone number'
         name='phone'
-        value={formik.values.email}
+        value={formik.values.phone}
         onChange={formik.handleChange}
         onBlur={formik.handleBlur}
         required
     />
-    {formik.touched.email && formik.errors.email && (<p className='errors'>{formik.errors.email}</p>)}
+    {formik.touched.phone && formik.errors.phone && (<p className='errors'>{formik.errors.phone}</p>)}
 </div>
 
 <div className="sign-inputs">
     <label>next of kin</label>
     <input
-        type="password"
-        placeholder='Enter your password'
-        name='password'
-        value={formik.values.password}
+        type="text"
+        placeholder='Enter your next of kin'
+        name='next_of_kin'
+        value={formik.values.next_of_kin}
         onChange={formik.handleChange}
         onBlur={formik.handleBlur}
         required
     />
-    {formik.touched.password && formik.errors.password && (<p className='errors'>{formik.errors.password}</p>)}
+    {formik.touched.next_of_kin && formik.errors.next_of_kin && (<p className='errors'>{formik.errors.next_of_kin}</p>)}
 </div>
 
 <div className="sign-inputs">
     <label>next of kin phone</label>
     <input
-        type="password"
-        placeholder='Confirm your password'
-        name='confirmPassword'
-        value={formik.values.confirmPassword}
+        type="number"
+        placeholder='next of kin phone'
+        name='next_of_kin_phone'
+        value={formik.values.next_of_kin_phone}
         onChange={formik.handleChange}
         onBlur={formik.handleBlur}
         required
     />
-    {formik.touched.confirmPassword && formik.errors.confirmPassword && (<p className='errors'>{formik.errors.confirmPassword}</p>)}
+    {formik.touched.next_of_kin_phone && formik.errors.next_of_kin_phone && (<p className='errors'>{formik.errors.next_of_kin_phone}</p>)}
 </div>
 
 </section>
@@ -177,22 +195,8 @@ navigate("/")
 <div className="sign-inputs">
     <label>password</label>
     <input  
-        type="text"
-        placeholder='Enter your email'
-        name='next_of_kin'
-        value={formik.values.email}
-        onChange={formik.handleChange}
-        onBlur={formik.handleBlur}
-        required
-    />
-    {formik.touched.email && formik.errors.email && (<p className='errors'>{formik.errors.email}</p>)}
-</div>
-
-<div className="sign-inputs">
-    <label>confirm Password</label>
-    <input
         type="password"
-        placeholder='Enter your password'
+        placeholder='create a strong password'
         name='password'
         value={formik.values.password}
         onChange={formik.handleChange}
@@ -200,6 +204,20 @@ navigate("/")
         required
     />
     {formik.touched.password && formik.errors.password && (<p className='errors'>{formik.errors.password}</p>)}
+</div>
+
+<div className="sign-inputs">
+    <label>confirm Password</label>
+    <input
+        type="password"
+        placeholder='confirm your password'
+        name='confirmPassword'
+        value={formik.values.confirmPassword}
+        onChange={formik.handleChange}
+        onBlur={formik.handleBlur}
+        required
+    />
+    {formik.touched.confirmPassword && formik.errors.confirmPassword && (<p className='errors'>{formik.errors.confirmPassword}</p>)}
 </div>
 
 
