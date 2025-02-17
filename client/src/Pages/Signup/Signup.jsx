@@ -10,18 +10,10 @@ import 'react-toastify/dist/ReactToastify.css';
 
 function SignUp() {
     const navigate = useNavigate();
-    const setUser = useAuthStore((state) => state.setUser);
+
 
     function handleSubmit(values) {
-        setUser(values);
-        toast.success("Sign-up successful! Please log in.", {
-            position: "top-right",
-            autoClose: 3000,
-        });
-        
-        setTimeout(() => {
-            navigate("/");
-        }, 3000); // Redirect after 3 seconds
+navigate("/")
     }
 
     const formik = useFormik({
@@ -96,7 +88,7 @@ function SignUp() {
 
             <div className="navigate">
                 <p>Already have an account?</p>
-                <Link to="./../Login">Login Here</Link>
+                <Link to="/">Login Here</Link>
             </div>
         </div>
     );
