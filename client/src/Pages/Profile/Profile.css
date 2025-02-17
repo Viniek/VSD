@@ -123,7 +123,7 @@ background: rgba(0,0,0,0.5);
     flex-direction: column;
     justify-content: center;
     
-    padding: 1rem;
+    padding: 2rem;
  color: var(--black);
     border-top-left-radius: 10px;
     border-top-right-radius: 10px;
@@ -141,11 +141,16 @@ background: rgba(0,0,0,0.5);
     right: 0rem;
     bottom:10rem; */
 }
+.ovellay form label{
+    text-transform: capitalize;
+    font-weight: 600;
+}
 .ovellay p{
     color: var(--skyblue);
     font-weight: 600;
     text-decoration: underline;
     text-transform: capitalize;
+    margin-bottom: .9rem;
 }
 .ovellay input{
     width: 100%;
@@ -156,4 +161,9 @@ background: rgba(0,0,0,0.5);
     padding: .7rem;
     background-color: var(--skyblue);
     width: 30%;
+    text-transform: capitalize;
+    font-weight: 700;
+}
+.change-password-submit-btn:hover{
+background-color: aqua;
 }
