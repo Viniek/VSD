@@ -1,0 +1,25 @@
+.profile{
+    background-color: azure;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+.welcome-wrapper{
+    display: flex;
+    flex-direction: column;
+    background-color: var(--white);
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+}
+
+.profile_form_fields{
+    display: flex;
+    justify-content: space-evenly;
+}
+.profile_inputs{
+    display: flex;
+    flex-direction: column;
+}

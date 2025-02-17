@@ -177,7 +177,7 @@ function Home() {
     <label>choresterol</label>
     <input 
     type="number"
-    name='choresterol'
+    name='cholesterol'
     onChange={formik.handleChange}
     onBlur={formik.handleBlur}
     value={formik.values.cholesterol}
@@ -288,14 +288,14 @@ function Home() {
     type="number" 
     max={1} 
     min={0} 
-    name='diastoric'
+    name='diastolic'
     onChange={formik.handleChange}
     onBlur={formik.handleBlur}
     value={formik.values.diastolic}
     required
      
     />
-    {formik.touched.diastoric && formik.errors.diastolic && (<p  className='errors'>{formik.errors.diastolic}</p>)}
+    {formik.touched.diastolic && formik.errors.diastolic && (<p  className='errors'>{formik.errors.diastolic}</p>)}
     </div>
 
 
