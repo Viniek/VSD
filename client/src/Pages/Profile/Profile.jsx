@@ -77,7 +77,7 @@ console.log(formik1.values);
     <div className='profile'>
       <div className='welcome-wrapper'>
     
-        <h1> Welcome {user && user.email} to your profile</h1>
+        <h1> Welcome {user && user.firstname} to your profile</h1>
         <p>fields marked with * are required</p>
       </div>
 

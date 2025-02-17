@@ -39,7 +39,7 @@ export async function loginUser(request, response){
     const {email,password} = request.body;
     try {
         const user = await prisma.users.findUnique({where:{email}})
-        if(!user) {return response.status(404).json({success:false,message:"User not found"})}
+        if(!user) {return response.status(404).json({success:false,message:"Wrong email or password"})}
         const passwordMatch = bcrypt.compareSync(password,user.password);
         if(!passwordMatch) {return response.status(402).json({success:false, message:"Wrong email or Password"})}
         else {

@@ -45,7 +45,7 @@ navigationIcon.classList.toggle('open')
   return (
     <header className='app-header'>
         <h3>ventricular Septal  <span className='span'>Defect</span> Analysis System</h3>
-        <p>Welcome back { user && user.email}</p>
+        <p>Welcome back { user && user.firstname}</p>
         
 <nav>
         <ul className='nav-list'>
