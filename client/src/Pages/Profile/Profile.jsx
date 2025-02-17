@@ -20,9 +20,10 @@ useEffect(()=>{
       setError(null)
       setLoading(true)
       const response = await axios.get(`${api_url}api/users/getuser/${userid}`,{withCredentials:true})
-      console.log(response.data);
+      
       if(response.data.success==true){
         formik.setValues(response.data.data);
+
       }
       
     } catch (error) {
@@ -43,9 +44,16 @@ useEffect(()=>{
   const close = document.getElementById("ovellay")
   close.style.display="flex"
  }
-  async function handleSubmit() {
-    toast("Submitted")
-    console.log(formik.values);
+  async function handleSubmit(values) {
+
+    try {
+      const response = await axios.patch(`${api_url}api/users/update/${userid}`,values)
+      console.log("patch response",response);
+      
+    } catch (error) {
+      console.log(error.message);
+      
+    }
     
   }
   const formik = useFormik({

@@ -23,7 +23,6 @@ export async function SignUp(request, response) {
             return response.status(400).json({ success: false, message: "Invalid password" });
         }
 
-        console.log("Received password:", password); // Debugging log
 
         // Hash the password safely
         const hashedPassword = bcrypt.hashSync(password, 10);
