@@ -17,7 +17,7 @@ function Profile() {
   close.style.display="flex"
  }
   async function handleSubmit(values) {
-    console.log(values);
+    console.log(formik.values);
     
   }
   const formik = useFormik({
@@ -48,12 +48,30 @@ if(!values.next_of_kin_phone) errors.next_of_kin_phone = "next of kin phone is r
 return errors
     }
   })
-  
+  const formik1 = useFormik({
+    initialValues:{
+      oldPassword:"",
+      newPassword:"",
+      confirmPassword:""
+    },
+    onSubmit:function(values){
+console.log(formik1.values);
+
+    },
+    validate:function(values){
+      const error = {}
+      if(!values.oldPassword) error.oldPassword = "Please enter your Old Password"
+      if(!values.newPassword) error.newPassword = "New Password is required"
+      if(!values.confirmPassword) error.confirmPassword = "Conirm passwordis required"
+      if(values.newPassword !== values.confirmPassword) error.confirmPassword="password did not match"
+      return error;
+    }
+  })
   return (
     <div className='profile'>
       <div className='welcome-wrapper'>
     
-        <h1> Welcome back {user && user.email}</h1>
+        <h1> Welcome {user && user.email} to your profile</h1>
         <p>fields marked with * are required</p>
       </div>
 
@@ -157,21 +175,22 @@ return errors
       <div className='ovellay' id='ovellay'>
 
   
-<form action="" className='ovelay-form'>
+<form action="" className='ovelay-form' onSubmit={formik1.handleSubmit}>
 <div className='close-btn-wrapper'>
 <button className='close-btn' onClick={handleCloseOvellay}>X</button>
 </div>
-  <p>Change your password</p>
+  <h3>Change your password</h3>
 <label htmlFor="">Old Password</label>
-        <input type="text" placeholder='Enter your Old Password' />
-
+        <input type="text" value ={formik1.values.oldPassword} name='oldPassword' placeholder='Enter your Old Password'  onChange={formik1.handleChange} onBlur={formik1.handleBlur}/>
+{formik1.touched.oldPassword && formik1.errors.oldPassword && (<p className='errors'>{formik1.errors.oldPassword}</p>)}
 
 <label htmlFor="">New Password</label>
-<input type="text" placeholder='Enter your new password' />
+<input type="text" value={formik1.values.newPassword} name='newPassword' placeholder='Enter your new password' onChange={formik1.handleChange} onBlur={formik1.handleBlur} />
+{formik1.touched.newPassword && formik1.errors.newPassword && (<p className='errors'>{formik1.errors.newPassword}</p>)}
 
 <label htmlFor=""> confirm Password</label>
-    <input type="text" placeholder='Confirm your Password' />
-
+    <input type="text" value={formik1.values.confirmPassword} placeholder='Confirm your Password' name='confirmPassword'  onChange={formik1.handleChange} onBlur={formik1.handleBlur}/>
+{formik1.touched.confirmPassword && formik1.errors.confirmPassword && (<p className='errors'>{formik1.errors.confirmPassword}</p>)}
     <button className='change-password-submit-btn'>submit</button>
   </form>
       

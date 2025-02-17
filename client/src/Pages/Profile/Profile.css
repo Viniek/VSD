@@ -14,7 +14,7 @@
     width: 100%;
     justify-content: center;
     align-items: center;
-    margin: 2rem 0;
+    margin: 1rem 0;
 }
 .welcome-wrapper h1{
     font-family: 'Courier New', Courier, monospace;
@@ -145,7 +145,7 @@ background: rgba(0,0,0,0.5);
     text-transform: capitalize;
     font-weight: 600;
 }
-.ovellay p{
+.ovellay h3{
     color: var(--skyblue);
     font-weight: 600;
     text-decoration: underline;
@@ -155,7 +155,8 @@ background: rgba(0,0,0,0.5);
 .ovellay input{
     width: 100%;
     padding: .8rem;
-    margin-bottom: .7rem;
+    margin-bottom: 1rem;
+   
 }
 .change-password-submit-btn{
     padding: .7rem;
