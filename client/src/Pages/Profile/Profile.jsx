@@ -39,57 +39,75 @@ function Profile() {
        <form onSubmit={formik.handleSubmit}>
         <div className='profile_form_fields'>
             <div className='profile_inputs'>
-                <label htmlFor="firstname">first name</label>
-                <input type="text" />
+                <label htmlFor="firstname">first name *</label>
+                <input type="text" onChange={formik.handleChange } onblur={formik.handleBlur}  value={formik.values.firstname}/>
             </div>
 
             <div className='profile_inputs'>
-                <label htmlFor="firstname">first name</label>
-                <input type="text" />
+                <label htmlFor="firstname">last name *</label>
+                <input type="text"  onChange={formik.handleChange } onblur={formik.handleBlur} value={formik.values.lastname} />
             </div>
 
             <div className='profile_inputs'>
-                <label htmlFor="firstname">first name</label>
-                <input type="text" />
+                <label htmlFor="firstname">email *</label>
+                <input type="email"  onChange={formik.handleChange } onblur={formik.handleBlur} value={formik.values.email} />
             </div>
         </div>
         {/* ************************************************* */}
 
         <div className='profile_form_fields'>
             <div className='profile_inputs'>
-                <label htmlFor="firstname">first name</label>
-                <input type="text" />
+                <label htmlFor="firstname">phone number *</label>
+                <input type="number"  onChange={formik.handleChange } onblur={formik.handleBlur} value={formik.values.phone} />
             </div>
 
             <div className='profile_inputs'>
-                <label htmlFor="firstname">first name</label>
-                <input type="text" />
+                <label htmlFor="firstname">marital status *</label>
+                <select name="" id=""  onChange={formik.handleChange } onblur={formik.handleBlur} value={formik.values.maritual_status}>
+                  <option value="">select</option>
+                <option value="">Single</option>
+                  <option value="">Married</option>                 
+                  <option value="">Divorced</option>
+                </select>
             </div>
 
             <div className='profile_inputs'>
-                <label htmlFor="firstname">first name</label>
-                <input type="text" />
+                <label htmlFor="firstname">any dissability *</label>
+                <select name="" id=""  onChange={formik.handleChange } onblur={formik.handleBlur} value={formik.values.disability}>
+                <option value="">select </option>
+                <option value="">No</option>
+                  <option value="">yes</option>                 
+                </select>
             </div>
         </div>
         {/* ************************************************* */}
       
         <div className='profile_form_fields'>
             <div className='profile_inputs'>
-                <label htmlFor="firstname">first name</label>
-                <input type="text" />
+                <label htmlFor="firstname">gender *</label>
+                <select name="" id=""  onChange={formik.handleChange } onblur={formik.handleBlur} value={formik.values.gender}>
+                <option value="">select </option>
+                <option value="">Male</option>
+                  <option value="">Female</option>                 
+                </select>
             </div>
 
             <div className='profile_inputs'>
-                <label htmlFor="firstname">first name</label>
-                <input type="text" />
+                <label htmlFor="firstname">next of kin name *</label>
+                <input type="text"  onChange={formik.handleChange } onblur={formik.handleBlur} value={formik.values.next_of_kin} />
             </div>
 
             <div className='profile_inputs'>
-                <label htmlFor="firstname">first name</label>
-                <input type="text" />
+                <label htmlFor="firstname">next of kin phone number *</label>
+                <input type="number"  onChange={formik.handleChange } onblur={formik.handleBlur} value={formik.values.next_of_kin_phone} />
             </div>
+            
+        </div>
+        <div className='profile-submit-btn'>
+          <button type='submit'>update profile</button>
         </div>
         {/* ************************************************* */}
+
        </form>
       </div>
     </div>

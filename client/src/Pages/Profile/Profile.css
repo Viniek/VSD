@@ -13,13 +13,64 @@
     width: 100%;
     justify-content: center;
     align-items: center;
+    margin: 2rem 0;
 }
+.welcome-wrapper h1{
+    font-family: 'Courier New', Courier, monospace;
+    text-decoration: initial;
+    text-transform: capitalize;
+    font-size: 5rem;
+}
+.welcome-wrapper p{
+    font-family: cursive;
 
+}
+.profile_form_section{
+    width: 100%;
+  
+}
+.profile_form_section form{
+
+    padding: 1rem 1rem 3rem 1rem;
+    flex-wrap: wrap;
+    margin: 1rem;
+}
+.profile_form_section form label{
+    text-transform: capitalize;
+    font-weight: 600;
+}
+.profile_form_section input{
+    padding: 1rem;
+    width: 100%;
+   margin-bottom: .7rem;
+   border: none;
+   border-bottom: 1px solid;
+}
+.profile-submit-btn{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 1rem;
+}
+.profile-submit-btn button{
+    background-color: var(--skyblue);
+    padding: 1rem;
+    width: 20%;
+    font-weight: 800;
+    text-transform: capitalize;
+}
+.profile-submit-btn button:hover{
+    background-color: aqua
+    ;
+}
 .profile_form_fields{
     display: flex;
-    justify-content: space-evenly;
+    justify-content: center;
+    gap: 6rem;
+ flex-wrap: wrap;
 }
 .profile_inputs{
     display: flex;
+    width: 20%;
     flex-direction: column;
 }
