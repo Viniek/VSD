@@ -63,6 +63,11 @@ Run npm run start
 2.)Run npm run dev
 ![Run npm run dev](./Readme/assets/run%20client.png)
 
+## 📸 Screenshots
+Login Page
+![Log In page](./assets/login%20to%20your%20Account.png)
+![Homepage](./assets/Home%20Page.png)
+![Diagnosis Result](./assets/functioning.png)
 
 ## 🎥 Demo Video
 [Click here to watch the demo](videos/demo.mp4)
