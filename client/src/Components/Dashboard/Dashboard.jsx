@@ -40,5 +40,5 @@ settings.classList.toggle("dark")
 </div>
   )
 }
-~
+
 export default Dashboard;
