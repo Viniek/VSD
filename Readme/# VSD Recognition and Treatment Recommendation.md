@@ -65,9 +65,9 @@ Run npm run start
 
 ## 📸 Screenshots
 Login Page
-![Log In page](./Readme/assets/login%20to%20your%20Account.png)
-![Homepage](./Readme/assets/Home%20Page.png)
-![Diagnosis Result](./Readme/assets/functioning.png)
+![Log In page](./assets/login%20to%20your%20Account.png)
+![Homepage](./assets/Home%20Page.png)
+![Diagnosis Result](./assets/functioning.png)
 
 ## 🎥 Demo Video
 [Click here to watch the demo](videos/demo.mp4)
