@@ -4,9 +4,6 @@ import jwt from "jsonwebtoken";
 
 const prisma = new PrismaClient();
 
-
-
-
 export async function SignUp(request, response) {
     try {
         const {
@@ -173,3 +170,4 @@ export async function getUser(request,response){
     
    }
 }
+
