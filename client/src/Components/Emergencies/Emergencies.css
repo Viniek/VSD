@@ -1,0 +1,49 @@
+.emergency-section{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    gap: 3rem;
+    /* align-items: center; */
+    background-color: rgb(220, 224, 224) ;
+
+}
+.emergency-section form{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 50%;
+    background-color: var(--white);
+    padding: 2rem;
+    margin: 2rem 0;
+    border-radius: 10px;
+}
+.emergency-input-wrapper{
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 2rem;
+}
+.emergency-input-wrapper input{
+    padding: .7rem;
+}
+.emergency-input-wrapper button{
+    padding: .7rem;
+    background-color: ORANGE;
+}
+.emergency-input-wrapper textarea{
+    width: 100%;
+    padding: 1rem;
+    height: 20vh;
+}
+.location-wrapper{
+    display: flex;
+    flex-direction: column;
+    width: 30%;
+    padding: 1rem;
+    background-color: var(--white);
+    margin: 2rem 0;
+    border-radius: 10px;
+}
+.location-container{
+    display: flex;
+    flex-direction: column;
+}
