@@ -29,7 +29,9 @@ const EmergencyReport = () => {
     fetchIP();
   }, []);
 
-  const fetchLocation = async () => {
+  const fetchLocation = async (values) => {
+    console.log(formik.values);
+    
     if (!ip) return;
     setLoading(true);
     setError(null);
@@ -54,9 +56,9 @@ const EmergencyReport = () => {
     onSubmit:fetchLocation,
     validate:function(values){
 const errors = {}
-if(!formik.values.name) formik.errors.name ="your name is required"
-if(!formik.values.gender) formik.errors.gender="Gender is required"
-if(!formik.values.emergency) formik.errors.emergency ="description of your emergency is required"
+if(values.name) errors.name ="your name is required"
+if(values.gender) errors.gender="Gender is required"
+if(values.emergency) errors.emergency ="description of your emergency is required"
 return errors
     }
   })
