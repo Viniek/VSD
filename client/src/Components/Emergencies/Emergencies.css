@@ -29,6 +29,11 @@
     padding: .7rem;
     background-color: ORANGE;
 }
+.emergency-input-wrapper button:disabled{
+    background-color: orangered;
+    color: white;
+    font-weight: 800;
+}
 .emergency-input-wrapper textarea{
     width: 100%;
     padding: 1rem;
@@ -46,4 +51,10 @@
 .location-container{
     display: flex;
     flex-direction: column;
+}
+.location-status{
+    color: grey;
+    font-size: 1.3rem;
+    text-transform: capitalize;
+    font-style: italic;
 }
