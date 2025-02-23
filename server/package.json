@@ -1,6 +1,8 @@
 {
   "dependencies": {
+    "@prisma/client": "^6.4.1",
     "flask": "^0.2.10",
+    "jsonwebtoken": "^9.0.2",
     "pandas": "^0.0.3",
     "pickle": "^0.2.0"
   }

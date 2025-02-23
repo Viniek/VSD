@@ -6,6 +6,7 @@ const prisma = new PrismaClient();
 
 
 
+
 export async function SignUp(request, response) {
     try {
         const {
@@ -143,6 +144,7 @@ export async function logOutUser(request,response){
     response.send("loging out user")
 }
 
+
 export async function getUser(request,response){
     const {id} = request.params
    try {
@@ -171,4 +173,3 @@ export async function getUser(request,response){
     
    }
 }
-
