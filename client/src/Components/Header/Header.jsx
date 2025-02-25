@@ -9,12 +9,17 @@ import { GoHistory } from "react-icons/go";
 import { BiSolidAmbulance } from "react-icons/bi";
 import { FaHeartbeat } from "react-icons/fa";
 import { IoIosStats } from "react-icons/io";
+import { useEffect } from 'react';
 
 function Header(icon) {
   const changeUserInformation = useUserStore( (state) => state.changeUserInformation );
   const navigate = useNavigate()
   const clearUser = useUserStore((state)=>state.clearUserInformation)
   const user = useUserStore((state)=>state.user)
+ 
+useEffect(()=>{
+  
+})
 
   function handleChangeTheme (){
     const settings = document.getElementById("home")
@@ -45,13 +50,13 @@ navigationIcon.classList.toggle('open')
   return (
     <header className='app-header'>
         <h3>ventricular Septal  <span className='span'>Defect</span> Analysis System</h3>
-        <p>Welcome back { user && user.email}</p>
+        <p>Welcome back { user && user.firstname}</p>
         
 <nav>
         <ul className='nav-list'>
         <li><Link to={'/Home'}>Home</Link></li>
         <li><Link to={'/Records'}>My Records</Link></li>
-        <li><Link to={'/Profile'}>my account</Link></li>
+       {user &&  <li><Link to={`/Profile/${user.id}`}>my account</Link></li>}
         <button  className='logout-btn' onClick={handleLogout}>Logout</button>
         </ul>
 </nav>
@@ -71,7 +76,7 @@ navigationIcon.classList.toggle('open')
       <div className="actionss"><li><Link to={"/Help"}>help</Link></li> <GoHistory/> </div>
       <div className="actionss"><li><Link to={"/Statistics"}>statistics</Link></li> <GoHistory/> </div>
       <div className="actionss"><li><Link to={"/Schedules"}>Schedules</Link></li> <FaHeartbeat/> </div>
-      <div className="actionss"><li><Link to={"/Profile"}>Manage Account</Link></li> <FaCircleUser/> </div>
+      { user &&       <div className="actionss"><li><Link to={`/Profile/:${user.id}`}>Manage Account</Link></li> <FaCircleUser/> </div>}
       <div className="actionss"><li><Link to={"/About"}>About</Link></li> <GoHistory/> </div>
       <div id='homee' className="actionss"><li ><button  onClick={handleChangeTheme}>mode <GoHistory/></button ></li></div>
       <div><li ><button  onClick={handleLogout} className='logout-btnn'>Logout </button ></li></div>

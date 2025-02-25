@@ -1,0 +1,65 @@
+.sign-section{
+    display: flex;
+
+    flex-direction: column;
+    align-items: center;
+    background-image: url(../../assets/img5.webp);
+    background-size: cover;
+    min-height: 100vh;
+    justify-content: center;
+}
+.sign-icon{
+    display:flex;
+    font-size: 5rem;
+    color:blue;
+    justify-content: center;
+    align-items: center;
+}
+.sign-inputs{
+display: flex;
+flex-direction: column;
+width: 100%;
+}
+.sign-section1{
+    display: flex;
+    justify-content: center;
+    gap: 5rem;
+    padding: 1rem;
+}
+.sign-section form{
+    width: 100%;
+    background-color:#1fbfba;
+    padding: 1rem;
+}
+.sign-inputs select{
+    min-width: 100%;
+    display: flex;
+    padding: .7rem;
+
+}
+.sign-inputs input{
+    padding: .7rem;
+    margin-bottom: 1rem;
+    width: 100%;
+   
+}
+.sign-inputs label{
+    text-transform: capitalize;
+    font-weight: 600;
+}
+.sign-btn{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.sign-btn button{
+    background-color: var(--skyblue);
+    padding: 1rem;
+    width: 50%;
+    font-weight: 700;
+    text-transform: capitalize;
+   
+}
+.sign-btn button:hover{
+    background-color: aqua;
+}

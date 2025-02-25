@@ -10,10 +10,10 @@ import { IoIosNotificationsOutline } from "react-icons/io";
 import { IoMdHelpCircle } from "react-icons/io";
 import { FcStatistics } from "react-icons/fc";
 import { FcAbout } from "react-icons/fc";
-import { MdDarkMode } from "react-icons/md";
+import useUserStore from '../../../Store/userStore';
 
 function Dashboard() {
-
+const user = useUserStore((state)=>state.user)
   function handleChangeTheme (){
    const settings = document.getElementById("home")
    const labelss = document.getElementById("label")
@@ -24,18 +24,18 @@ settings.classList.toggle("dark")
 
   }
   return (
-<div className="dashboard" >
+<div className="dashboard" > 
 <ul>
-<div className='actions'><li><Link to={"/History"}>History</Link></li><GoHistory/></div>
-      <div className="actions"><li><Link to={"/Notifications"}>Notifications</Link></li> <IoIosNotificationsOutline /> </div>
-      <div className="actions"><li><Link to={"/Emergencies"}>Emergencies</Link></li> <BiSolidAmbulance/> </div>
-      <div className="actions"><li><Link to={"/HealthCenters"}>Health centers</Link></li> <FaHospitalSymbol/> </div>
-      <div className="actions"><li><Link to={"/Help"}>help</Link></li> <IoMdHelpCircle /></div>
-      <div className="actions"><li><Link to={"/Statistics"}>statistics</Link></li> <FcStatistics /> </div>
-      <div className="actions"><li><Link to={"/Schedules"}>Schedules</Link></li> <FaHeartbeat/> </div>
-      <div className="actions"><li><Link to={"/Profile"}>Manage Account</Link></li> <FaCircleUser/> </div>
+<div className='actions'><li><Link to={"/History"}>History</Link></li><GoHistory className='icon'/></div>
+      <div className="actions"><li><Link to={"/Notifications"}>Notifications</Link></li> <IoIosNotificationsOutline className='icon' /> </div>
+      <div className="actions"><li><Link to={"/Emergencies"}>Emergencies</Link></li> <BiSolidAmbulance className='icon'/> </div>
+      <div className="actions"><li><Link to={"/HealthCenters"}>Health centers</Link></li> <FaHospitalSymbol className='icon'/> </div>
+      <div className="actions"><li><Link to={"/Help"}>help</Link></li> <IoMdHelpCircle  className='icon'/></div>
+      <div className="actions"><li><Link to={"/Statistics"}>statistics</Link></li> <FcStatistics  className='icon'/> </div>
+      <div className="actions"><li><Link to={"/Schedules"}>Schedules</Link></li> <FaHeartbeat className='icon'/> </div>
+      { user &&       <div className="actions"><li><Link to={`/Profile/${user.id}`}>Manage Account</Link></li> <FaCircleUser className='icon'/> </div>}
       <div className="actions"><li><Link to={"/About"}>About</Link></li> <FcAbout /> </div>
-      <div id='h'><li ><button  onClick={handleChangeTheme}>mode <GoHistory/></button ></li></div>
+      <div id='h'><li ><button  onClick={handleChangeTheme}>mode <GoHistory className='icon'/></button ></li></div>
     </ul>
 </div>
   )

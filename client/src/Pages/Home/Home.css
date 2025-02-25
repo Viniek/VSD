@@ -4,7 +4,6 @@
     justify-content: center;
     background-size: cover;
    
-
 }
 
 .home-heading{
@@ -72,7 +71,8 @@
 .home-form-section form{
     display: flex;
     justify-content: space-between;
-    padding: 1rem;    
+    padding: 2px;  
+    /* background-color: red;   */
 }
 @media screen and (max-width:53.5em){
     .home-form-section form{
@@ -125,7 +125,7 @@ align-items: center;
     flex-direction: column;
 }
 .home-from-inputs input{
-    padding: .7rem;
+    padding: .6rem;
     
 }
 select{

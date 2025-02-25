@@ -1,8 +1,12 @@
 .dashboard{
     display: block;
     padding: 1rem;
+    position: relative;
+    width: 100%;
     background-color: rgb(220, 224, 224);
-    /* margin-bottom: 5rem; */
+
+   
+    margin-bottom: 1rem;
 }
 @media screen  and (max-width:37.5em){
     .dashboard{display: none;}
@@ -22,6 +26,10 @@
     text-transform: capitalize;
     font-weight: 700;
     transition: all 400ms  ease-out;
+}
+.icon{
+    color: blue;
+    /* display: ; */
 }
 .dashboard a:hover{
     text-decoration: underline;

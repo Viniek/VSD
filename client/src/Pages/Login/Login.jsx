@@ -7,19 +7,40 @@ import { FaCircleUser } from "react-icons/fa6";
 import { Link } from 'react-router-dom'
 import { useNavigate } from 'react-router-dom'
 import { useState } from 'react';
+import axios from "axios";
+import { api_url } from '../../../utills/config';
 
 function Login() {
-    const [user,setUser] = useState(null)
+    const [error,setError]= useState("")
+    const [loading,setLoading] = useState(false)
     const navigate = useNavigate()
     const changeUserInformation = useUserStore((state)=>state.changeUserInformation)
-    function handleSubmit(){
-        setUser(formik.values)
-        changeUserInformation(formik.values)
+    async function handleSubmit(values){
 
-        navigate("/Home")
+        try {
+            setLoading(true)
+            setError(null)
 
+            const response = await axios.post(`${api_url}api/users/Login`,values,{withCredentials:true});
+            // console.log("response",response);
+            const data = response.data;
+            // console.log("data",data.success);
+          
+                navigate("/Home")
+                changeUserInformation(data.data)
+                
+           
+            
+            
+        } catch (error) {
+            // console.log("err",error);
+            
+           setError(error.response.data.message) 
+        }finally{
+            setLoading(false)
+        }
     }
-    // console.log(user);
+ 
 
     const formik = useFormik({
         initialValues:{ 
@@ -69,7 +90,8 @@ function Login() {
 {formik.touched.password && formik.errors.password && (<p className='errors'>{formik.errors.password}</p>) }
 </div>
 
-<button>Login</button>
+<button type='submit' disabled={loading}>{loading?"loading...":"login"}</button>
+{error && <p className='errors'> {error}</p>}
 
 
 </form>
