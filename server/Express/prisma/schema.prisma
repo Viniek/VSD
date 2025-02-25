@@ -25,4 +25,4 @@ password String
 phone String @unique
 next_of_kin String?
 next_of_kin_phone String?
-
+}
