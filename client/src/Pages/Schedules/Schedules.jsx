@@ -1,14 +1,14 @@
-import React from 'react'
-import './Schedules.css'
-import ScheduleDashboard from '../../Components/ScheduleDashboard/ScheduleDashboard'
+import React from "react";
+import "./Schedules.css";
+import ScheduleDashboard from "../../Components/ScheduleDashboard/ScheduleDashboard";
 function Schedules() {
   return (
     <div>
       <div>
-<ScheduleDashboard/>
+        <ScheduleDashboard />
       </div>
     </div>
-  )
+  );
 }
 
-export default Schedules
+export default Schedules;

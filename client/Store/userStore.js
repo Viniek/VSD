@@ -2,8 +2,7 @@ import { create } from "zustand";
 import { devtools, persist } from "zustand/middleware";
 
 const userStore = (set) => ({
-  user:null,
- 
+  user: null,
 
   changeUserInformation: (newUserObject) => {
     set((state) => ({
@@ -16,7 +15,6 @@ const userStore = (set) => ({
       user: null,
     }));
   },
-
 });
 
 const useUserStore = create(

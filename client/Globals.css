@@ -1,20 +1,19 @@
-:root{
-    --grey: rgb(220, 224, 224);;
-    --white:#fff;
-    --black:#000;
-    --blue:#009;
-    --skyblue:rgb(0, 217, 255);
-    --grey:#6a6c6d;
-    }
+:root {
+  --grey: rgb(220, 224, 224);
+  --white: #fff;
+  --black: #000;
+  --blue: #009;
+  --skyblue: rgb(0, 217, 255);
+  --grey: #6a6c6d;
+}
 
-    .dark{
-        background-color: #5c5b5b;
-        color: white;
-    
-    }
-    .light{
-        color: white;
-    }
-    .close{
-        display: none;
-    }
+.dark {
+  background-color: #5c5b5b;
+  color: white;
+}
+.light {
+  color: white;
+}
+.close {
+  display: none;
+}
