@@ -40,8 +40,8 @@ try {
     }
     console.log("response",response);
 } catch (error) {
-    console.log(error);
-    setError(error.response.data.message)
+    console.log(error)
+    setError(error.message)
     
 }
 finally{
