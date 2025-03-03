@@ -40,7 +40,7 @@ try {
     }
     console.log("response",response);
 } catch (error) {
-    console.log(error)
+    console.log(error);
     setError(error.message)
     
 }
