@@ -1,9 +1,7 @@
-import React from 'react'
-import './Statistics.css'
+import React from "react";
+import "./Statistics.css";
 function Statistics() {
-  return (
-    <div>Statistics</div>
-  )
+  return <div>Statistics</div>;
 }
 
-export default Statistics
+export default Statistics;

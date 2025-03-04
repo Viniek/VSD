@@ -1,99 +1,104 @@
-.app-header{
-    display: flex;
-    padding-left: 20px;
-    padding-right: 20px;
-    justify-content: space-between;
-    /* margin-top: 3px; */
-    background-color: var(--grey);
-    padding: 2rem;
-    color: var(--white);
+.app-header {
+  display: flex;
+  padding-left: 20px;
+  padding-right: 20px;
+  justify-content: space-between;
+  /* margin-top: 3px; */
+  background-color: var(--grey);
+  padding: 2rem;
+  color: var(--white);
 }
-@media screen and (max-width:37.5em){
-   .app-header{
+@media screen and (max-width: 37.5em) {
+  .app-header {
     max-height: 10vh;
     max-width: 100%;
-   } 
+  }
 }
-@media screen and (max-width:38em){
-    .app-header h3{
-        display:none;
-    }
+@media screen and (max-width: 38em) {
+  .app-header h3 {
+    display: none;
+  }
 }
 
-.app-header span{
-    color: rgb(0, 217, 255);
-    text-transform: capitalize;
+.app-header span {
+  color: rgb(0, 217, 255);
+  text-transform: capitalize;
 }
-.actionss{
+.actionss {
+  display: flex;
+  flex-direction: row-reverse;
+  justify-content: center;
+  text-transform: capitalize;
+  gap: 1rem;
+}
+.actionss:hover {
+  background-color: white;
+}
+.actionss ul {
+  list-style: none;
+}
+.app-header ul {
+  display: flex;
+  justify-content: flex-end;
+  list-style: none;
+  gap: 5rem;
+  text-transform: capitalize;
+  font-weight: 600;
+}
+.logout-btn {
+  padding-left: 1rem;
+  padding-right: 1rem;
+  background-color: rgb(218, 81, 81);
+  color: white;
+}
+.open {
+  display: none;
+}
+.nav-list1 li {
+  list-style: none;
+  margin-bottom: 2.5rem;
+  border-bottom: var(--white) 1px solid;
+  width: 100%;
+}
+
+#nav-icon {
+  display: none;
+}
+.close {
+  display: none;
+}
+@media screen and (max-width: 37.5em) {
+  .app-header ul {
+    display: none;
+  }
+  #nav-icon {
+    display: block;
+  }
+
+  .open {
     display: flex;
-    flex-direction: row-reverse;
-    justify-content: center;
-    text-transform: capitalize;
-    gap: 1rem;    
-}
-.actionss:hover{
-    background-color: white;
-}
-.actionss ul{
-    list-style: none;
-}
-.app-header ul{
-    display: flex;
-    justify-content: flex-end;
-    list-style: none;
-    gap: 5rem;
-    text-transform: capitalize;    
-    font-weight: 600;
-}
-.logout-btn{
-    padding-left:1rem;
-    padding-right:1rem; 
-    background-color:rgb(218, 81, 81);
-    color:white;
-}
-.open{
-    display: none;
-}
-.nav-list1 li{list-style: none;margin-bottom: 2.5rem;border-bottom: var(--white) 1px solid;width: 100%;}
-
-#nav-icon{
-    display: none;
-} 
-.close{
-    display: none;
-}
-@media screen and (max-width:37.5em){
-    .app-header ul{
-        display: none;
-    }
-    #nav-icon{
-        display: block;
-    }
-
-        .open{
-        display: flex;
-        flex-direction: column;
-        position: absolute;
-        height: 100vh;
-        /* width: 20%; */
-        background-color: var(--grey);
-        margin: 0;
-        right: 0rem;
-        padding: 2rem;
-    }
+    flex-direction: column;
+    position: absolute;
+    height: 100vh;
+    /* width: 20%; */
+    background-color: var(--grey);
+    margin: 0;
+    right: 0rem;
+    padding: 2rem;
+  }
 }
 
-.app-header a{
-    text-decoration: none;
-    color: var(--white);
+.app-header a {
+  text-decoration: none;
+  color: var(--white);
 }
-.app-header p{
-    font-size: 2rem;
+.app-header p {
+  font-size: 2rem;
 }
-.logout-btnn{
-    background-color:red;
-    padding: 1rem;
-    color: var(--white);
-    width: 100%;
-    font-weight: 600;
+.logout-btnn {
+  background-color: red;
+  padding: 1rem;
+  color: var(--white);
+  width: 100%;
+  font-weight: 600;
 }

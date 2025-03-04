@@ -1,9 +1,7 @@
-import React from 'react'
-import './Notifications.css'
+import React from "react";
+import "./Notifications.css";
 function Notifications() {
-  return (
-    <div>Notifications</div>
-  )
+  return <div>Notifications</div>;
 }
 
-export default Notifications
+export default Notifications;

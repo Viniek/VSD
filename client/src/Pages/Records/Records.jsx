@@ -1,9 +1,7 @@
-import React from 'react'
-import './Records.css'
+import React from "react";
+import "./Records.css";
 function Records() {
-  return (
-    <div>Records</div>
-  )
+  return <div>Records</div>;
 }
 
-export default Records
+export default Records;

@@ -1,63 +1,62 @@
-.health-center-section{
-    display: flex;
-flex-direction: row;
-justify-content: space-between;
+.health-center-section {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
 }
 
-.health-center-section2{
-    display: flex;
-   
+.health-center-section2 {
+  display: flex;
 }
-.centers-container{
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    padding: 1rem;
- margin: .8rem; 
+.centers-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  padding: 1rem;
+  margin: 0.8rem;
   flex-wrap: wrap;
   gap: 5rem;
 }
-.center-title{
-    text-transform: capitalize;
-    font-weight: 700;
-    text-decoration: underline;
-    margin-bottom: 10px;
+.center-title {
+  text-transform: capitalize;
+  font-weight: 700;
+  text-decoration: underline;
+  margin-bottom: 10px;
 }
-.centers-socials{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 2rem;
-    font-size: 2rem;
-    border-top: 1px solid var(--skyblue);
-    color: grey;
-    padding-top: 1rem;
+.centers-socials {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 2rem;
+  font-size: 2rem;
+  border-top: 1px solid var(--skyblue);
+  color: grey;
+  padding-top: 1rem;
 }
-.center-wrapper{
-    display: flex;
-    flex-direction: column;
-    width: 20%;
-    border: solid 1px var(--skyblue);
-    padding: 1rem;
-    background-color: rgb(222, 231, 231);
-    box-shadow: 3px 3px 5px 0px black;
-    border-radius: 10px;
-    transition: all 1s;
+.center-wrapper {
+  display: flex;
+  flex-direction: column;
+  width: 20%;
+  border: solid 1px var(--skyblue);
+  padding: 1rem;
+  background-color: rgb(222, 231, 231);
+  box-shadow: 3px 3px 5px 0px black;
+  border-radius: 10px;
+  transition: all 1s;
 }
-.center-wrapper:hover{
-    background-color:  rgb(241, 241, 241);
-    border: 1px solid black;
+.center-wrapper:hover {
+  background-color: rgb(241, 241, 241);
+  border: 1px solid black;
 }
-.center-wrapper img{
-    width: 100%;
-    display: flex;
+.center-wrapper img {
+  width: 100%;
+  display: flex;
 }
-.center-wrapper h1{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    /* border-radius: 50%; */
-    color:var(--skyblue);
-    font-size: 8rem;
-    /* background-color: red; */
+.center-wrapper h1 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* border-radius: 50%; */
+  color: var(--skyblue);
+  font-size: 8rem;
+  /* background-color: red; */
 }
