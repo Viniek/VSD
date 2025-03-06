@@ -1,170 +1,164 @@
-.profile{
-    background-color: azure;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    width: 100%;
-    margin-bottom: 2rem;
+.profile {
+  background-color: azure;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  margin-bottom: 2rem;
 }
-.welcome-wrapper{
-    display: flex;
-    flex-direction: column;
-    background-color: var(--white);
-    width: 100%;
-    justify-content: center;
-    align-items: center;
-    margin: 1rem 0;
+.welcome-wrapper {
+  display: flex;
+  flex-direction: column;
+  background-color: var(--white);
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+  margin: 1rem 0;
 }
-.welcome-wrapper h1{
-    font-family: 'Courier New', Courier, monospace;
-    text-decoration: initial;
-    text-transform: capitalize;
-    font-size: 5rem;
+.welcome-wrapper h1 {
+  font-family: "Courier New", Courier, monospace;
+  text-decoration: initial;
+  text-transform: capitalize;
+  font-size: 5rem;
 }
-.welcome-wrapper p{
-    font-family: cursive;
-
+.welcome-wrapper p {
+  font-family: cursive;
 }
-.profile_form_section{
-    width: 100%;
-  
+.profile_form_section {
+  width: 100%;
 }
-.profile_form_section form{
-
-    padding: 1rem 1rem 3rem 1rem;
-    flex-wrap: wrap;
-    margin: 1rem;
+.profile_form_section form {
+  padding: 1rem 1rem 3rem 1rem;
+  flex-wrap: wrap;
+  margin: 1rem;
 }
-.profile_form_section form label{
-    text-transform: capitalize;
-    font-weight: 600;
+.profile_form_section form label {
+  text-transform: capitalize;
+  font-weight: 600;
 }
-.profile_form_section input{
-    padding: 1rem;
-    width: 100%;
-   margin-bottom: .7rem;
-   border: none;
-   border-bottom: 1px solid;
+.profile_form_section input {
+  padding: 1rem;
+  width: 100%;
+  margin-bottom: 0.7rem;
+  border: none;
+  border-bottom: 1px solid;
 }
-.profile-submit-btn{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-top: 1rem;
+.profile-submit-btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 1rem;
 }
-.profile-submit-btn button{
-    background-color: var(--skyblue);
-    padding: 1rem;
-    width: 20%;
-    font-weight: 800;
-    text-transform: capitalize;
+.profile-submit-btn button {
+  background-color: var(--skyblue);
+  padding: 1rem;
+  width: 20%;
+  font-weight: 800;
+  text-transform: capitalize;
 }
-.profile-submit-btn button:hover{
-    background-color: aqua ;
+.profile-submit-btn button:hover {
+  background-color: aqua;
 }
-.profile_form_fields{
-    display: flex;
-    justify-content: center;
-    gap: 6rem;
- flex-wrap: wrap;
+.profile_form_fields {
+  display: flex;
+  justify-content: center;
+  gap: 6rem;
+  flex-wrap: wrap;
 }
-.profile_inputs{
-    display: flex;
-    width: 20%;
-    flex-direction: column;
+.profile_inputs {
+  display: flex;
+  width: 20%;
+  flex-direction: column;
 }
-.change-password-btn{
-    border: none;
-    color: blue;
-    font-weight: 700;
-    font-size: 1.8rem;
-    text-transform: capitalize;
+.change-password-btn {
+  border: none;
+  color: blue;
+  font-weight: 700;
+  font-size: 1.8rem;
+  text-transform: capitalize;
 }
-.ovellay{
-    display: none;
-    width: 100%;
-    margin: 0;
-    position: fixed;
-    justify-content: center;
-    align-items: center;
-    /* margin-top: 10rem; */
-    height: 100vh;
-    z-index: 1000;
-background: rgba(0,0,0,0.5);
- 
+.ovellay {
+  display: none;
+  width: 100%;
+  margin: 0;
+  position: fixed;
+  justify-content: center;
+  align-items: center;
+  /* margin-top: 10rem; */
+  height: 100vh;
+  z-index: 1000;
+  background: rgba(0, 0, 0, 0.5);
 }
 
-.close-btn-wrapper{
-    display: flex;
-   justify-content: right;
-   align-items: right;
-    width: 100%;
-    border-radius: 100%;
-    
+.close-btn-wrapper {
+  display: flex;
+  justify-content: right;
+  align-items: right;
+  width: 100%;
+  border-radius: 100%;
 }
-.close-btn-wrapper button{
-   font-size: 2rem;
-    border-radius: 100%;
-    border: none;
-    padding: .5rem;
-    float: right;
-    /* margin-bottom: 1rem; */
-    font-weight: 900;
+.close-btn-wrapper button {
+  font-size: 2rem;
+  border-radius: 100%;
+  border: none;
+  padding: 0.5rem;
+  float: right;
+  /* margin-bottom: 1rem; */
+  font-weight: 900;
 }
-.close-btn-wrapper button:hover{
-    color: red;
+.close-btn-wrapper button:hover {
+  color: red;
 }
 
-.ovellay form{
-    position: absolute;
-    box-shadow: 0px 8px 15px black;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    
-    padding: 2rem;
- color: var(--black);
-    border-top-left-radius: 10px;
-    border-top-right-radius: 10px;
-    border-bottom-right-radius: 10px ;
-    border-bottom-left-radius: 10px;
-    border: 1px dashed var(--skyblue);
-    z-index: 1010;
-    width: 50%;
+.ovellay form {
+  position: absolute;
+  box-shadow: 0px 8px 15px black;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 
-    background-color: var(--white);
-    /* position: absolute; */
+  padding: 2rem;
+  color: var(--black);
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  border-bottom-right-radius: 10px;
+  border-bottom-left-radius: 10px;
+  border: 1px dashed var(--skyblue);
+  z-index: 1010;
+  width: 50%;
 
-    /* top: 10rem;
+  background-color: var(--white);
+  /* position: absolute; */
+
+  /* top: 10rem;
     left: 40rem;
     right: 0rem;
     bottom:10rem; */
 }
-.ovellay form label{
-    text-transform: capitalize;
-    font-weight: 600;
+.ovellay form label {
+  text-transform: capitalize;
+  font-weight: 600;
 }
-.ovellay h3{
-    color: var(--skyblue);
-    font-weight: 600;
-    text-decoration: underline;
-    text-transform: capitalize;
-    margin-bottom: .9rem;
+.ovellay h3 {
+  color: var(--skyblue);
+  font-weight: 600;
+  text-decoration: underline;
+  text-transform: capitalize;
+  margin-bottom: 0.9rem;
 }
-.ovellay input{
-    width: 100%;
-    padding: .8rem;
-    margin-bottom: 1rem;
-   
+.ovellay input {
+  width: 100%;
+  padding: 0.8rem;
+  margin-bottom: 1rem;
 }
-.change-password-submit-btn{
-    padding: .7rem;
-    background-color: var(--skyblue);
-    width: 30%;
-    text-transform: capitalize;
-    font-weight: 700;
+.change-password-submit-btn {
+  padding: 0.7rem;
+  background-color: var(--skyblue);
+  width: 30%;
+  text-transform: capitalize;
+  font-weight: 700;
 }
-.change-password-submit-btn:hover{
-background-color: aqua;
+.change-password-submit-btn:hover {
+  background-color: aqua;
 }

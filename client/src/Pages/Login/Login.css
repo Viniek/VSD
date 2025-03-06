@@ -1,68 +1,65 @@
-.login-section{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    background-image: url(../../assets/img5.webp);
-    background-size: cover;
-    min-height: 100vh;
-    justify-content: center;
+.login-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-image: url(../../assets/img5.webp);
+  background-size: cover;
+  min-height: 100vh;
+  justify-content: center;
 }
-.login-section h1{
-    color: var(--black);
-    font-weight: 900;
+.login-section h1 {
+  color: var(--black);
+  font-weight: 900;
 }
-.login-section h2{
-    font-size: 5rem;
-    color:blue;
+.login-section h2 {
+  font-size: 5rem;
+  color: blue;
 }
-.form{
-
-    width: 50%;
-    opacity: 1;
+.form {
+  width: 50%;
+  opacity: 1;
 }
-.login-section form{
-display: flex;
-flex-direction: column;
-justify-content: center;
-align-items: center;
-/* background-image: url(../../assets/img2.jpg); */
-background-color:#1fbfba;
-background-size: cover;
-min-height: 50vh;
-color: var(--black);
-backface-visibility: hidden;
-width: 100%;
-font-weight: 700;
-border-radius: 20px;
-
+.login-section form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  /* background-image: url(../../assets/img2.jpg); */
+  background-color: #1fbfba;
+  background-size: cover;
+  min-height: 50vh;
+  color: var(--black);
+  backface-visibility: hidden;
+  width: 100%;
+  font-weight: 700;
+  border-radius: 20px;
 }
-.login-inputs{
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    
+.login-inputs {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
-.login-inputs input{
-    padding: 1rem;
-    width: 50rem;
+.login-inputs input {
+  padding: 1rem;
+  width: 50rem;
 }
-.login-section button{
-padding: 1rem;
-margin-top: 2rem;
-width: 50rem;
-justify-content: center;
-background-color: var(--skyblue);
-font-weight: 700;
-font-size: 1.4rem;
+.login-section button {
+  padding: 1rem;
+  margin-top: 2rem;
+  width: 50rem;
+  justify-content: center;
+  background-color: var(--skyblue);
+  font-weight: 700;
+  font-size: 1.4rem;
 }
-.errors{
-    color: red;
-    text-transform: capitalize;
-    font-style: italic;
+.errors {
+  color: red;
+  text-transform: capitalize;
+  font-style: italic;
 }
-.navigate{
-    display: flex;
-    color: var(--black);
-    font-weight: 900;
-    gap: 1rem;
+.navigate {
+  display: flex;
+  color: var(--black);
+  font-weight: 900;
+  gap: 1rem;
 }
