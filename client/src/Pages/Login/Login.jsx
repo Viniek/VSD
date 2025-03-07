@@ -2,7 +2,7 @@ import React from "react";
 import "./Login.css";
 import { useFormik } from "formik";
 import useUserStore from "../../../Store/userStore";
-import { TbLockPassword } from "react-icons/tb";
+import Loader from "../../Components/Loader/Loader";
 import { FaCircleUser } from "react-icons/fa6";
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
@@ -96,7 +96,7 @@ function Login() {
           </div>
 
           <button type="submit" disabled={loading}>
-            {loading ? "loading..." : "login"}
+          {loading ? <Loader loading={loading} type="ThreeDots" color="blue" size={80} /> : "Login"}
           </button>
           {error && <p className="errors"> {error}</p>}
         </form>
