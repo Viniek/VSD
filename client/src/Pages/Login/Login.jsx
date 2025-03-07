@@ -96,7 +96,16 @@ function Login() {
           </div>
 
           <button type="submit" disabled={loading}>
-          {loading ? <Loader loading={loading} type="ThreeDots" color="blue" size={80} /> : "Login"}
+            {loading ? (
+              <Loader
+                loading={loading}
+                type="ThreeDots"
+                color="blue"
+                size={80}
+              />
+            ) : (
+              "Login"
+            )}
           </button>
           {error && <p className="errors"> {error}</p>}
         </form>

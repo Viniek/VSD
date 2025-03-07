@@ -33,7 +33,7 @@ function Dashboard() {
         </div>
         <div className="actions">
           <li>
-            <Link to={"/Notifications"}>Notifications</Link>
+            <Link to={"/Notifications"}>Notifications 🔔</Link>
           </li>{" "}
           <IoIosNotificationsOutline className="icon" />{" "}
         </div>

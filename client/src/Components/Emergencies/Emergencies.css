@@ -57,3 +57,16 @@
   text-transform: capitalize;
   font-style: italic;
 }
+.personal-details {
+  background-color: aliceblue;
+  padding: 1rem;
+}
+.location-container h3 {
+  margin-bottom: 1rem;
+  color: chocolate;
+}
+
+.location-details {
+  margin-top: 2rem;
+  border-top: 1px dashed;
+}

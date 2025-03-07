@@ -13,7 +13,11 @@ function Help() {
 
   return (
     <div className="container">
-      {loading ? <Loader loading={loading} type="ThreeDots" color="blue" size={80} /> : <h2>Content Loaded!</h2>}
+      {loading ? (
+        <Loader loading={loading} type="ThreeDots" color="blue" size={80} />
+      ) : (
+        <h2>Content Loaded!</h2>
+      )}
     </div>
   );
 }
