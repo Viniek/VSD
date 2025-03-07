@@ -3,6 +3,7 @@ import { useFormik } from "formik";
 import "./Emergencies.css";
 import useUserStore from "../../../Store/userStore";
 import axios from "axios";
+import Loader from "../Loader/Loader";
 
 const EmergencyReport = () => {
   const [location, setLocation] = useState(null);
@@ -29,7 +30,7 @@ const EmergencyReport = () => {
         try {
           // Fetch human-readable address using Nominatim API
           const response = await axios.get(
-            `https://nominatim.openstreetmap.org/reverse?lat=${latitude}&lon=${longitude}&format=json`
+            `https://nominatim.openstreetmap.org/reverse?lat=${latitude}&lon=${longitude}&format=json`,
           );
           setAddress(response.data.display_name);
         } catch (error) {
@@ -41,7 +42,7 @@ const EmergencyReport = () => {
       (error) => {
         setError(`Error getting location: ${error.message}`);
         setLoading(false);
-      }
+      },
     );
   };
 
@@ -58,7 +59,8 @@ const EmergencyReport = () => {
       const errors = {};
       if (!values.name) errors.name = "Your name is required";
       if (!values.gender) errors.gender = "Gender is required";
-      if (!values.description) errors.description = "Description of your emergency is required";
+      if (!values.description)
+        errors.description = "Description of your emergency is required";
       return errors;
     },
   });
@@ -66,7 +68,7 @@ const EmergencyReport = () => {
   return (
     <div className="emergency-section">
       <form onSubmit={formik.handleSubmit}>
-        <h2>Report an Emergency</h2>
+        <h2>Report an Emergency ⚠️</h2>
 
         <div className="emergency-input-wrapper">
           <label>Name</label>
@@ -131,14 +133,46 @@ const EmergencyReport = () => {
             Your location will be tracked and sent to our emergency team.
           </p>
         )}
+
+        {loading && (
+          <Loader loading={loading} type="Oval" color="green" size={50} />
+        )}
         {error && <p className="errors">{error}</p>}
 
         {location && (
           <div className="location-container">
-            <h3>Location Details:</h3>
-            <p><strong>Latitude:</strong> {location.latitude}</p>
-            <p><strong>Longitude:</strong> {location.longitude}</p>
-            {address && <p><strong>Exact Location:</strong> {address}</p>}
+            <div className="personal-details">
+              <h3>Personal Details:</h3>
+              <p>
+                <strong>Name: </strong> {formik.values.name}
+              </p>
+              <p>
+                <strong>Gender: </strong>
+                {formik.values.gender}
+              </p>
+              <p>
+                <strong>Your Emergency: </strong>
+                {formik.values.description}
+              </p>
+            </div>
+            <div className="location-details">
+              <h3>Location Details: 📍</h3>
+              <p>
+                <strong>Latitude:</strong> {location.latitude}
+              </p>
+              <p>
+                <strong>Longitude:</strong> {location.longitude}
+              </p>
+              {address && (
+                <p>
+                  <strong>Exact Location:</strong> {address}
+                </p>
+              )}
+            </div>
+            <h4 style={{ marginTop: "2rem", color: "grey" }}>
+              {" "}
+              Your emergency was sent to our emergency team ✅
+            </h4>
           </div>
         )}
       </div>
