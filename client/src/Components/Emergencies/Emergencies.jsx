@@ -1,11 +1,12 @@
-import { useState, useEffect } from "react";
-import axios from "axios";
-import "./Emergencies.css";
+import { useState } from "react";
 import { useFormik } from "formik";
+import "./Emergencies.css";
 import useUserStore from "../../../Store/userStore";
+import axios from "axios";
 
 const EmergencyReport = () => {
   const [location, setLocation] = useState(null);
+  const [address, setAddress] = useState("");
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
   const user = useUserStore((state) => state.user);
@@ -21,9 +22,20 @@ const EmergencyReport = () => {
     }
 
     navigator.geolocation.getCurrentPosition(
-      (position) => {
+      async (position) => {
         const { latitude, longitude } = position.coords;
         setLocation({ latitude, longitude });
+
+        try {
+          // Fetch human-readable address using Nominatim API
+          const response = await axios.get(
+            `https://nominatim.openstreetmap.org/reverse?lat=${latitude}&lon=${longitude}&format=json`
+          );
+          setAddress(response.data.display_name);
+        } catch (error) {
+          setError("Failed to get location details.");
+        }
+
         setLoading(false);
       },
       (error) => {
@@ -124,8 +136,9 @@ const EmergencyReport = () => {
         {location && (
           <div className="location-container">
             <h3>Location Details:</h3>
-            <p>Latitude: {location.latitude}</p>
-            <p>Longitude: {location.longitude}</p>
+            <p><strong>Latitude:</strong> {location.latitude}</p>
+            <p><strong>Longitude:</strong> {location.longitude}</p>
+            {address && <p><strong>Exact Location:</strong> {address}</p>}
           </div>
         )}
       </div>
