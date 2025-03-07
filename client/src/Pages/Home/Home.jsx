@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import { useFormik } from 'formik';
+import Loader from '../../Components/Loader/Loader';
 import './Home.css';
 
 function Home() {
@@ -81,6 +82,7 @@ function Home() {
             <h4>Results will appear here</h4>
             <div className='result-section'>
               {loading && <p>Loading...</p>}
+              {loading && <Loader loading={loading} type="ThreeDots" color="green" size={70} /> }
               {error && <p className='error'>{error}</p>}
               {prediction && (
                 <div>
@@ -327,7 +329,7 @@ function Home() {
     {formik.touched.familyHistory && formik.errors.familyHistory && (<p  className='errors'>{formik.errors.familyHistory}</p>)}
     </div>
     <div className="home-form-inputs-button">
-    <button>  run test</button>
+    <button disabled={loading}>  {loading ? <Loader loading={loading} type="MutatingDots" color="green" /> : "Run Test"}</button>
     </div>
 
     </div>

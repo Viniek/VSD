@@ -1,0 +1,13 @@
+* styles.css */
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  text-align: center;
+}
+
+.message {
+  font-size: 24px;
+  font-weight: bold;
+}
