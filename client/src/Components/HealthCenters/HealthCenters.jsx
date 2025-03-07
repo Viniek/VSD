@@ -29,7 +29,6 @@ function HealthCenters() {
   const [error, setError] = useState(null);
   const [nearbyCenters, setNearbyCenters] = useState([]);
 
-
   // Function to fetch user location and nearby hospitals
   const fetchLocation = async () => {
     setLoading(true);
@@ -97,15 +96,6 @@ function HealthCenters() {
         </div>
 
         {loading && <p>Loading your location...</p>}
-
-        {userLocation && (
-          <div className="location-info">
-            <h3>Your Location:</h3>
-            <p>Latitude: {userLocation.latitude}</p>
-            <p>Longitude: {userLocation.longitude}</p>
-            {address && <p><strong>Address:</strong> {address}</p>}
-          </div>
-        )}
 
         {error && <p className="error">{error}</p>}
 

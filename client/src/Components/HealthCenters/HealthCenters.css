@@ -15,6 +15,10 @@
 .hospitalsNearMe button{
   padding:1rem;
   background-color:var(--skyblue);
+  width:100%;
+  font-weight: 800;
+  text-transform: uppercase;
+margin-bottom: 2rem;
 }
 .centers-container {
   display: flex;
