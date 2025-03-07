@@ -6,6 +6,15 @@
 
 .health-center-section2 {
   display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.hospitalsNearMe{
+  width:100%;
+}
+.hospitalsNearMe button{
+  padding:1rem;
+  background-color:var(--skyblue);
 }
 .centers-container {
   display: flex;
@@ -60,3 +69,7 @@
   font-size: 8rem;
   /* background-color: red; */
 }
+
+
+
+
