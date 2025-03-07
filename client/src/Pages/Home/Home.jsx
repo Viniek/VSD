@@ -15,8 +15,15 @@ function Home() {
     setError(null);
     setPrediction(null);
 
+    const genderNumeric = values.gender === "male" ? 1 : 0;
+    const formData = {
+      ...values,
+      gender: genderNumeric, // Replace string gender with numeric value
+    };
+
+
     try {
-      const response = await axios.post('http://127.0.0.1:5000/predict', values);
+      const response = await axios.post('http://127.0.0.1:5000/predict', formData);
       setPrediction(response.data); // Assuming Flask returns JSON with prediction data
     } catch (err) {
       setError('Error connecting to the server. Please try again.');
@@ -116,19 +123,24 @@ function Home() {
 
     <div className='home-from-inputs'>
     <label>Gender</label>
-   
+   <select name="gender" onChange={formik.handleChange} onBlur={formik.handleBlur} value={formik.values.gender}>
+    <option value="">select</option>
+    <option value="male">Male</option>
+    <option value="female">Female</option>
+    <option value="other">Others</option>
+   </select>
 
- <input type="text" 
+ {/* <input type="text" 
     name="gender" 
     onChange={formik.handleChange}
     onBlur={formik.handleBlur}
     value={formik.values.gender}
-    required/>
+    required/> */}
    
     </div>
 
     <div className='home-from-inputs'>
-    <label>Oxygen saturation  (%)</label>
+    <label>Oxygen saturation  (1%-100%)</label>
     <input 
     type="number"
     name='oxygenSaturation'
@@ -144,7 +156,7 @@ function Home() {
 
 
     <div className='home-from-inputs'>
-    <label>Ejection Fraction (%)</label>
+    <label>Ejection Fraction (1%-100%)</label>
     <input 
     type="number" 
     name='ejectionFraction'
@@ -174,7 +186,7 @@ function Home() {
     </div>
 
     <div className='home-from-inputs'>
-    <label>choresterol</label>
+    <label>choresterol(0-1)</label>
     <input 
     type="number"
     name='cholesterol'
@@ -183,14 +195,14 @@ function Home() {
     value={formik.values.cholesterol}
     required
     max={1}
-    min={0}
+   
     />
     {formik.touched.cholesterol && formik.errors.cholesterol && (<p  className='errors'>{formik.errors.choresterol}</p>)}
     </div>
 
 
     <div className='home-from-inputs'>
-    <label>vsd Size</label>
+    <label>vsd Size(0-1)</label>
     <input 
     type="number"
     name='vsdSize'
@@ -199,7 +211,7 @@ function Home() {
     value={formik.values.vsdSize}
     required
     max={1}
-    min={0}
+    
     />
     {formik.touched.vsdSize && formik.errors.vsdSize && (<p  className='errors'>{formik.errors.vsdSize}</p>)}
     </div>
@@ -207,7 +219,7 @@ function Home() {
     {/* ...................................................... */}
     <div className='form-section1'>
     <div className='home-from-inputs'>
-    <label>height  (Cm)</label>
+    <label>height  (30Cm-250cm)</label>
     <input 
     type="number" 
     name='height'
@@ -222,7 +234,7 @@ function Home() {
     </div>
 
     <div className='home-from-inputs'>
-    <label>heart rate (Bpm)</label>
+    <label>heart rate (10 Bpm-200 Bpm)</label>
     <input 
     type="number"
     name='heartRate'
@@ -237,7 +249,7 @@ function Home() {
     </div>
 
     <div className='home-from-inputs'>
-    <label>Cyanosis</label>
+    <label>Cyanosis(0-1)</label>
     <input 
     type="number"
     name='cyanosis'
@@ -252,7 +264,7 @@ function Home() {
     </div>
 
     <div className='home-from-inputs'>
-    <label>murmur</label>
+    <label>murmur(0-1)</label>
     <input 
     type="number" 
     name='murmur'
@@ -261,13 +273,13 @@ function Home() {
     value={formik.values.murmur}
     required
     max={1}
-    min={0}
+    
     />
     {formik.touched.murmur && formik.errors.murmur && (<p  className='errors'>{formik.errors.murmur}</p>)}
     </div>
 
     <div className='home-from-inputs'>
-    <label>Systolic</label>
+    <label>Systolic(0-259)</label>
     <input 
     type="number"
     name='systolic'
@@ -276,18 +288,18 @@ function Home() {
     value={formik.values.systolic}
     required
     max={259}
-    min={0}
+    min={-1}
 
     />
     {formik.touched.systolic && formik.errors.systolic && (<p  className='errors'>{formik.errors.systolic}</p>)}
     </div>
 
     <div className='home-from-inputs'>
-    <label>Diastoric</label>
+    <label>Diastoric(0-1)</label>
     <input 
     type="number" 
     max={1} 
-    min={0} 
+   min={-1}
     name='diastolic'
     onChange={formik.handleChange}
     onBlur={formik.handleBlur}
@@ -300,11 +312,11 @@ function Home() {
 
 
     <div className='home-from-inputs'>
-    <label>family History</label>
+    <label>family History(0-1)</label>
     <input 
     type="text" 
     max={1} 
-    min={0} 
+  
     name='familyHistory'
     onChange={formik.handleChange}
     onBlur={formik.handleBlur}
