@@ -1,90 +1,51 @@
-import React from "react";
+import React, { useState } from "react";
 import "./Dashboard.css";
-import { Link } from "react-router-dom";
-import { FaHospitalSymbol } from "react-icons/fa";
-import { GoHistory } from "react-icons/go";
-import { BiSolidAmbulance } from "react-icons/bi";
-import { FaHeartbeat } from "react-icons/fa";
-import { FaCircleUser } from "react-icons/fa6";
-import { IoIosNotificationsOutline } from "react-icons/io";
-import { IoMdHelpCircle } from "react-icons/io";
-import { FcStatistics } from "react-icons/fc";
-import { FcAbout } from "react-icons/fc";
+import { Link, useLocation } from "react-router-dom";
 import useUserStore from "../../../Store/userStore";
 
 function Dashboard() {
   const user = useUserStore((state) => state.user);
+  const location = useLocation();
+  const [isDarkMode, setIsDarkMode] = useState(false);
+
   function handleChangeTheme() {
-    const settings = document.getElementById("home");
-    const labelss = document.getElementById("label");
-
-    labelss.classList.toggle("light");
-
-    settings.classList.toggle("dark");
+    setIsDarkMode(!isDarkMode);
+    document.body.classList.toggle("dark"); // Toggle dark mode on body
   }
+
   return (
     <div className="dashboard">
       <ul>
-        <div className="actions">
-          <li>
-            <Link to={"/History"}>History</Link>
-          </li>
-          <GoHistory className="icon" />
-        </div>
-        <div className="actions">
-          <li>
-            <Link to={"/Notifications"}>Notifications 🔔</Link>
-          </li>{" "}
-          <IoIosNotificationsOutline className="icon" />{" "}
-        </div>
-        <div className="actions">
-          <li>
-            <Link to={"/Emergencies"}>Emergencies</Link>
-          </li>{" "}
-          <BiSolidAmbulance className="icon" />{" "}
-        </div>
-        <div className="actions">
-          <li>
-            <Link to={"/HealthCenters"}>Health centers</Link>
-          </li>{" "}
-          <FaHospitalSymbol className="icon" />{" "}
-        </div>
-        <div className="actions">
-          <li>
-            <Link to={"/Help"}>help</Link>
-          </li>{" "}
-          <IoMdHelpCircle className="icon" />
-        </div>
-        <div className="actions">
-          <li>
-            <Link to={"/Statistics"}>statistics</Link>
-          </li>{" "}
-          <FcStatistics className="icon" />{" "}
-        </div>
-        <div className="actions">
-          <li>
-            <Link to={"/Schedules"}>Schedules</Link>
-          </li>{" "}
-          <FaHeartbeat className="icon" />{" "}
-        </div>
-        {user && (
-          <div className="actions">
-            <li>
-              <Link to={`/Profile/${user.id}`}>Manage Account</Link>
-            </li>{" "}
-            <FaCircleUser className="icon" />{" "}
-          </div>
-        )}
-        <div className="actions">
-          <li>
-            <Link to={"/About"}>About</Link>
-          </li>{" "}
-          <FcAbout />{" "}
-        </div>
+        {[
+          { path: "/History", label: "📜 History" },
+          { path: "/Notifications", label: "🔔 Notifications" },
+          { path: "/Emergencies", label: "🚑 Emergencies" },
+          { path: "/HealthCenters", label: "🏥 Health Centers" },
+          { path: "/Help", label: "🆘 Help" },
+          { path: "/Statistics", label: "📊 Statistics" },
+          { path: "/Schedules", label: "📅 Schedules" },
+          { path: "/About", label: "ℹ️ About" },
+          user && { path: `/Profile/${user.id}`, label: "👤 Manage Account" },
+        ]
+          .filter(Boolean)
+          .map((item) => (
+            <div className="actions" key={item.path}>
+              <li>
+                <Link
+                  to={item.path}
+                  className={location.pathname === item.path ? "active" : ""}
+                >
+                  {item.label}
+                </Link>
+              </li>
+            </div>
+          ))}
+
+        {/* Switch Mode Button */}
         <div id="h">
           <li>
             <button onClick={handleChangeTheme}>
-              mode <GoHistory className="icon" />
+              {isDarkMode ? "🌞 Light Mode" : "🌗 Dark Mode"}
             </button>
           </li>
         </div>

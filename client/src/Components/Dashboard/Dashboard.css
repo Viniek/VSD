@@ -4,14 +4,27 @@
   position: relative;
   width: 100%;
   background-color: rgb(220, 224, 224);
-
   margin-bottom: 1rem;
 }
+
+/* Dark mode styling */
+body.dark-mode {
+  background-color: #121212;
+  color: white;
+}
+
+body.dark-mode .dashboard {
+  background-color: #1e1e1e;
+}
+
+/* Hide dashboard on smaller screens */
 @media screen and (max-width: 37.5em) {
   .dashboard {
     display: none;
   }
 }
+
+/* Style for the list */
 .dashboard ul {
   display: flex;
   justify-content: space-evenly;
@@ -20,6 +33,8 @@
   list-style: none;
   flex-wrap: wrap;
 }
+
+/* Default link styles */
 .dashboard a {
   text-decoration: none;
   color: var(--black);
@@ -28,19 +43,56 @@
   font-weight: 700;
   transition: all 400ms ease-out;
 }
-.icon {
-  color: blue;
-  /* display: ; */
-}
+
+/* Hover effect */
 .dashboard a:hover {
   text-decoration: underline;
   color: rgb(8, 134, 156);
 }
 
+/* Active link styling (Skyblue color) */
+.dashboard a.active {
+  color: blue;
+}
+
+/* Dark mode link styling */
+body.dark-mode .dashboard a {
+  color: white;
+}
+
+body.dark-mode .dashboard a.active {
+  color: skyblue;
+}
+
+/* Action container styles */
 .actions {
   display: flex;
   flex-direction: row-reverse;
   justify-content: center;
   align-items: center;
   gap: 1rem;
+}
+
+/* Button styles */
+#h li button {
+  background: none;
+  border: none;
+  font-size: 1rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: color 0.3s ease-in-out;
+}
+
+/* Button hover effect */
+#h li button:hover {
+  color: rgb(8, 134, 156);
+}
+
+/* Dark mode button styling */
+body.dark-mode #h li button {
+  color: white;
+}
+
+body.dark-mode #h li button:hover {
+  color: skyblue;
 }
