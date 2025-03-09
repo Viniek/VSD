@@ -3,7 +3,7 @@ import users from './Routes/users.routes.js'
 import cors from 'cors'
 import cookieParser from "cookie-parser"; 
 import auth from './Middlewares/Auth.js'
-import { CreateHistory } from './Controllers/Hostory.controllers.js'
+import history from "./Routes/History.routes.js"
 const app = express()
 app.use(express.json())
 app.use(cookieParser());
@@ -21,7 +21,7 @@ app.use(
   });
 
 app.use ("/api/users", users)
-app.use("/api/history",auth,CreateHistory)
+app.use("/api/history",auth,history)
 app.listen( process.env.PORT,()=>{
     console.log(`server running on port ${process.env.PORT}`);
     

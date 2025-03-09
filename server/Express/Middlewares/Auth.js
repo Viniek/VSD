@@ -1,8 +1,7 @@
 import jwt from "jsonwebtoken";
 
 export default async function Auth(request, response, next) {
-    console.log("Cookies in request:", request.cookies); // Debugging
-    console.log("🟡 Request Headers:", request.headers); 
+
 
     const token = request.cookies.token; // Extract token from cookies
     // console.log("Extracted Token:", token);

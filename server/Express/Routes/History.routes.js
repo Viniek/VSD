@@ -1,7 +1,8 @@
 import { Router } from 'express' 
-import { CreateHistory } from '../Controllers/Hostory.controllers.js';
-import { Auth } from '../Middlewares/Auth.js';
+import { CreateHistory,getHistory } from '../Controllers/Hostory.controllers.js';
+
 const router = Router()
 router.post("/create",CreateHistory)
+router.get("/getHistory",getHistory)
 
 export default router;
