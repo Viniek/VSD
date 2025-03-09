@@ -122,9 +122,13 @@ export async function loginUser(request, response) {
       const token = jwt.sign(payload, process.env.JWT_SECRET, {
         expiresIn: "24h",
       });
-      response
-        .cookie("token", token)
-        .json({ success: true, data: payload, message: "Log in succesful" });
+      response.cookie("token",token, {
+        httpOnly: true,  // Prevents JavaScript access (security)
+        secure: process.env.NODE_ENV === "production", // Ensures HTTPS in production
+        sameSite: "strict", // Prevents CSRF attacks
+      })
+      .json({ success: true, data: payload, message: "Log in successful" });
+    
     }
   } catch (error) {
     console.log(error.message);

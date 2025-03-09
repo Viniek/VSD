@@ -1,8 +1,12 @@
 import express from 'express'
 import users from './Routes/users.routes.js'
 import cors from 'cors'
+import cookieParser from "cookie-parser"; 
+import auth from './Middlewares/Auth.js'
+import { CreateHistory } from './Controllers/Hostory.controllers.js'
 const app = express()
 app.use(express.json())
+app.use(cookieParser());
 app.use(
     cors({
       origin: ["http://localhost:5173","http://localhost:5174"], // Replace with your frontend URL
@@ -17,6 +21,7 @@ app.use(
   });
 
 app.use ("/api/users", users)
+app.use("/api/history",auth,CreateHistory)
 app.listen( process.env.PORT,()=>{
     console.log(`server running on port ${process.env.PORT}`);
     
