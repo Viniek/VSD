@@ -4,6 +4,7 @@
   background-color: rgb(161, 162, 163);
   width: 14%;
   height: 80vh;
+  position: relative;
 }
 .ScheduleDashboard ul {
   list-style: none;
@@ -14,4 +15,45 @@
   color: var(--black);
   font-weight: 700;
   text-transform: capitalize;
+}
+.schedulePage {
+  display: flex;
+  flex-direction: row;
+
+  gap: 4rem;
+}
+.bookAppointmentForm{
+  width: 80%;
+  }
+.bookAppointmentForm h1{
+  background-color: rgb(91, 91, 156);
+  margin-bottom: 2rem;
+  padding:.5rem;
+}
+.bookAppointmentInput {
+  background-color: skyblue;
+  border-left: rgb(91, 91, 156) solid 6px;
+  padding-left:.4rem;
+}
+.bookAppointmentInput select{
+  background-color: skyblue;
+  border:none;
+  color: rgb(91, 91, 156);
+  margin-bottom:2rem;
+}
+.bookAppointmentInput button{
+  padding:.5rem 1rem;
+ 
+  background-color: rgb(91, 91, 156);
+}
+.dateOfAppointment{
+  background-color: skyblue;  
+  border-left: 6px solid rgb(91, 91, 156) ;
+  padding-left:.4rem;
+}
+.dateOfAppointment input{
+  background-color: skyblue;
+  border:none;
+  color: rgb(91, 91, 156);
+  margin-bottom:2rem;  
 }
