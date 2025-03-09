@@ -2,7 +2,7 @@ import jwt from "jsonwebtoken";
 
 export default async function Auth(request, response, next) {
 
-
+    
     const token = request.cookies.token; // Extract token from cookies
     // console.log("Extracted Token:", token);
 

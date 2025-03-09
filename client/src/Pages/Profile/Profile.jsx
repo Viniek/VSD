@@ -24,6 +24,8 @@ function Profile() {
   const { userid } = useParams();
   useEffect(() => {
     const getUser = async () => {
+      console.log(document.cookie);
+
       try {
         setError(null);
         setLoading(true);
@@ -59,6 +61,7 @@ function Profile() {
       const response = await axios.patch(
         `${api_url}api/users/update/${userid}`,
         values,
+        {withCredentials:true}
       );
       console.log("patch response", response.data.success);
 

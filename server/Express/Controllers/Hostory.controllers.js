@@ -72,7 +72,7 @@ export async function CreateHistory(request, response) {
 }
 
 export async function getHistory(request, response) {
-    const userId = request.user?.id; // Extract the logged-in user's ID
+    const userId = request.user?.id;
 
     if (!userId) {
         return response.status(401).json({ success: false, message: "Unauthorized: No user found in token!" });

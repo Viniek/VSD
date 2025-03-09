@@ -124,7 +124,7 @@ export async function loginUser(request, response) {
       });
       response.cookie("token",token, {
         httpOnly: true,  // Prevents JavaScript access (security)
-        secure: process.env.NODE_ENV === "production", // Ensures HTTPS in production
+        // secure: process.env.NODE_ENV === "production", // Ensures HTTPS in production
         sameSite: "strict", // Prevents CSRF attacks
       })
       .json({ success: true, data: payload, message: "Log in successful" });
@@ -139,6 +139,11 @@ export async function loginUser(request, response) {
 }
 
 export async function updateUser(request, response) {
+  const userLoggedIn = request.user
+  
+  // console.log(userLoggedIn);
+  
+  if(!userLoggedIn)return response.status(401).json({success:false,message:"You are not allowed to perform this Operation"})
   const {
     firstname,
     lastname,
@@ -152,7 +157,9 @@ export async function updateUser(request, response) {
     next_of_kin_phone,
   } = request.body;
   const { id } = request.params;
+
   try {
+    if(!userLoggedIn)return response.status(401).json({success:false,message:"You are not allowed to perform this Operation"})
     const user = await prisma.users.findUnique({ where: { id: id } });
     if (!user) {
       return response
@@ -202,6 +209,8 @@ export async function logOutUser(request, response) {
 
 export async function getUser(request, response) {
   const { id } = request.params;
+  const userLoggedIn = request.user
+  if(!userLoggedIn)return response.status(401).json({success:false,message:"You are not allowed to perform this Operation"})
   try {
     const user = await prisma.users.findUnique({
       where: { id: id },
