@@ -71,21 +71,28 @@ export async function CreateHistory(request, response) {
     }
 }
 
-export async function getHistory(request,response){
-    const id =request.user?.id
+export async function getHistory(request, response) {
+    const userId = request.user?.id; // Extract the logged-in user's ID
+
+    if (!userId) {
+        return response.status(401).json({ success: false, message: "Unauthorized: No user found in token!" });
+    }
+
     try {
         const history = await prisma.history.findMany({
-            where:{id}
-            
-        })
-        
-        
-        if(!history){return response.status(404).json({success:false, message:"no history found"})}
-        console.log(history,"history");
-        
-        response.status(200).json({success:true,data:history})
+            where: { userId }, // Ensure we're filtering by userId
+        });
+
+        if (history.length === 0) {
+            return response.status(404).json({ success: false, message: "No history records found" });
+        }
+
+        console.log(history, "history");
+
+        response.status(200).json({ success: true, data: history });
     } catch (error) {
-        console.log(error.message);
-        return response.status(500).json({success:false,message:"Internal server error"})
+        console.log("Error fetching history:", error.message);
+        return response.status(500).json({ success: false, message: "Internal server error" });
     }
 }
+
