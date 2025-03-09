@@ -14,7 +14,7 @@ datasource db {
 }
 
 model users {
-id String @default(uuid()) @unique
+id String @id @default(uuid()) @unique
 firstname String
 lastname String
 email String @unique
@@ -25,4 +25,19 @@ password String
 phone String @unique
 next_of_kin String?
 next_of_kin_phone String?
+history history []
 }
+
+model history{
+  id String @id @default(uuid()) @unique
+  user users @relation(fields: [userId], references: [id])
+  userId  String  @default(uuid())
+  testResult Json
+  testDate   DateTime @default(now()) 
+  factors    Json 
+  
+}
+
+
+
+       
