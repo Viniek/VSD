@@ -9,16 +9,21 @@
   flex-direction: column;
   align-items: center;
 }
-.hospitalsNearMe{
+.hospitalsNearYou{
   width:100%;
 }
-.hospitalsNearMe button{
+.hospitalsNearYou {
   padding:1rem;
   background-color:var(--skyblue);
   width:100%;
   font-weight: 800;
+  font-size: smaller;
   text-transform: uppercase;
 margin-bottom: 2rem;
+align-items: center;
+justify-content: center;
+display: flex;
+background-image: linear-gradient(to right,skyblue, rgb(222, 231, 231));
 }
 .centers-container {
   display: flex;

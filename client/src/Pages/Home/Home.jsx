@@ -281,7 +281,7 @@ function Home() {
                     required
                     max={1}
                     min={0}
-                  />
+cd client                  />
                   {formik.touched.cyanosis && formik.errors.cyanosis && (
                     <p className="errors">{formik.errors.cyanosis}</p>
                   )}
