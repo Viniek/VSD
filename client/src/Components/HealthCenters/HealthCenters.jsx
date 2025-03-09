@@ -1,10 +1,11 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./HealthCenters.css";
 import img1 from "../../assets/img1.jpg";
 import { BiSolidAmbulance } from "react-icons/bi";
 import { Link } from "react-router-dom";
 import axios from "axios";
 import { api_key } from "../../../utills/config";
+import Loader from "../Loader/Loader";
 
 // Haversine formula to calculate distance between two lat/lon points
 const haversineDistance = (lat1, lon1, lat2, lon2) => {
@@ -25,7 +26,7 @@ const haversineDistance = (lat1, lon1, lat2, lon2) => {
 function HealthCenters() {
   const [userLocation, setUserLocation] = useState(null);
   const [address, setAddress] = useState("");
-  const [loading, setLoading] = useState(false);
+  const [loading, setLoading] = useState(true); // Set loading initially to true
   const [error, setError] = useState(null);
   const [nearbyCenters, setNearbyCenters] = useState([]);
 
@@ -86,34 +87,40 @@ function HealthCenters() {
     );
   };
 
+  useEffect(() => {
+    fetchLocation();
+  }, []);
+
   return (
+    <>
+    { nearbyCenters && <div className="hospitalsNearYou"><h1>Health Centers Near You</h1></div>}
     <div className="health-center-section" id="home">
+    
       <section className="health-center-section2">
-        <div className="hospitalsNearMe">
-          <button type="button" onClick={fetchLocation}>
-            Hospitals Near Me!
-          </button>
-        </div>
-
-        {loading && <p>Loading your location...</p>}
-
-        {error && <p className="error">{error}</p>}
-
-        <div className="centers-container">
-          {nearbyCenters.length > 0 ? (
-            nearbyCenters.map((center, index) => (
-              <div key={index} className="center-wrapper">
-                <img src={center.img} alt="" />
-                <p className="center-title">{center.title}</p>
-                <p>{center.description}</p>
-              </div>
-            ))
-          ) : (
-            <p>No hospitals found nearby within 10 km.</p>
-          )}
-        </div>
+        {loading ? (
+          <Loader loading={loading} type="Oval" color="blue" size={80} />
+        ) : error ? (
+          <p className="error">{error}</p>
+        ) : (
+          
+          <div className="centers-container">
+            
+            {nearbyCenters.length > 0 ? (
+              nearbyCenters.map((center, index) => (
+                <div key={index} className="center-wrapper">
+                  <img src={center.img} alt="" />
+                  <p className="center-title">{center.title}</p>
+                  <p>{center.description}</p>
+                </div>
+              ))
+            ) : (
+              <p>No nearby health centers found.</p>
+            )}
+          </div>
+        )}
       </section>
     </div>
+    </>
   );
 }
 
