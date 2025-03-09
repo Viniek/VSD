@@ -49,13 +49,13 @@ function HealthCenters() {
         try {
           // Fetch human-readable address using Nominatim API (can be replaced with Geoapify)
           const response = await axios.get(
-            `https://nominatim.openstreetmap.org/reverse?lat=${latitude}&lon=${longitude}&format=json`
+            `https://nominatim.openstreetmap.org/reverse?lat=${latitude}&lon=${longitude}&format=json`,
           );
           setAddress(response.data.display_name);
 
           // Fetch hospitals using Geoapify API
           const hospitalResponse = await axios.get(
-            `https://api.geoapify.com/v2/places?categories=healthcare.hospital&lat=${latitude}&lon=${longitude}&apiKey=${api_key}`
+            `https://api.geoapify.com/v2/places?categories=healthcare.hospital&lat=${latitude}&lon=${longitude}&apiKey=${api_key}`,
           );
 
           // Filter hospitals that are within 10 km of the user's location
@@ -83,7 +83,7 @@ function HealthCenters() {
       (error) => {
         setError(`Error getting location: ${error.message}`);
         setLoading(false);
-      }
+      },
     );
   };
 
@@ -93,33 +93,34 @@ function HealthCenters() {
 
   return (
     <>
-    { nearbyCenters && <div className="hospitalsNearYou"><h1>Health Centers Near You</h1></div>}
-    <div className="health-center-section" id="home">
-    
-      <section className="health-center-section2">
-        {loading ? (
-          <Loader loading={loading} type="Oval" color="blue" size={80} />
-        ) : error ? (
-          <p className="error">{error}</p>
-        ) : (
-          
-          <div className="centers-container">
-            
-            {nearbyCenters.length > 0 ? (
-              nearbyCenters.map((center, index) => (
-                <div key={index} className="center-wrapper">
-                  <img src={center.img} alt="" />
-                  <p className="center-title">{center.title}</p>
-                  <p>{center.description}</p>
-                </div>
-              ))
-            ) : (
-              <p>No nearby health centers found.</p>
-            )}
-          </div>
-        )}
-      </section>
-    </div>
+      {nearbyCenters && (
+        <div className="hospitalsNearYou">
+          <h1>Health Centers Near You</h1>
+        </div>
+      )}
+      <div className="health-center-section" id="home">
+        <section className="health-center-section2">
+          {loading ? (
+            <Loader loading={loading} type="Oval" color="blue" size={80} />
+          ) : error ? (
+            <p className="error">{error}</p>
+          ) : (
+            <div className="centers-container">
+              {nearbyCenters.length > 0 ? (
+                nearbyCenters.map((center, index) => (
+                  <div key={index} className="center-wrapper">
+                    <img src={center.img} alt="" />
+                    <p className="center-title">{center.title}</p>
+                    <p>{center.description}</p>
+                  </div>
+                ))
+              ) : (
+                <p>No nearby health centers found.</p>
+              )}
+            </div>
+          )}
+        </section>
+      </div>
     </>
   );
 }
