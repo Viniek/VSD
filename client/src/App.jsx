@@ -24,6 +24,7 @@ import Emergencies from "./Components/Emergencies/Emergencies";
 import Notifications from "./Components/Notifications/Notifications";
 import History from "./Components/History/History";
 import Dashboard from "./Components/Dashboard/Dashboard";
+import ScheduleDashboard from "./Components/ScheduleDashboard/ScheduleDashboard";
 import Protected from "./Components/Protected/Protected";
 // use protected routes
 function App() {
@@ -139,6 +140,17 @@ function App() {
             </Protected>
           }
         />
+
+<Route path="/ScheduleDashboard" element={<ScheduleDashboard/>} />
+        <Route
+          path="/ScheduleDashboard"
+          element={
+            <Protected>
+              <ScheduleDashboard />
+            </Protected>
+          }
+        />
+
       </Routes>
     </BrowserRouter>
   );
