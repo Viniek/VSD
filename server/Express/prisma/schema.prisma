@@ -26,6 +26,7 @@ phone String @unique
 next_of_kin String?
 next_of_kin_phone String?
 history history []
+schedule schedule []
 }
 
 model history{
@@ -36,6 +37,14 @@ model history{
   testDate   DateTime @default(now()) 
   factors    Json 
   
+}
+
+model schedule{
+  id String @id @default(uuid()) @unique
+  user users @relation(fields: [userid],references: [id])
+  userid String @default(uuid())
+  hospital String 
+  date String
 }
 
 
