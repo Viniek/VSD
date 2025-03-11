@@ -39,7 +39,7 @@ function ScheduleDashboard() {
           {appointment.map((item) => (
             <div key={item.id} className="appointment-card">              
               <div className="appointment-info">
-                <h2>{item.userid}</h2>
+                {/* <h2>{item.userid}</h2> */}
                 <p><strong>Hospital:</strong> {item.hospital}</p>
                 <p><strong>Date:</strong> {item.date}</p>
                 <div className="appointment-image">
