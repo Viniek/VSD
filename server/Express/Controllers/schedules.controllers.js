@@ -84,6 +84,7 @@ export const updateAppointment = async (req, res) => {
     }
 
    
+    
     const updatedAppointment = await prisma.schedule.update({
       where: { id },
       data: { hospital, date },
