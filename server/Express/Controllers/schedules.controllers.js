@@ -60,3 +60,38 @@ export const getApppointment= async (req,res)=>{
         return res.status(500).json({success:false,message:"Internal Server Error"})
     }
 }
+
+export const updateAppointment = async (req, res) => {
+  const { id } = req.params; 
+  const { hospital, date } = req.body; 
+  const userid = req.user?.id; 
+
+  if (!userid) {
+    return res.status(401).json({ success: false, message: "Unauthorized: User not found" });
+  }
+
+  try {
+    const appointment = await prisma.schedule.findUnique({
+      where: { id },
+    });
+
+    if (!appointment) {
+      return res.status(404).json({ success: false, message: "Appointment not found" });
+    }
+
+    if (appointment.userid !== userid) {
+      return res.status(403).json({ success: false, message: "Forbidden: You cannot update this appointment" });
+    }
+
+   
+    const updatedAppointment = await prisma.schedule.update({
+      where: { id },
+      data: { hospital, date },
+    });
+
+    return res.status(200).json({ success: true, data: updatedAppointment });
+  } catch (error) {
+    console.error("Error updating Appointment:", error.message);
+    return res.status(500).json({ success: false, message: "Internal server error!" });
+  }
+};
