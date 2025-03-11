@@ -82,8 +82,8 @@ function ScheduleDashboard() {
                 <div className="appointment-image">
                   <img src={hospital} alt="Hospital" />
                 </div>
-                <button className="explore-btn" onClick={() => handleExplore(item)}>
-                  Explore
+                <button className="appointmentUpdateBtn" onClick={() => handleExplore(item)}>
+                  Edit
                 </button>
               </div>
             </div>
