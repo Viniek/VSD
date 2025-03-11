@@ -73,7 +73,7 @@
   font-weight: 600;
 }
 
-.explore-btn {
+.appointmentUpdateBtn {
   background: #c28b8b;
   color: white;
   border: none;
@@ -84,7 +84,7 @@
   margin-top: 10px;
 }
 
-.explore-btn:hover {
+.appointmentUpdateBtn:hover {
   background: #a36a6a;
 }
 .floating-card {
