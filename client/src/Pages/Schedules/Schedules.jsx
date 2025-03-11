@@ -3,6 +3,10 @@ import "./Schedules.css";
 import { useFormik } from "formik";
 import { useNavigate } from "react-router-dom"; // Import useNavigate
 import useUserStore from "../../../Store/userStore";
+import axios from "axios";
+import { api_url } from "../../../utills/config";
+import { validate } from "../../../../server/Express/Middlewares/validateUser";
+
 
 function Schedules() {
   const navigate = useNavigate(); // Initialize useNavigate
@@ -10,6 +14,8 @@ function Schedules() {
   const handleViewAppointments = () => {
     navigate("/ScheduleDashboard"); 
   };
+
+
 
   const hospitals = [
     "Aga Khan University Hospital",
@@ -67,7 +73,7 @@ function Schedules() {
   ];
 
   const user = useUserStore((state) => state.user);
-  console.log(user);
+  // console.log(user);
 
   // Formik initialization with validation
   const formik = useFormik({
@@ -85,10 +91,20 @@ function Schedules() {
       }
       return errors;
     },
-    onSubmit: (values) => {
+    onSubmit: async(values) => {
       console.log("Form Submitted: ", values);
-      const details_section = document.getElementById("details-of-booking");
+      const  details_section = document.getElementById("details-of-booking");
       details_section.style.display = "block";
+      try{
+        const data={
+         date: String(values.dateOfAppointment),
+         hospital:values.hospital
+        }
+        const res = await axios.post(`${api_url}api/appointment/bookAppointment`,data,{withCredentials:true});
+console.log(res);
+      }catch(error){
+        console.log(error.message);
+      }
     },
   });
 
