@@ -9,9 +9,11 @@ function ScheduleDashboard() {
   const [appointments, setAppointments] = useState([]);
   const [selectedAppointment, setSelectedAppointment] = useState(null);
   const [editData, setEditData] = useState({ hospital: "", date: "" });
+  const [hospitals, setHospitals] = useState([]);
 
   useEffect(() => {
     handleGetAppointments();
+    fetchHospitals();
   }, []);
 
   // Fetch Appointments
@@ -29,6 +31,65 @@ function ScheduleDashboard() {
     } finally {
       setLoading(false);
     }
+  };
+
+  // Fetch Hospital List
+  const fetchHospitals = async () => {
+    const hospitalList = [
+      "Aga Khan University Hospital",
+    "Nairobi Hospital",
+    "Kenya National Hospital",
+    "Kenya Medical Research Institute",
+    "Kenyatta National Hospital",
+    "MP Shah Hospital",
+    "Coptic Hospital",
+    "Mater Misericordiae Hospital",
+    "Mombasa Hospital",
+    "Nyanza Provincial Hospital",
+    "Kisumu District Hospital",
+    "Nakuru Provincial Hospital",
+    "Eldoret Hospital",
+    "Kabras Health Center",
+    "Eldama Ravine Hospital",
+    "Embu Level 5 Hospital",
+    "Thika Level 5 Hospital",
+    "Kitale District Hospital",
+    "Kisii Teaching and Referral Hospital",
+    "Kajiado Referral Hospital",
+    "Mombasa County Referral Hospital",
+    "Nakuru County Referral Hospital",
+    "Machakos Level 5 Hospital",
+    "Meru Teaching and Referral Hospital",
+    "Bomet County Referral Hospital",
+    "Bungoma County Referral Hospital",
+    "Bomet District Hospital",
+    "Chuka General Hospital",
+    "County Referral Hospital",
+    "Nyeri Provincial Hospital",
+    "Vihiga District Hospital",
+    "Isiolo Referral Hospital",
+    "Kericho District Hospital",
+    "Kirinyaga County Referral Hospital",
+    "Kisumu City Hospital",
+    "Lamu County Referral Hospital",
+    "Lodwar Hospital",
+    "Mandera County Referral Hospital",
+    "Marsabit County Referral Hospital",
+    "Nakuru Town Hospital",
+    "Nyeri Teaching and Referral Hospital",
+    "PCEA Kikuyu Hospital",
+    "Pumwani Maternity Hospital",
+    "Ruiru Level 5 Hospital",
+    "St. Francis Community Hospital",
+    "St. Joseph’s Mission Hospital",
+    "St. Mary's Mission Hospital",
+    "Thika District Hospital",
+    "Voi District Hospital",
+    "Webuye County Referral Hospital",
+    "Wote District Hospital",
+    "Zambezi Mission Hospital",
+    ];
+    setHospitals(hospitalList);
   };
 
   // Handle Explore Click
@@ -98,27 +159,20 @@ function ScheduleDashboard() {
         <div className="floating-card">
           <h2>Edit Appointment</h2>
           <label>Hospital:</label>
-          <input
-            type="text"
-            name="hospital"
-            value={editData.hospital}
-            onChange={handleChange}
-          />
+          <select name="hospital" value={editData.hospital} onChange={handleChange}>
+            <option value="">Select Hospital</option>
+            {hospitals.map((hospital, index) => (
+              <option key={index} value={hospital}>
+                {hospital}
+              </option>
+            ))}
+          </select>
 
           <label>Date:</label>
-          <input
-            type="date"
-            name="date"
-            value={editData.date}
-            onChange={handleChange}
-          />
+          <input type="date" name="date" value={editData.date} onChange={handleChange} />
 
-          <button className="save-btn" onClick={handleEditAppointment}>
-            Save Changes
-          </button>
-          <button className="close-btn" onClick={() => setSelectedAppointment(null)}>
-            Close
-          </button>
+          <button className="save-btn" onClick={handleEditAppointment}>Save Changes</button>
+          <button className="close-btn" onClick={() => setSelectedAppointment(null)}>Close</button>
         </div>
       )}
     </section>
