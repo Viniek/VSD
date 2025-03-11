@@ -6,6 +6,7 @@ import useUserStore from "../../../Store/userStore";
 import axios from "axios";
 import { api_url } from "../../../utills/config";
 import { validate } from "../../../../server/Express/Middlewares/validateUser";
+import "./Schedules.css"
 
 
 function Schedules() {

@@ -1,12 +1,88 @@
-.ScheduleDashboard {
+.schedulePage {
+  text-align: center;
+  padding: 2rem;
+  background-image: linear-gradient(rgb(99,80,99)30%,#e6a3c5 70%);
+}
+
+.schedulePage h1 {
+  font-size: 2rem;
+  /* color: #5e415e; */
+}
+
+.loading {
+  font-size: 1.2rem;
+  color: #333;
+}
+
+.appointment-container {
   display: flex;
-  flex-direction: column;
-  background-color: rgb(188, 191, 194);
-  width: 20%;
-  padding: 1rem;
-  padding-top: 2rem;
-  height: 80vh;
-  position: fixed;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 20px;
+  padding: 20px;
+}
+
+.appointment-card {
+  background: #fff;
+  border-radius: 16px;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  width: 300px;
+  text-align: center;
+  transition: transform 0.3s;
+}
+
+.appointment-card:hover {
+  transform: translateY(-5px);
+}
+
+.appointment-image {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%; 
+  border: 3px solid #a36a6a; 
+  overflow: hidden; 
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: auto; 
+}
+
+.appointment-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; 
+  border-radius: 50%; 
+}
+
+
+.appointment-info {
+  padding: 1.5rem;
+}
+
+.appointment-info h2 {
+  font-size: 1.5rem;
+  color: #333;
+  margin-bottom: 10px;
+}
+
+.appointment-info p {
+  color: #555;
+  font-size: 1rem;
+  margin-bottom: 5px;
+}
+
+.explore-btn {
+  background: #c28b8b;
   color: white;
-  justify-content: left;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 20px;
+  cursor: pointer;
+  font-size: 1rem;
+  margin-top: 10px;
+}
+
+.explore-btn:hover {
+  background: #a36a6a;
 }
