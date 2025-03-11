@@ -97,7 +97,7 @@ function Schedules() {
       details_section.style.display = "block";
       try{
         const data={
-         date: String(values.date),
+         date: String(values.dateOfAppointment),
          hospital:values.hospital
         }
         const res = await axios.post(`${api_url}api/appointment/bookAppointment`,data,{withCredentials:true});
