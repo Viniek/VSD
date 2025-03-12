@@ -1,8 +1,16 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import './Home.css';
+import { useNavigate } from 'react-router-dom';
 
 const Home = () => {
+
+  const navigate=useNavigate();
+  const handleEmergency=()=>{
+    navigate("/Emergencies");
+  }
+
+
   const [formData, setFormData] = useState({
     age: '',
     gender: '',
@@ -118,7 +126,7 @@ const Home = () => {
       <div className="action-btns">
         <button className="clear">Clear</button>
         <button className="save">Save</button>
-        <button className="emergency">Call Emergency</button>
+        <button className="emergency" type="button" onClick={handleEmergency}>Call Emergency</button>
       </div>
     </div>
   );
