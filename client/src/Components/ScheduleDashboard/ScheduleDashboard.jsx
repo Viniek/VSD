@@ -114,8 +114,8 @@ function ScheduleDashboard() {
         { withCredentials: true }
       );
       if (res.data.success) {
-        setSelectedAppointment(null); // Close floating card
-        handleGetAppointments(); // Refresh list
+        setSelectedAppointment(null); 
+        handleGetAppointments(); 
       }
     } catch (error) {
       console.log(error.message);

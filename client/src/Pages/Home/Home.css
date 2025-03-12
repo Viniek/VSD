@@ -12,23 +12,11 @@
   font-family: cursive;
 }
 
-.home-heading span {
-  color: var(--skyblue);
-}
 .home-section {
   display: flex;
-  flex-direction: row-reverse;
+  flex-direction: row;
   justify-content: center;
   margin: 0 1rem;
-}
-@media screen and (max-width: 53.5em) {
-  .home-section {
-    display: flex;
-    flex-direction: column-reverse;
-    justify-content: center;
-    align-items: center;
-    width: 100%;
-  }
 }
 
 .result-area {
@@ -38,60 +26,56 @@
   color: var(--black);
   padding: 1rem;
 }
-
-.home-form-section {
-  width: 50%;
-  border: black solid 1px;
-  margin-right: 1rem;
-}
-
-@media screen and (max-width: 53.5em) {
-  .result-area,
-  .home-form-section {
-    width: 100%;
-    align-items: center;
-    justify-content: center;
-    margin: 1rem;
-  }
-}
-
-.results {
+.results p  {
   display: flex;
   flex-direction: column;
   gap: 1rem;
   border-bottom: 2px dashed;
   padding: 1rem;
 }
-.titles {
-  font-size: 2rem;
-  font-weight: 600;
-  text-decoration: underline;
+.results strong{
+text-decoration: underline;
+font-weight: 800;
+font-size:2rem;
+}
+.home-form-section {
+  width: 50%;
+  border: black solid 1px;
+  padding: 1rem;
 }
 
-.home-form-section form {
+
+.form-columns {
   display: flex;
   justify-content: space-between;
-  padding: 2px;
-  /* background-color: red;   */
 }
-@media screen and (max-width: 53.5em) {
-  .home-form-section form {
-    gap: 1rem;
-    width: 100%;
-  }
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  width: 48%;
+  
 }
-@media screen and (max-width: 27em) {
-  .home-form-section form {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-  }
+
+.form-group label {
+  font-weight: 600;
+  margin-top: 0.5rem;
+}
+
+.form-group input,
+.form-group select {
+  padding: 0.9rem;
+  font-size: 1.2rem;
+  font-weight:600;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  width: 100%;
 }
 
 .home-form-inputs-button {
   margin-top: 1rem;
 }
+
 .home-form-inputs-button button {
   width: 100%;
   padding: 0.8rem;
@@ -99,36 +83,13 @@
   background-color: var(--skyblue);
   font-weight: 600;
   margin-bottom: 1rem;
+  cursor: pointer;
 }
+
 .home-form-inputs-button button:hover {
   background-color: aqua;
 }
-.form-section1 {
-  display: flex;
-  flex-direction: column;
-  width: 100%;
-  margin-left: 2rem;
-  margin-right: 2rem;
-}
-@media screen and (max-width: 53.5em) {
-  .form-section1 {
-    margin: 0;
-  }
-}
-.form-section1 label {
-  font-weight: 800;
-  text-transform: capitalize;
-}
-.home-from-inputs {
-  display: flex;
-  flex-direction: column;
-}
-.home-from-inputs input {
-  padding: 0.6rem;
-}
-select {
-  padding: 0.7rem;
-}
+
 .action-btns {
   display: flex;
   justify-content: space-around;
@@ -136,6 +97,7 @@ select {
   padding: 1rem;
   border-top: solid var(--black) 1px;
 }
+
 .action-btns button {
   padding: 1rem;
   width: 20%;
