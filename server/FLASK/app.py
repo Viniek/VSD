@@ -12,6 +12,17 @@ vsd_model = pickle.load(open("vsd_model.pkl", "rb"))
 severity_model = pickle.load(open("severity_model.pkl", "rb"))
 condition_model = pickle.load(open("condition_model.pkl", "rb"))
 
+# Function to determine treatment recommendation
+def get_treatment_recommendation(condition, severity):
+    if condition == "Tetralogy of Fallot":
+        return "Surgical repair is recommended."
+    elif condition == "Ventricular Septal Defect" and severity == "Mild":
+        return "Regular monitoring; surgery may not be necessary."
+    elif condition == "Ventricular Septal Defect" and severity == "Severe":
+        return "Surgical intervention required."
+    else:
+        return "Consult a cardiologist for a detailed evaluation."
+
 # Function to make predictions
 def make_prediction(data):
     # Remove "cholesterol" from the data if it wasn't in the training data
@@ -31,8 +42,8 @@ def make_prediction(data):
         "murmur": "Murmur",
         "systolic": "Systolic",
         "diastolic": "Diastolic",
-        "vsdSize": "VSD Size (mm)",  # Added VSD Size
-        "familyHistory": "Family History"  # Added Family History
+        "vsdSize": "VSD Size (mm)",
+        "familyHistory": "Family History"
     }
 
     # Convert received data to DataFrame
@@ -40,6 +51,9 @@ def make_prediction(data):
 
     # Rename columns to match the training data
     df.rename(columns=column_mapping, inplace=True)
+
+    # Encode Gender as a numeric value (Male -> 1, Female -> 0)
+    df["Gender"] = df["Gender"].map({"Male": 1, "Female": 0})
 
     # Ensure columns are in the correct order expected by the model
     expected_columns = [
@@ -59,10 +73,14 @@ def make_prediction(data):
     # Predict Other Condition
     condition_pred = condition_model.predict(df)[0]
 
+    # Get Treatment Recommendation
+    treatment = get_treatment_recommendation(condition_pred, severity_pred)
+
     return {
         "vsd_status": vsd_status,
         "severity": severity_pred,
-        "condition": condition_pred
+        "condition": condition_pred,
+        "treatment": treatment  # Include treatment recommendation in response
     }
 
 # API Endpoint to receive patient data
