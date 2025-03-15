@@ -9,6 +9,7 @@ import UI from "../../assets/UI.png"
 import email from "../../assets/email.png"
 import phone from "../../assets/phone.png"
 import linkedin from "../../assets/linkedIn.webp"
+import github from "../../assets/github.png"
 
 function About() {
   return <>
