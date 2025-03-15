@@ -1,16 +1,18 @@
 import React from "react";
 import "./About.css";
-import heart from "../../assets/Heart.webp"
+import heart from "../../assets/heart1.webp"
 import detection from "../../assets/heartDetect.png"
 import recomend from "../../assets/recommend.png"
 import integrate from "../../assets/integrate.png"
 import notification from "../../assets/notification.png"
 import UI from "../../assets/UI.png"
+import email from "../../assets/email.png"
 
 
 function About() {
   return <>
   <mainSection className="aboutPage">
+    {/* section functions */}
     <section className="aboutLeft">
     <h1>Medical Medicine learning AI</h1>
 <div className="aboutIntroduction"></div>
@@ -26,8 +28,20 @@ function About() {
     </ul>
 </div>
     </section>
+
+    {/* section image */}
     <section className="aboutCenter"><img src={heart} alt="heart"/></section>
-    <section className="aboutRight"></section>
+   
+   
+   {/* section Contacts */}
+    <section className="aboutRight">
+      <ul className="aboutContacts">
+        <li><h2>Email</h2>njerivictory52@gmail.com</li>
+        <li><h2>Phone</h2>+254743209259</li>
+        <li><h2>LinkedIn</h2> https://www.linkedin.com/in/victory-njeri-b0a359308/ </li>
+        <li><h2>Github</h2>https://github.com/viniek </li>
+      </ul>
+    </section>
   </mainSection>
   </>;
 }
