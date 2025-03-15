@@ -126,7 +126,7 @@ function ScheduleDashboard() {
 
   return (
     <section className="schedulePage">
-      <h1>Your Appointments</h1>
+      <h1 className="appointment-title-heading">Your Appointments</h1>
       {loading ? (
         <p className="loading">Loading...</p>
       ) : appointments.length > 0 ? (

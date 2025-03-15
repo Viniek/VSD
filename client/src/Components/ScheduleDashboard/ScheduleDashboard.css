@@ -3,11 +3,14 @@
 flex-direction: column;
   text-align: center;
   padding: 2rem;
+  background-color: rgb(188, 191, 194);
  }
 
 .schedulePage h1 {
   font-size: 2rem;
-  /* color: #5e415e; */
+  border-bottom: solid var(--black);
+  width: 100%;
+
 }
 
 .loading {
@@ -19,6 +22,7 @@ flex-direction: column;
   display: flex;
   flex-direction: column;
   width: 100%;
+  
 /* background-color: red; */
 } 
 

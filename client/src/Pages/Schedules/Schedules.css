@@ -3,16 +3,17 @@
     flex-direction: row;
     justify-content: space-between;
     background-color: rgb(247, 247, 247);
+    
 }
 .book-Appointment-Form-section{
     display: flex;
     flex-direction: column;
     background-color:rgb(226, 235, 236);
-    /* justify-content: center; */
     width: 80%;
-    /* background-color: yellow; */
+   
     padding: 3rem;
-    padding-top: 0rem;
+    padding-top: 2rem;
+    height: 100vh;
     margin: 2rem;
 }
 .book-Appointment-Form-section h1{
