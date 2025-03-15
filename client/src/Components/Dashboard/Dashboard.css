@@ -1,21 +1,14 @@
 .dashboard {
   display: block;
-  padding: 1rem;
   position: relative;
+  padding: 1rem;
   width: 100%;
   background-color: rgb(220, 224, 224);
   margin-bottom: 1rem;
 }
 
-/* Dark mode styling */
-body.dark-mode {
-  background-color: #121212;
-  color: white;
-}
 
-body.dark-mode .dashboard {
-  background-color: #1e1e1e;
-}
+
 
 /* Hide dashboard on smaller screens */
 @media screen and (max-width: 37.5em) {
@@ -74,25 +67,12 @@ body.dark-mode .dashboard a.active {
 }
 
 /* Button styles */
-#h li button {
+#h li{
   background: none;
   border: none;
-  font-size: 1rem;
   font-weight: bold;
   cursor: pointer;
   transition: color 0.3s ease-in-out;
 }
 
-/* Button hover effect */
-#h li button:hover {
-  color: rgb(8, 134, 156);
-}
 
-/* Dark mode button styling */
-body.dark-mode #h li button {
-  color: white;
-}
-
-body.dark-mode #h li button:hover {
-  color: skyblue;
-}

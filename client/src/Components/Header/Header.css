@@ -54,6 +54,7 @@ background-color: rgb(204, 89, 89);
 padding-left:1rem ;
 padding-right: 1rem;
 border-radius: 8px;
+cursor: pointer;
 }
 .open {
   display: none;
