@@ -1,8 +1,9 @@
 .schedulePage {
+  display: flex;
+flex-direction: column;
   text-align: center;
   padding: 2rem;
-  background-image: linear-gradient(rgb(99,80,99)30%, skyblue 70%);
-}
+ }
 
 .schedulePage h1 {
   font-size: 2rem;
@@ -16,44 +17,23 @@
 
 .appointment-container {
   display: flex;
-  justify-content: center;
-  flex-wrap: wrap;
-  gap: 20px;
-  padding: 20px;
-}
+  flex-direction: column;
+  width: 100%;
+/* background-color: red; */
+} 
 
 .appointment-card {
-  background: #fff;
-  border-radius: 16px;
-  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
-  overflow: hidden;
-  width: 300px;
-  text-align: center;
-  transition: transform 0.3s;
+  display: flex;
+  border-bottom: 10px solid;
+
+  width: 100%;
+   transition: transform 0.3s;
 }
 
 .appointment-card:hover {
-  transform: translateY(-5px);
+  /* transform: translateY(-5px); */
 }
 
-.appointment-image {
-  width: 120px;
-  height: 120px;
-  border-radius: 50%; 
-  border: 3px solid #a36a6a; 
-  overflow: hidden; 
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin: auto; 
-}
-
-.appointment-image img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover; 
-  border-radius: 50%; 
-}
 
 
 .appointment-info {
@@ -87,20 +67,32 @@
 .appointmentUpdateBtn:hover {
   background: #a36a6a;
 }
+.appointment-delete-btn{
+  background: #cf4343;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 20px;
+  cursor: pointer;
+  font-size: 1rem;
+  margin-top: 10px;
+  margin-left: 10px;
+  text-transform: capitalize;
+}
 .floating-card {
   position: fixed;
   top: 50%;
-  left: 50%;
+  left: 10%;
   transform: translate(-50%, -50%);
   background:skyblue;
   padding: 20px;
   box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
   border-radius: 8px;
   z-index: 1000;
-  width: 300px;
+  width: 20%;
 }
 
-.floating-card input {
+.floating-card input,select {
   width: 100%;
   padding: 8px;
   margin: 5px 0;
