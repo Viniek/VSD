@@ -5,7 +5,7 @@
     /* background-image: url("../../assets/Heart.webp");
   background-size: cover;
   background-position: center; */
-    gap:30rem;
+   
 }
 .aboutLeft{
     background-color: rgb(53,119,147);
@@ -34,4 +34,10 @@ align-items: center;
     justify-content: center;
     align-items: center;
     padding:2rem;
+}
+
+.aboutCenter img{
+ height:70rem;
+   width:100%;
+   
 }
