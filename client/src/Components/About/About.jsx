@@ -20,7 +20,7 @@ function About() {
 <div className="aboutIntroduction"></div>
 {/* <p>VSD (Ventricular Septal Defect) is a congenital heart condition characterized by a hole in the heart's septum. This project aims to help in detecting VSD and other heart conditions using machine learning, recommending treatment options, and integrating an emergency response system.</p> */}
   <div className="features">
-  <h1>Functions</h1>
+  <h1>WHAT WE DO?</h1>
     <ul className="functionsList">      
 <li><img src={detection}/><h2>Detection</h2> Uses machine learning to analyze patient data.</li>
 <li><img src={recomend}/><h2>Treatment</h2>Provides suggested treatments based on condition severity.</li>
@@ -37,11 +37,13 @@ function About() {
    
    {/* section Contacts */}
     <section className="aboutRight">
+      <h1>CONTACT US TODAY</h1>
       <ul className="aboutContacts">
         <li><img src={email}/><h2>Email</h2>njerivictory52@gmail.com</li>
         <li><img src={phone}/><h2>Phone</h2>+254743209259</li>
-        <li><img src={linkedin}/><h2>LinkedIn</h2> https://www.linkedin.com/in/victory-njeri-b0a359308/ </li>
         <li><img src={github}/><h2>Github</h2>https://github.com/viniek </li>
+        <li><img src={linkedin}/><h2>LinkedIn</h2> https://www.linkedin.com/in/victory-njeri-b0a359308/ </li>
+       
       </ul>
     </section>
   </mainSection>
