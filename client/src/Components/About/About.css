@@ -6,8 +6,8 @@
    
 }
 .aboutLeft{
-    background-color: rgb(53,119,147);
-    color:rgb(189,224,233);
+    background-color: var(--skyblue);
+    color:var(--black);
     
 }
 .aboutLeft img{
@@ -39,10 +39,11 @@ align-items: center;
    
 }
 .aboutRight{
-    background-color: rgb(250,225,99);
+    background-color: var(--grey);
     display:flex;
     flex-direction: column;
     align-items: center;
+    color: var(--white);
 }
 
 .aboutContacts{
