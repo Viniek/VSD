@@ -1,0 +1,37 @@
+.aboutPage{
+    display:flex;
+    flex-direction: column;
+    border-right: 1rem rgb(92,91,91) solid;
+    /* background-image: url("../../assets/Heart.webp");
+  background-size: cover;
+  background-position: center; */
+    gap:30rem;
+}
+.aboutLeft{
+    background-color: rgb(53,119,147);
+    color:rgb(189,224,233);
+    
+}
+.aboutLeft img{
+    width:5rem;
+    
+}
+.features{
+display: flex;
+flex-direction: column;
+align-items: center;
+}
+.features ul{
+    display:flex;
+    flex-direction: row;
+   padding:1rem;
+    gap:3rem;
+    list-style-type: none;
+}
+.functionsList li{
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding:2rem;
+}
