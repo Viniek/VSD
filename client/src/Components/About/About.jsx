@@ -7,7 +7,7 @@ import integrate from "../../assets/integrate.png"
 import notification from "../../assets/notification.png"
 import UI from "../../assets/UI.png"
 import email from "../../assets/email.png"
-
+import phone from "../../assets/phone.png"
 
 function About() {
   return <>
