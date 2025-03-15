@@ -7,16 +7,22 @@ import axios from "axios";
 import { api_url } from "../../../utills/config";
 import { validate } from "../../../../server/Express/Middlewares/validateUser";
 import "./Schedules.css"
+import { useState } from "react";
+import ScheduleDashboard from "../../Components/ScheduleDashboard/ScheduleDashboard";
 
 
 function Schedules() {
-  const navigate = useNavigate(); // Initialize useNavigate
+  // const navigate = useNavigate(); // Initialize useNavigate
+
+  // const handleViewAppointments = () => {
+  //   navigate("/ScheduleDashboard"); 
+  // };
+
+  const [showDashboard, setShowDashboard] = useState(false); 
 
   const handleViewAppointments = () => {
-    navigate("/ScheduleDashboard"); 
+    setShowDashboard(true); 
   };
-
-
 
   const hospitals = [
     "Aga Khan University Hospital",
@@ -109,6 +115,8 @@ console.log(res);
     },
   });
 
+  
+
   return (
     <div className="schedule-section">
       <div>
@@ -116,6 +124,18 @@ console.log(res);
           View Appointments
         </button>
       </div>
+
+     <div className="contentContainer">
+
+     {showDashboard && (
+        <div className="schedule-dashboard-container">
+          <ScheduleDashboard />
+        </div>
+      )}
+     </div>
+
+
+
 
       <div className="book-Appointment-Form-section">
         <h1>Book An Appointment</h1>
