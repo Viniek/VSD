@@ -38,7 +38,7 @@ font-size:2rem;
   width: 50%;
   border: none;
   padding: 1rem;
-  background-color:  rgb(92,91,91);
+  background-color:  var(--white);
 }
 
 
@@ -58,37 +58,26 @@ font-size:2rem;
   flex-direction: column;
   width: 48%;
 }
-
-.form-group1 label {
+.form-group1 label,
+.form-group2 label
+ {
   font-weight: 600;
-  margin-top: .7rem;
+  color: black;
 }
-.form-group2 label{
-  font-weight: 600;
-  margin-top: 0.5rem;
-}
-
 .form-group1 input,
-.form-group1 select {
-  padding: .5rem;
-
-  font-weight:600;
-
-  border-radius: 5px;
-  width: 100%;
-}
+.form-group1 select,
 .form-group2 input,
-.form-group2 select {
-  padding: 0.5rem;
-  /* font-size: 1.2rem; */
+.form-group2 select
+{
+  padding: .5rem;
   font-weight:600;
-  border-radius: 5px;
-  width: 100%;
+   width: 100%;
+  border: solid var(--grey) 1px;
 }
+
 .home-form-inputs-button {
-  /* margin-top: 1rem; */
-  width:50%;
- margin-left: 50%;
+  width:100%;
+  margin-top: .5rem;
 }
 
 .home-form-inputs-button button {
