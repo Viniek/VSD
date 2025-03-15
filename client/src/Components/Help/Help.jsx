@@ -7,15 +7,11 @@ import schedule from '../../assets/img7.webp'
 import "./Help.css";
 
 function Help() {
-  const [loading, setLoading] = useState(true);
-  function handleViewSocials(){
-    const view = document.getElementById("help-socials")
-     view.style.display='flex'
-  }
-  function handleCloseSocials(){
-        const view = document.getElementById("help-socials")
-     view.style.display='none'
-  }
+ function handleSendMessage(e){
+e.preventDefault()
+alert("Question sent.")
+ }
+
 const helpArray = [
   {
     id:1,
@@ -79,6 +75,12 @@ console.log("help array",helpArray);
     <p>How does emergency work?</p>
     <p>are my credentials secure?</p>
     <p>what is vsd size</p>
+  </div>
+
+  <div className="question-section">
+    <h1>Have specific question? </h1>
+    <textarea name="" id="" placeholder="Write your question here.."></textarea>
+    <button onClick={handleSendMessage}>Send question</button>
   </div>
 </div>
     </div>

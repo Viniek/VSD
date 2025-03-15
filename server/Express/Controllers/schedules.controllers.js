@@ -5,7 +5,7 @@ const prisma = new PrismaClient();
 
 export const createAppointment = async (req, res) => {
   const { hospital, date } = req.body;
-console.log(req.body);
+// console.log(req.body);
   const userid = req.user?.id; 
 
   if (!userid) {
