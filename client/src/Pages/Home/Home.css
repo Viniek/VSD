@@ -2,12 +2,9 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
-  margin-top: 10rem;
+  margin-top: var(--top);
   
 }
-
-
-
 .home-section {
   display: flex;
   flex-direction: row;
@@ -17,7 +14,7 @@
 
 .result-area {
   width: 50%;
-  border-left: var(--black) dashed 10px;
+  border-left: var(--skyblue) dashed 3px;
   background-color: rgb(204, 221, 223);
   color: var(--black);
   padding: 1rem;
