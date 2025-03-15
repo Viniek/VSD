@@ -1,6 +1,7 @@
 .schedule-section{
     display: flex;
     flex-direction: row;
+    margin-top: var(--top);
     justify-content: space-between;
     background-color: rgb(247, 247, 247);
     

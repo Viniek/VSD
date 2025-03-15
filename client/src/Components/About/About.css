@@ -2,9 +2,7 @@
     display:flex;
     flex-direction: column;
     border-right: 1rem rgb(92,91,91) solid;
-    /* background-image: url("../../assets/Heart.webp");
-  background-size: cover;
-  background-position: center; */
+    margin-top: var(--top);
    
 }
 .aboutLeft{

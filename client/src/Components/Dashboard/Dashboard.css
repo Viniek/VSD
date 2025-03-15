@@ -1,6 +1,7 @@
 .dashboard {
   display: block;
-  position: relative;
+  position: fixed;
+  top: 5%;
   padding: 1rem;
   width: 100%;
   background-color: rgb(220, 224, 224);
