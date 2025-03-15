@@ -1,11 +1,9 @@
 .app-header {
   display: flex;
-  padding-left: 20px;
-  padding-right: 20px;
   justify-content: space-between;
-  /* margin-top: 3px; */
+  align-items: center;
+  padding: .5rem 2rem;
   background-color: var(--grey);
-  padding: 2rem;
   color: var(--white);
 }
 @media screen and (max-width: 37.5em) {
@@ -24,6 +22,10 @@
   color: rgb(0, 217, 255);
   text-transform: capitalize;
 }
+.welcome-message{
+  text-transform: capitalize;
+  font-family: sans-serif;
+}
 .actionss {
   display: flex;
   flex-direction: row-reverse;
@@ -39,23 +41,26 @@
 }
 .app-header ul {
   display: flex;
-  justify-content: flex-end;
-  list-style: none;
+  justify-content: center;
+  align-items: center;
+  list-style: none;  
   gap: 5rem;
   text-transform: capitalize;
   font-weight: 600;
 }
 .logout-btn {
-  padding-left: 1rem;
-  padding-right: 1rem;
-  background-color: rgb(218, 81, 81);
-  color: white;
+display: flex;
+background-color: rgb(204, 89, 89);
+padding-left:1rem ;
+padding-right: 1rem;
+border-radius: 8px;
 }
 .open {
   display: none;
 }
 .nav-list1 li {
   list-style: none;
+  
   margin-bottom: 2.5rem;
   border-bottom: var(--white) 1px solid;
   width: 100%;

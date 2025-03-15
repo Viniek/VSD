@@ -10,6 +10,7 @@ import email from "../../assets/email.png"
 import phone from "../../assets/phone.png"
 import linkedin from "../../assets/linkedIn.webp"
 import github from "../../assets/github.png"
+import twitter from "../../assets/x.png"
 
 function About() {
   return <>
@@ -20,11 +21,11 @@ function About() {
 <div className="aboutIntroduction"></div>
 {/* <p>VSD (Ventricular Septal Defect) is a congenital heart condition characterized by a hole in the heart's septum. This project aims to help in detecting VSD and other heart conditions using machine learning, recommending treatment options, and integrating an emergency response system.</p> */}
   <div className="features">
-  <h1>WHAT WE DO?</h1>
+  <h1>WHAT WE OFFER?</h1>
     <ul className="functionsList">      
-<li><img src={detection}/><h2>Detection</h2> Uses machine learning to analyze patient data.</li>
-<li><img src={recomend}/><h2>Treatment</h2>Provides suggested treatments based on condition severity.</li>
-<li><img src={integrate}/> <h2>Emergencies </h2>Connects to emergency services when required.</li>
+<li><img src={detection}/><h2>Detection</h2> Uses machine learning algorithms to analyze patient health data.</li>
+<li><img src={recomend}/><h2>Treatment</h2>Provides suggested treatments based on condition severity levels.</li>
+<li><img src={integrate}/> <h2>Emergencies </h2>Connects to emergency services for immediate medical assistance.</li>
 <li> <img src={notification}/><h2>Notifications</h2> Users receive real-time notifications for bookings and account updates.</li>
 <li><img src={UI}/> <h2>Interactive UI</h2> Built with React.js and Flask for seamless user experience.</li>
     </ul>
@@ -42,6 +43,7 @@ function About() {
         <li><img src={email}/><h2>Email</h2>njerivictory52@gmail.com</li>
         <li><img src={phone}/><h2>Phone</h2>+254743209259</li>
         <li><img src={github}/><h2>Github</h2>https://github.com/viniek </li>
+        <li><img src={twitter}/><h2>Twitter(X)</h2>https://github.com/viniek</li>
         <li><img src={linkedin}/><h2>LinkedIn</h2> https://www.linkedin.com/in/victory-njeri-b0a359308/ </li>
        
       </ul>
