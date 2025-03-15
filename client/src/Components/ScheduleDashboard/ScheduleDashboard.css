@@ -21,7 +21,10 @@ flex-direction: column;
 .appointment-container {
   display: flex;
   flex-direction: column;
-  width: 100%;
+  /* width: 15%; */
+  /* position: fixed;
+  top: var(--top);
+  scroll-behavior: smooth; */
   
 /* background-color: red; */
 } 
@@ -32,10 +35,6 @@ flex-direction: column;
 
   width: 100%;
    transition: transform 0.3s;
-}
-
-.appointment-card:hover {
-  /* transform: translateY(-5px); */
 }
 
 

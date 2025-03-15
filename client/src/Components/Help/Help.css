@@ -1,5 +1,84 @@
  .help-page {
   margin-top: var(--top);
 }
+.help-section{
+  display: flex;
+  justify-content: space-around;
+  width: 100%;
+  flex-wrap: wrap;
+}
+.help-wrapper{
+  width: 20%;
+  background-color: rgb(220, 224, 224);
+  padding: 1rem;
+  position: relative;
+  margin: 2.5rem 1rem ;
+  border-radius: 10px;
+}
+.helpsvg{
+width: 100%;
+display: flex;
+justify-content: center;
+align-items: center;
+}
+.help-heading{
+  margin-top: 5rem;
+  text-transform: capitalize;
+  display: flex;
+  justify-content: center;
+  font-weight: 600;
+  margin-bottom: 1rem;
+}
+.help-wrapper img{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 30%;
+  border: solid var(--skyblue);
+  border-radius: 50%;
+  position: absolute;
+  
+}
+.helpActions{
+  display: flex;
+  justify-content: center;
+  margin-top: 1rem;
+  gap: 3%;
+}
+.helpActions button{
+  width: 40%;
+  border-radius: 10px;
+}
+.view-help-btn{
+  background-color: orange;
+  text-transform: capitalize;
+  font-weight: 600;
+  cursor: pointer;
+}
+.message-button{
+  background-color: var(--skyblue);
+  text-transform: capitalize;
+  font-weight: 600;
+  cursor: pointer;
+}
+.help-socials{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10%;
+border-top: solid black 1px;
 
-
+  padding-top: 1rem;
+  
+}
+.help-socials button{
+  display: flex;
+  font-size: 1.5rem;
+  align-items: center;
+  justify-content: center;
+  border: 10px;
+  /* color: var(--skyblue); */
+  padding: 0;
+  height: 100%;
+  bottom: 0;
+}

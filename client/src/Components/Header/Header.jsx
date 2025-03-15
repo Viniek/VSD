@@ -55,7 +55,7 @@ function Header(icon) {
             <Link to={"/Home"}>Home</Link>
           </li>
           <li>
-            <Link to={"/Records"}>My Records</Link>
+            <Link to={"/History"}>My Records</Link>
           </li>
           {user && (
             <li>
