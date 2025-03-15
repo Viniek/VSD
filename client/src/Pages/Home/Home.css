@@ -42,7 +42,7 @@ font-size:2rem;
   width: 50%;
   border: black solid 1px;
   padding: 1rem;
- 
+  background-color:  rgb(92,91,91);
 }
 
 
@@ -51,20 +51,38 @@ font-size:2rem;
   justify-content: space-between;
 }
 
-.form-group {
+.form-group1 {
   display: flex;
   flex-direction: column;
   width: 48%;
   
 }
+.form-group2{
+  display: flex;
+  flex-direction: column;
+  width: 48%;
+}
 
-.form-group label {
+.form-group1 label {
+  font-weight: 600;
+  margin-top: .7rem;
+}
+.form-group2 label{
   font-weight: 600;
   margin-top: 0.5rem;
 }
 
-.form-group input,
-.form-group select {
+.form-group1 input,
+.form-group1 select {
+  padding: 1rem;
+  font-size: 1.2rem;
+  font-weight:600;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  width: 100%;
+}
+.form-group2 input,
+.form-group2 select {
   padding: 0.9rem;
   font-size: 1.2rem;
   font-weight:600;
@@ -72,9 +90,10 @@ font-size:2rem;
   border-radius: 5px;
   width: 100%;
 }
-
 .home-form-inputs-button {
   margin-top: 1rem;
+  width:50%;
+ margin-left: 50%;
 }
 
 .home-form-inputs-button button {
@@ -90,7 +109,10 @@ font-size:2rem;
 .home-form-inputs-button button:hover {
   background-color: aqua;
 }
-
+.form-columns{
+  /* background-color: rgb(92,91,91); */
+  color:white;
+}
 .action-btns {
   display: flex;
   justify-content: space-around;
