@@ -4,12 +4,11 @@ import './Home.css';
 import { useNavigate } from 'react-router-dom';
 
 const Home = () => {
+  const navigate = useNavigate();
 
-  const navigate=useNavigate();
-  const handleEmergency=()=>{
+  const handleEmergency = () => {
     navigate("/Emergencies");
-  }
-
+  };
 
   const [formData, setFormData] = useState({
     age: '',
@@ -31,7 +30,15 @@ const Home = () => {
   const [result, setResult] = useState(null);
 
   const handleChange = (e) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value });
+    const { name, value } = e.target;
+
+   
+    const convertedValue =
+      ["cyanosis", "murmur", "familyHistory", "cholesterol", "vsdSize"].includes(name) 
+        ? value === "Yes" ? 1 : 0
+        : value;
+
+    setFormData({ ...formData, [name]: convertedValue });
   };
 
   const handleSubmit = async (e) => {
@@ -46,13 +53,12 @@ const Home = () => {
 
   return (
     <div className="home">
-      <h1 className="home-heading">Ventricular Septal Defect Analysis System</h1>
+      {/* <h1 className="home-heading">Ventricular Septal Defect Analysis System</h1> */}
       <div className="home-section">
         <div className="home-form-section">
           <form onSubmit={handleSubmit}>
             <div className="form-columns">
-              {/* Left Side Inputs */}
-              <div className="form-group">
+              <div className="form-group1">
                 <label>Age</label>
                 <input type="number" name="age" value={formData.age} onChange={handleChange} required />
 
@@ -72,23 +78,34 @@ const Home = () => {
                 <label>Weight (Kg)</label>
                 <input type="number" name="weight" value={formData.weight} onChange={handleChange} required />
 
-                <label>Cholesterol (0-1)</label>
-                <input type="number" name="cholesterol" value={formData.cholesterol} onChange={handleChange} required />
+                <label>Cholesterol</label>
+                <select name="cholesterol" value={formData.cholesterol ? "Yes" : "No"} onChange={handleChange} required>
+                  <option value="">Select</option>
+                  <option value="No">No</option>
+                  <option value="Yes">Yes</option>
+                </select>
 
                 <label>Height (cm)</label>
                 <input type="number" name="height" value={formData.height} onChange={handleChange} required />
               </div>
 
-              {/* Right Side Inputs */}
-              <div className="form-group">
+              <div className="form-group2">
                 <label>Heart Rate (Bpm)</label>
                 <input type="number" name="heartRate" value={formData.heartRate} onChange={handleChange} required />
 
-                <label>Cyanosis (0-1)</label>
-                <input type="number" name="cyanosis" value={formData.cyanosis} onChange={handleChange} required />
+                <label>Cyanosis</label>
+                <select name="cyanosis" value={formData.cyanosis ? "Yes" : "No"} onChange={handleChange} required>
+                  <option value="">Select</option>
+                  <option value="No">No</option>
+                  <option value="Yes">Yes</option>
+                </select>
 
-                <label>Murmur (0-1)</label>
-                <input type="number" name="murmur" value={formData.murmur} onChange={handleChange} required />
+                <label>Murmur</label>
+                <select name="murmur" value={formData.murmur ? "Yes" : "No"} onChange={handleChange} required>
+                  <option value="">Select</option>
+                  <option value="No">No</option>
+                  <option value="Yes">Yes</option>
+                </select>
 
                 <label>Systolic (mmHg)</label>
                 <input type="number" name="systolic" value={formData.systolic} onChange={handleChange} required />
@@ -96,11 +113,19 @@ const Home = () => {
                 <label>Diastolic (mmHg)</label>
                 <input type="number" name="diastolic" value={formData.diastolic} onChange={handleChange} required />
 
-                <label>VSD Size (0-1)</label>
-                <input type="number" name="vsdSize" value={formData.vsdSize} onChange={handleChange} required />
+                <label>VSD Size</label>
+                <select name="vsdSize" value={formData.vsdSize ? "Yes" : "No"} onChange={handleChange} required>
+                  <option value="">Select</option>
+                  <option value="No">No</option>
+                  <option value="Yes">Yes</option>
+                </select>
 
-                <label>Family History (0-1)</label>
-                <input type="number" name="familyHistory" value={formData.familyHistory} onChange={handleChange} required />
+                <label>Family History</label>
+                <select name="familyHistory" value={formData.familyHistory ? "Yes" : "No"} onChange={handleChange} required>
+                  <option value="">Select</option>
+                  <option value="No">No</option>
+                  <option value="Yes">Yes</option>
+                </select>
               </div>
             </div>
 
