@@ -14,20 +14,22 @@ datasource db {
 }
 
 model users {
-id String @id @default(uuid()) @unique
-firstname String
-lastname String
-email String @unique
-gender String
-disability String
-maritual_status String @default("single")
-password String
-phone String @unique
-next_of_kin String?
-next_of_kin_phone String?
-history history []
-schedule schedule []
+  id String @id @default(uuid()) @unique
+  firstname String
+  lastname String
+  email String @unique
+  gender String
+  disability String
+  maritual_status String @default("single")
+  password String
+  phone String @unique
+  next_of_kin String?
+  next_of_kin_phone String?
+  history history []
+  schedule schedule []
+  notifications Notification[]  // Add this line
 }
+
 
 model history{
   id String @id @default(uuid()) @unique
@@ -45,6 +47,14 @@ model schedule{
   userid String @default(uuid())
   hospital String 
   date String
+}
+model Notification {
+  id        String  @id @default(uuid()) @unique
+  user      users   @relation(fields: [userid], references: [id])
+  userid    String
+  message   String
+  createdAt DateTime @default(now())
+  read      Boolean @default(false)
 }
 
 

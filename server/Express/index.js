@@ -5,6 +5,7 @@ import cookieParser from "cookie-parser";
 import auth from './Middlewares/Auth.js'
 import history from "./Routes/History.routes.js"
 import appointment from "./Routes/appointment.routes.js"
+// import notifications from "./Routes/notifications.routes.js"
 
 const app = express()
 app.use(express.json())
@@ -26,6 +27,7 @@ app.use(
 app.use ("/api/users", users)
 app.use("/api/history",auth,history)
 app.use("/api/appointment",auth,appointment)
+// app.use("/api/notifications",notifications)
 
 app.listen( process.env.PORT,()=>{
     console.log(`server running on port ${process.env.PORT}`);
