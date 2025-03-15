@@ -2,15 +2,9 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
-  background-size: cover;
 }
 
-.home-heading {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-family: cursive;
-}
+
 
 .home-section {
   display: flex;
@@ -21,7 +15,7 @@
 
 .result-area {
   width: 50%;
-  border: var(--black) dashed 2px;
+  border-left: var(--black) dashed 10px;
   background-color: rgb(204, 221, 223);
   color: var(--black);
   padding: 1rem;
@@ -40,7 +34,7 @@ font-size:2rem;
 }
 .home-form-section {
   width: 50%;
-  border: black solid 1px;
+  border: none;
   padding: 1rem;
   background-color:  rgb(92,91,91);
 }
@@ -74,24 +68,23 @@ font-size:2rem;
 
 .form-group1 input,
 .form-group1 select {
-  padding: 1rem;
-  font-size: 1.2rem;
+  padding: .5rem;
+
   font-weight:600;
-  border: 1px solid #ccc;
+
   border-radius: 5px;
   width: 100%;
 }
 .form-group2 input,
 .form-group2 select {
-  padding: 0.9rem;
-  font-size: 1.2rem;
+  padding: 0.5rem;
+  /* font-size: 1.2rem; */
   font-weight:600;
-  border: 1px solid #ccc;
   border-radius: 5px;
   width: 100%;
 }
 .home-form-inputs-button {
-  margin-top: 1rem;
+  /* margin-top: 1rem; */
   width:50%;
  margin-left: 50%;
 }
@@ -110,9 +103,8 @@ font-size:2rem;
   background-color: aqua;
 }
 .form-columns{
-  /* background-color: rgb(92,91,91); */
   color:white;
-}
+} 
 .action-btns {
   display: flex;
   justify-content: space-around;
@@ -122,7 +114,7 @@ font-size:2rem;
 }
 
 .action-btns button {
-  padding: 1rem;
+  padding: .9rem;
   width: 20%;
   text-transform: capitalize;
   font-weight: 800;
@@ -135,6 +127,7 @@ font-size:2rem;
 }
 .save {
   background-color: green;
+  color: var(--white);
 }
 .save:hover {
   background-color: rgb(138, 209, 138);
