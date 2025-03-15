@@ -43,11 +43,15 @@ align-items: center;
 }
 .aboutRight{
     background-color: rgb(250,225,99);
+    display:flex;
+    flex-direction: column;
+    align-items: center;
 }
+
 .aboutContacts{
     display:flex;
     flex-direction: row;
-    gap:6rem;
+    gap:10rem;
     padding:5rem;
     align-items: center;
     justify-content: space-around;
