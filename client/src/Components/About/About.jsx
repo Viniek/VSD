@@ -8,6 +8,7 @@ import notification from "../../assets/notification.png"
 import UI from "../../assets/UI.png"
 import email from "../../assets/email.png"
 import phone from "../../assets/phone.png"
+import linkedin from "../../assets/linkedIn.webp"
 
 function About() {
   return <>
