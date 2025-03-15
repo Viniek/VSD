@@ -1,6 +1,6 @@
 import React from "react";
 import "./About.css";
-import heart from "../../assets/heart1.webp"
+import heart from "../../assets/heart2.webp"
 import detection from "../../assets/heartDetect.png"
 import recomend from "../../assets/recommend.png"
 import integrate from "../../assets/integrate.png"
