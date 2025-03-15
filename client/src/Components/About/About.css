@@ -41,3 +41,17 @@ align-items: center;
    width:100%;
    
 }
+.aboutRight{
+    background-color: rgb(250,225,99);
+}
+.aboutContacts{
+    display:flex;
+    flex-direction: row;
+    gap:6rem;
+    padding:5rem;
+    align-items: center;
+    justify-content: space-around;
+}
+.aboutRight ul{
+    list-style-type: none;
+}

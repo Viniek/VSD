@@ -9,6 +9,7 @@ import UI from "../../assets/UI.png"
 import email from "../../assets/email.png"
 import phone from "../../assets/phone.png"
 import linkedin from "../../assets/linkedIn.webp"
+import github from "../../assets/github.png"
 
 function About() {
   return <>
@@ -37,10 +38,10 @@ function About() {
    {/* section Contacts */}
     <section className="aboutRight">
       <ul className="aboutContacts">
-        <li><h2>Email</h2>njerivictory52@gmail.com</li>
-        <li><h2>Phone</h2>+254743209259</li>
-        <li><h2>LinkedIn</h2> https://www.linkedin.com/in/victory-njeri-b0a359308/ </li>
-        <li><h2>Github</h2>https://github.com/viniek </li>
+        <li><img src={email}/><h2>Email</h2>njerivictory52@gmail.com</li>
+        <li><img src={phone}/><h2>Phone</h2>+254743209259</li>
+        <li><img src={linkedin}/><h2>LinkedIn</h2> https://www.linkedin.com/in/victory-njeri-b0a359308/ </li>
+        <li><img src={github}/><h2>Github</h2>https://github.com/viniek </li>
       </ul>
     </section>
   </mainSection>
