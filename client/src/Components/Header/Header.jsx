@@ -29,7 +29,7 @@ function Header(icon) {
 
     settings.classList.toggle("dark");
   }
- 
+
   const handleLogout = () => {
     changeUserInformation(null);
     clearUser();
@@ -62,7 +62,9 @@ function Header(icon) {
               <Link to={`/Profile/${user.id}`}>my account</Link>
             </li>
           )}
-<li onClick={handleLogout} className="logout-btn">Logout</li>
+          <li onClick={handleLogout} className="logout-btn">
+            Logout
+          </li>
         </ul>
       </nav>
 

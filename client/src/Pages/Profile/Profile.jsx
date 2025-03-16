@@ -61,7 +61,7 @@ function Profile() {
       const response = await axios.patch(
         `${api_url}api/users/update/${userid}`,
         values,
-        {withCredentials:true}
+        { withCredentials: true },
       );
       console.log("patch response", response.data.success);
 

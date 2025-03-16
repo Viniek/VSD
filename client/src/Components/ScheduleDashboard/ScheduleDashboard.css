@@ -1,16 +1,15 @@
 .schedulePage {
   display: flex;
-flex-direction: column;
+  flex-direction: column;
   text-align: center;
   padding: 2rem;
   background-color: rgb(188, 191, 194);
- }
+}
 
 .schedulePage h1 {
   font-size: 2rem;
   border-bottom: solid var(--black);
   width: 100%;
-
 }
 
 .loading {
@@ -25,19 +24,17 @@ flex-direction: column;
   /* position: fixed;
   top: var(--top);
   scroll-behavior: smooth; */
-  
-/* background-color: red; */
-} 
+
+  /* background-color: red; */
+}
 
 .appointment-card {
   display: flex;
   border-bottom: 10px solid;
 
   width: 100%;
-   transition: transform 0.3s;
+  transition: transform 0.3s;
 }
-
-
 
 .appointment-info {
   padding: 1.5rem;
@@ -70,7 +67,7 @@ flex-direction: column;
 .appointmentUpdateBtn:hover {
   background: #a36a6a;
 }
-.appointment-delete-btn{
+.appointment-delete-btn {
   background: #cf4343;
   color: white;
   border: none;
@@ -87,7 +84,7 @@ flex-direction: column;
   top: 50%;
   left: 10%;
   transform: translate(-50%, -50%);
-  background:skyblue;
+  background: skyblue;
   padding: 20px;
   box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
   border-radius: 8px;
@@ -95,7 +92,8 @@ flex-direction: column;
   width: 18%;
 }
 
-.floating-card input,select {
+.floating-card input,
+select {
   width: 100%;
   padding: 8px;
   margin: 5px 0;
@@ -122,6 +120,6 @@ flex-direction: column;
   width: 100%;
   margin-top: 10px;
 }
-.floating-card h2{
-color:black;
+.floating-card h2 {
+  color: black;
 }

@@ -1,67 +1,63 @@
-.aboutPage{
-    display:flex;
-    flex-direction: column;
-    border-right: 1rem rgb(92,91,91) solid;
-    margin-top: var(--top);
-   
+.aboutPage {
+  display: flex;
+  flex-direction: column;
+  border-right: 1rem rgb(92, 91, 91) solid;
+  margin-top: var(--top);
 }
-.aboutLeft{
-    background-color: var(--skyblue);
-    color:var(--black);
-    
+.aboutLeft {
+  background-color: var(--skyblue);
+  color: var(--black);
 }
-.aboutLeft img{
-    width:5rem;
-    
+.aboutLeft img {
+  width: 5rem;
 }
-.features{
-display: flex;
-flex-direction: column;
-align-items: center;
+.features {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
-.features ul{
-    display:flex;
-    flex-direction: row;
-    gap:3rem;
-    list-style-type: none;
+.features ul {
+  display: flex;
+  flex-direction: row;
+  gap: 3rem;
+  list-style-type: none;
 }
-.functionsList li{
-    display:flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    padding:2rem;
+.functionsList li {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 2rem;
 }
 
-.aboutCenter img{
- height:70rem;
-   width:100%;
-   
+.aboutCenter img {
+  height: 70rem;
+  width: 100%;
 }
-.aboutRight{
-    background-color: var(--grey);
-    display:flex;
-    flex-direction: column;
-    align-items: center;
-    color: var(--white);
+.aboutRight {
+  background-color: var(--grey);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: var(--white);
 }
 
-.aboutContacts{
-    display:flex;
-    flex-direction: row;
-    gap:10rem;
-    padding:5rem;
-    align-items: center;
-    justify-content: center;
+.aboutContacts {
+  display: flex;
+  flex-direction: row;
+  gap: 10rem;
+  padding: 5rem;
+  align-items: center;
+  justify-content: center;
 }
-.aboutRight ul{
-    list-style-type: none;
+.aboutRight ul {
+  list-style-type: none;
 }
-.aboutRight img{
-    width:5rem;
+.aboutRight img {
+  width: 5rem;
 }
-.aboutContacts li{
-display:flex;
-flex-direction: column;
-align-items: center;
+.aboutContacts li {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }

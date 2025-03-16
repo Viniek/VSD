@@ -1,29 +1,29 @@
- .help-page {
+.help-page {
   margin-top: 12rem;
   /* z-index: 0; */
-  
 }
-.help-section{
+.help-section {
   display: flex;
   justify-content: space-around;
   width: 100%;
   flex-wrap: wrap;
 }
-.help-wrapper{
+.help-wrapper {
   width: 20%;
   background-color: rgb(220, 224, 224);
   padding: 1rem;
   position: relative;
-  margin: 2.5rem 1rem ;
+  margin: 2.5rem 1rem;
   border-radius: 10px;
+  border: outset var(--skyblue);
 }
-.helpsvg{
-width: 100%;
-display: flex;
-justify-content: center;
-align-items: center;
+.helpsvg {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
-.help-heading{
+.help-heading {
   margin-top: 5rem;
   text-transform: capitalize;
   display: flex;
@@ -31,7 +31,7 @@ align-items: center;
   font-weight: 600;
   margin-bottom: 1rem;
 }
-.help-wrapper img{
+.help-wrapper img {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -39,41 +39,40 @@ align-items: center;
   border: solid var(--skyblue);
   border-radius: 50%;
   position: absolute;
-  
+
 }
-.helpActions{
+.helpActions {
   display: flex;
   justify-content: center;
   margin-top: 1rem;
   gap: 3%;
 }
-.helpActions button{
+.helpActions button {
   width: 40%;
   border-radius: 10px;
 }
-.view-help-btn{
+.view-help-btn {
   background-color: orange;
   text-transform: capitalize;
   font-weight: 600;
   cursor: pointer;
 }
-.message-button{
+.message-button {
   background-color: var(--skyblue);
   text-transform: capitalize;
   font-weight: 600;
   cursor: pointer;
 }
-.help-socials{
+.help-socials {
   display: flex;
   justify-content: center;
   align-items: center;
   gap: 10%;
-border-top: solid black 1px;
+  border-top: solid black 1px;
 
   padding-top: 1rem;
-  
 }
-.help-socials button{
+.help-socials button {
   display: flex;
   font-size: 1.5rem;
   align-items: center;
@@ -83,33 +82,33 @@ border-top: solid black 1px;
   height: 100%;
   bottom: 0;
 }
-.faq-section{
+.faq-section {
   display: flex;
   margin: 1rem;
 
   gap: 10%;
 }
-.faq-section p:hover{
-/* border-bottom: solid 1px; */
-color: blue;
+.faq-section p:hover {
+  /* border-bottom: solid 1px; */
+  color: blue;
 }
-.question-section{
+.question-section {
   display: flex;
   flex-direction: column;
   padding: 1rem;
   width: 50%;
 }
-.question-section textarea{
+.question-section textarea {
   padding: 1rem;
- min-height:  20vh;
- max-height: 20vh;
+  min-height: 20vh;
+  max-height: 20vh;
   margin-bottom: 1rem;
   width: 70%;
 }
-.faq-section textarea:hover{
+.faq-section textarea:hover {
   border: solid var(--skyblue) 1px;
 }
-.faq-section button{
+.faq-section button {
   background-color: var(--skyblue);
   font-weight: 600;
   width: 70%;

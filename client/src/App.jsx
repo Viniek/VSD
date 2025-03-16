@@ -1,13 +1,7 @@
 import React from "react";
 import { useState, useEffect } from "react";
 import "../Globals.css";
-import {
-  BrowserRouter,
-  Routes,
-  Route,
-  
-  Navigate,
-} from "react-router-dom";
+import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import Header from "./Components/Header/Header";
 import Profile from "./Pages/Profile/Profile";
 import Home from "./Pages/Home/Home";
@@ -57,7 +51,7 @@ function App() {
             </Protected>
           }
         />
- 
+
         <Route
           path="/Profile/:userid"
           element={
@@ -125,7 +119,7 @@ function App() {
           }
         />
 
-<Route path="/ScheduleDashboard" element={<ScheduleDashboard/>} />
+        <Route path="/ScheduleDashboard" element={<ScheduleDashboard />} />
         <Route
           path="/ScheduleDashboard"
           element={
@@ -134,7 +128,6 @@ function App() {
             </Protected>
           }
         />
-
       </Routes>
     </BrowserRouter>
   );

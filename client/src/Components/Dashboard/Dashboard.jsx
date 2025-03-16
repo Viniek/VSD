@@ -43,9 +43,7 @@ function Dashboard() {
         {/* Switch Mode Button */}
         <div id="h">
           <li onClick={handleChangeTheme}>
-            
-              {isDarkMode ? "🌞 Light Mode" : "🌗 Dark Mode"}
-            
+            {isDarkMode ? "🌞 Light Mode" : "🌗 Dark Mode"}
           </li>
         </div>
       </ul>

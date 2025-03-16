@@ -43,6 +43,7 @@ export const getNotifications = async (req, res) => {
         const notifications = await prisma.notification.findMany({
             where: { userid },
             orderBy: { createdAt: "desc" },
+            // select:{createdAt:true,read:true,message:true,id:true}
         });
 if (notifications.length ==0) return res.status(404).json({success:false,message:"You have no notifications"})
         res.status(200).json({ success: true, data: notifications });
@@ -73,3 +74,17 @@ const updatedNotification =  await prisma.notification.update({
         res.status(500).json({ success: false, message: "Internal server error" });
     }
 };
+
+export async function deleteNotification(request,response){
+    const {id} = request.params
+    try {
+        const notification = await prisma.notification.findFirst({where:{id:id}})
+       if(!notification)return response.status(404).json({success:false,message:"No notification found"})
+
+        const deletedNotification = await prisma.notification.delete({where:{id:id}})
+        response.status(200).json({success:true, message:"notification was deleted",deletedNotification})
+    } catch (error) {
+        console.log("error deleting notification",error.message);
+        return response.status(500).json({success:false, message:"internal server error!"})
+    }
+}

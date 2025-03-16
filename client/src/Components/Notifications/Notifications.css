@@ -1,7 +1,64 @@
-.notification-page{
-    margin-top: var(--top);
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+.notification-page {
+  margin-top: var(--top);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.notification-section {
+  width: 50%;
+}
+
+th,
+td {
+  border: hidden;
+  border-bottom: 1px solid;
+  margin-top: 0.5rem;
+  width: 30%;
+  padding: 0 1rem;
+  text-transform: capitalize;
+}
+table {
+  width: 100%;
+  margin-top: 0.5rem;
+  background-color: rgb(220, 224, 224);
+}
+
+table button {
+  padding: 0;
+  justify-content: center;
+  background-color: rgb(220, 224, 224);
+  border: none;
+}
+.read-button {
+  
+}
+.notification-container {
+  display: flex;
+  justify-content: center;
+  /* background-color: blue; */
+}
+.read{
+color: green;
+font-size: 1.5rem;
+cursor: pointer;
+}
+.unread{
+  color: rgb(51, 146, 190);
+  font-size: 1.5rem;
+  cursor: pointer;
+}
+.delete-button{
+  color: red;
+  font-size: 1.5rem;
+}
+.no-notification {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: orange;
+  padding: 3rem;
+  text-transform: capitalize;
+  border-radius: 100px;
+  margin-top: 5rem;
 }
