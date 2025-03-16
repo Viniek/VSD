@@ -14,7 +14,7 @@ function ScheduleDashboard() {
   useEffect(() => {
     handleGetAppointments();
     fetchHospitals();
-  }, []);
+  }, []); 
 
   // Fetch Appointments
   const handleGetAppointments = async () => {
@@ -126,7 +126,7 @@ function ScheduleDashboard() {
 
   return (
     <section className="schedulePage">
-      <h1>View Appointments</h1>
+      <h1 className="appointment-title-heading">Your Appointments</h1>
       {loading ? (
         <p className="loading">Loading...</p>
       ) : appointments.length > 0 ? (
@@ -140,12 +140,14 @@ function ScheduleDashboard() {
                 <p>
                   <strong>Date:</strong> {item.date}
                 </p>
-                <div className="appointment-image">
-                  <img src={hospital} alt="Hospital" />
-                </div>
-                <button className="appointmentUpdateBtn" onClick={() => handleExplore(item)}>
+<div>
+  
+<button className="appointmentUpdateBtn" onClick={() => handleExplore(item)}>
                   Edit
                 </button>
+
+                <button className="appointment-delete-btn">delete</button>
+</div>
               </div>
             </div>
           ))}

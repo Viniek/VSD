@@ -28,7 +28,7 @@ function History() {
   }, []);
 
   return (
-    <div>
+    <div className="history-page">
       <h1>History</h1>
       {loading ? (
         <p>Loading...</p>
