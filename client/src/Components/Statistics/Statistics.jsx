@@ -1,6 +1,8 @@
 import React from "react";
 import { PieChart, Pie, Cell, BarChart, Bar, XAxis, YAxis, Tooltip, Legend, LineChart, Line } from "recharts";
+import "./Statistics.css";
 
+function Statistics() {
 const conditionData = [
   { name: "VSD", value: 40 },
   { name: "Other Heart Conditions", value: 30 },
@@ -24,7 +26,7 @@ const accuracyData = [
   { month: "May", accuracy: 91 },
 ];
 
-const StatisticsPage = () => {
+
   return (
     <div className="p-6 grid grid-cols-1 md:grid-cols-2 gap-8">
       <div className="bg-white p-4 rounded-2xl shadow-md">
@@ -70,4 +72,4 @@ const StatisticsPage = () => {
   );
 };
 
-export default StatisticsPage;
+export default Statistics;
