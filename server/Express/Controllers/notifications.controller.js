@@ -53,16 +53,21 @@ if (notifications.length ==0) return res.status(404).json({success:false,message
 };
 
 
-export const markNotificationsAsRead = async (req, res) => {
+export const markNotificationsAsReadOrNot = async (req, res) => {
 
 const {id} = req.params;
+const {message,read} = req.body
     try {
-        await prisma.notification.update({
-            where: { id:id },
-            data: { read: true },
-        });
 
-        res.status(200).json({ success: true, message: "Notifications marked as read" });
+const notificationToUpdate = await prisma.notification.findFirst({
+    where:{id:id}
+})
+if(!notificationToUpdate)return res.status(404).json({success:false,message:"Notification not found"})
+const updatedNotification =  await prisma.notification.update({
+    where: { id:id },
+    data: { read,message },
+});
+        res.status(200).json({ success: true, message: "Notification updated",data:updatedNotification });
     } catch (error) {
         console.error("Error updating notifications:", error.message);
         res.status(500).json({ success: false, message: "Internal server error" });

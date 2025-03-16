@@ -1,3 +1,7 @@
 .notification-page{
     margin-top: var(--top);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
