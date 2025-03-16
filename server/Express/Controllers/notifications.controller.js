@@ -88,3 +88,16 @@ export async function deleteNotification(request,response){
         return response.status(500).json({success:false, message:"internal server error!"})
     }
 }
+
+export async function deleteAllNotifications(request,response){
+    try {
+        const notifications = await prisma.notification.findMany({})
+        if(notifications.length ===0)return response.status(404).json({success:false,message:"You have no notifications to delete"})
+            await prisma.notification.deleteMany({})
+        response.status(200).json({success:true, message:"Notifications deleted"})
+    } catch (error) {
+        console.log("error deleting all notifications");
+        return response.status(500).json({success:false,message:"internal server error"})
+        
+    }
+}
