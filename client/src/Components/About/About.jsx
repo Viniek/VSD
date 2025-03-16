@@ -17,7 +17,7 @@ function About() {
   <mainSection className="aboutPage">
     {/* section functions */}
     <section className="aboutLeft">
-    <h1>Medical Medicine learning AI</h1>
+    {/* <h1>Medical Medicine learning AI</h1> */}
 <div className="aboutIntroduction"></div>
 {/* <p>VSD (Ventricular Septal Defect) is a congenital heart condition characterized by a hole in the heart's septum. This project aims to help in detecting VSD and other heart conditions using machine learning, recommending treatment options, and integrating an emergency response system.</p> */}
   <div className="features">
