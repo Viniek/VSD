@@ -130,6 +130,14 @@ function ScheduleDashboard() {
     }
   };
 
+  async function handleDeleteAppointment(id){
+    const response = await axios.delete(`${api_url}api/appointment/deleteAppointment/${id}`,{withCredentials:true})
+   if(response.data.success===true){
+    toast(`${response.data.message}🍞`, { theme: "success" });
+   };
+    
+  }
+
   return (
     <section className="schedulePage">
       <h1 className="appointment-title-heading">Your Appointments</h1>
@@ -154,7 +162,7 @@ function ScheduleDashboard() {
                     Edit
                   </button>
 
-                  <button className="appointment-delete-btn">delete</button>
+                  <button className="appointment-delete-btn" onClick={()=>handleDeleteAppointment(item.id)}>delete</button>
                 </div>
               </div>
             </div>

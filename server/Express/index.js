@@ -2,7 +2,7 @@ import express from 'express'
 import users from './Routes/users.routes.js'
 import cors from 'cors'
 import cookieParser from "cookie-parser"; 
-import auth from './Middlewares/Auth.js'
+
 import history from "./Routes/History.routes.js"
 import appointment from "./Routes/appointment.routes.js"
 import notifications from "./Routes/notifications.routes.js"
@@ -25,8 +25,8 @@ app.use(
   });
 
 app.use ("/api/users", users)
-app.use("/api/history",auth,history)
-app.use("/api/appointment",auth,appointment)
+app.use("/api/history",history)
+app.use("/api/appointment",appointment)
 app.use("/api/notifications",notifications)
 
 app.listen( process.env.PORT,()=>{
