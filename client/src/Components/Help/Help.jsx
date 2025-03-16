@@ -12,7 +12,7 @@ function Help() {
   }, []);
 
   return (
-    <div className="container">
+    <div className="help-page">
       {loading ? (
         <Loader loading={loading} type="ThreeDots" color="blue" size={80} />
       ) : (

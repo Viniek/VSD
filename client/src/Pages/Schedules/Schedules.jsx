@@ -1,28 +1,15 @@
 import React from "react";
 import "./Schedules.css";
 import { useFormik } from "formik";
-import { useNavigate } from "react-router-dom"; // Import useNavigate
 import useUserStore from "../../../Store/userStore";
 import axios from "axios";
 import { api_url } from "../../../utills/config";
-import { validate } from "../../../../server/Express/Middlewares/validateUser";
 import "./Schedules.css"
-import { useState } from "react";
 import ScheduleDashboard from "../../Components/ScheduleDashboard/ScheduleDashboard";
 
 
 function Schedules() {
-  // const navigate = useNavigate(); // Initialize useNavigate
 
-  // const handleViewAppointments = () => {
-  //   navigate("/ScheduleDashboard"); 
-  // };
-
-  const [showDashboard, setShowDashboard] = useState(false); 
-
-  const handleViewAppointments = () => {
-    setShowDashboard(true); 
-  };
 
   const hospitals = [
     "Aga Khan University Hospital",
@@ -101,7 +88,7 @@ function Schedules() {
     onSubmit: async(values) => {
       console.log("Form Submitted: ", values);
       const  details_section = document.getElementById("details-of-booking");
-      details_section.style.display = "block";
+      // details_section.style.display = "block";
       try{
         const data={
          date: String(values.dateOfAppointment),
@@ -120,18 +107,16 @@ console.log(res);
   return (
     <div className="schedule-section">
       <div>
-        <button type="button" onClick={handleViewAppointments}>
-          View Appointments
-        </button>
+
       </div>
 
      <div className="contentContainer">
 
-     {showDashboard && (
+     
         <div className="schedule-dashboard-container">
           <ScheduleDashboard />
         </div>
-      )}
+      
      </div>
 
 
@@ -184,7 +169,7 @@ console.log(res);
               <p>
                 <strong>Name: </strong>
                 {user.firstname}
-              </p>
+              </p> 
               <p>
                 <strong>Sex: </strong>
                 {user.gender}

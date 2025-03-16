@@ -29,10 +29,10 @@ const Home = () => {
 
   const [result, setResult] = useState(null);
 
-  const handleChange = (e) => {
-    const { name, value } = e.target;
+  const handleChange = (event) => {
+    const { name, value } = event.target;
 
-   
+  
     const convertedValue =
       ["cyanosis", "murmur", "familyHistory", "cholesterol", "vsdSize"].includes(name) 
         ? value === "Yes" ? 1 : 0
@@ -116,8 +116,8 @@ const Home = () => {
                 <label>VSD Size</label>
                 <select name="vsdSize" value={formData.vsdSize ? "Yes" : "No"} onChange={handleChange} required>
                   <option value="">Select</option>
-                  <option value="No">No</option>
-                  <option value="Yes">Yes</option>
+                  <option value="No">Small</option>
+                  <option value="Yes">Large</option>
                 </select>
 
                 <label>Family History</label>
