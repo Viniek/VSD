@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { api_url } from "../../../utills/config";
 import "./ScheduleDashboard.css";
-import hospital from "./../../assets/hospital.jpeg";
+import toast, { toastConfig } from "react-simple-toasts";
 
 function ScheduleDashboard() {
   const [loading, setLoading] = useState(false);
@@ -114,6 +114,12 @@ function ScheduleDashboard() {
         { withCredentials: true },
       );
       if (res.data.success) {
+        toast(`${response.data.message}🍞`, { theme: "success" });
+        const notificationData = {
+          message:"you edited your appointment Details",
+          details:`your  choice was `
+        }
+        await axios.post(`${api_url}api/notifications/createNotification`,notificationData,{withCredentials:true})
         setSelectedAppointment(null);
         handleGetAppointments();
       }

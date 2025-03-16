@@ -4,7 +4,7 @@ const prisma = new PrismaClient();
 
 
 export async function createNotification (request, response){
-    const {message,read} = request.body
+    const {message,read,details} = request.body
     const userid = request.user?.id
      
     if(!userid) return response.status(401).json({success:false, message:"Unauthorized"})
@@ -22,7 +22,8 @@ try {
         data:{
             userid,
             message,
-            read
+            read,
+            details
         }
     })
     response.status(201).json({success:true,data:newNotification})
@@ -66,7 +67,7 @@ const notificationToUpdate = await prisma.notification.findFirst({
 if(!notificationToUpdate)return res.status(404).json({success:false,message:"Notification not found"})
 const updatedNotification =  await prisma.notification.update({
     where: { id:id },
-    data: { read,message },
+    data: { read },
 });
         res.status(200).json({ success: true, message: "Notification updated",data:updatedNotification });
     } catch (error) {

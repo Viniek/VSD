@@ -4,6 +4,7 @@ import { useFormik } from "formik";
 import useUserStore from "../../../Store/userStore";
 import axios from "axios";
 import { api_url } from "../../../utills/config";
+import toast, { toastConfig } from "react-simple-toasts";
 import "./Schedules.css";
 import ScheduleDashboard from "../../Components/ScheduleDashboard/ScheduleDashboard";
 
@@ -96,7 +97,20 @@ function Schedules() {
           data,
           { withCredentials: true },
         );
-        console.log(res);
+       
+        
+        if(res.data.success===true){
+          formik.resetForm()
+          toast(`Booking succesfull🍞`, { theme: "success" });
+          const notificationData ={
+            message:"you bokked an appointment",
+            details:`..`
+          }
+        
+          const response =  await axios.post(`${api_url}api/notifications/createNotification`,notificationData,{withCredentials:true})
+        ;
+          
+        };
       } catch (error) {
         console.log(error.message);
       }

@@ -52,11 +52,7 @@
   font-weight: 700;
   font-size: 1.4rem;
 }
-.errors {
-  color: red;
-  text-transform: capitalize;
-  font-style: italic;
-}
+
 .navigate {
   display: flex;
   color: var(--black);

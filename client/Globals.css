@@ -21,3 +21,12 @@
 #bottom {
   margin-top: 10rem;
 }
+.errors {
+  text-transform: capitalize;
+  font-style: italic;
+  color: red;
+  /* background-color: rgb(168, 106, 84);
+  padding: 1rem;
+  color: white;
+  border-radius: 20px; */
+}
