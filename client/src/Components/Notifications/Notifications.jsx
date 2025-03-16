@@ -3,11 +3,15 @@ import "./Notifications.css";
 import { api_url } from "../../../utills/config";
 import axios from "axios";
 import Loader from "../Loader/Loader";
+import toast, { toastConfig } from "react-simple-toasts";
+
 function Notifications() {
   const [notifications, setNotifications] = useState(null);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
-  const [read, setRead] = useState(true);
+  const [deletedNotificationId,setDeletedNotificationId]= useState(null)
+  const [read, setRead] = useState(null);
+
 
   async function handleGetNotification() {
     try {
@@ -19,14 +23,15 @@ function Notifications() {
 
       if (response.data.success === true) {
         setNotifications(response.data.data);
-
-        if(response.data.data.read ===true)setRead(true)
+        // toast(`${response.data.message}🍞`, { theme: "success" });
+        setRead(response.data.data.read)
+          
           
       }
       
     } catch (error) {
       console.log(error.message);
-      setError(error.message);
+      setError(response.data.message || "there was an error getting notifications");
     } finally {
       // setRead(null)
       setLoading(false);
@@ -34,18 +39,39 @@ function Notifications() {
     }
   }
   useEffect(() => {
-    handleGetNotification();
-  }, []);
-  console.log(read, "jhyvytfyg");
+  
+    let timer = setTimeout(() => {
+handleGetNotification()
+    }, 100);
+  
+    return () => clearTimeout(timer)
+      // handleGetNotification()
+      
+  }, [notifications]);
+
+  async function handleDeleteNotification(id){
+    try {
+    const response = await axios.delete(`${api_url}api/notifications/deleteNotification/${id}`,{withCredentials:true})
+    if(response.data.success ===true) 
+      toast(`${response.data.message}🍞`, { theme: "success" });
+      setNotifications(notifications.filter((notification)=>notification.id ==!id))
+    // console.log(response.data);
+    
+    } catch (error) {
+      setError(response.data.message)
+    }finally{
+      setDeletedNotificationId(null)
+    }
+    }
+   
+  // console.log(read, "read status");
 
   return (
     <div className="notification-page">
-      {loading ? (
-        <Loader loading={loading} type="Oval" color="blue" size={80} />
-      ) : (
+
         <h1>Notifications</h1>
-      )}
-      {error && <p className="errors">{error}</p>}
+      
+      
       <section className="notification-section">
         {notifications ? (
           notifications.map((notification) => (
@@ -57,7 +83,7 @@ function Notifications() {
                     <button className={read?"read":"unread"}>{read? "mark as unread":"mark as read"}</button>
                   </td>
                   <td>
-                    <button className="delete-button">Delete</button>
+                    <button className="delete-button" onClick={() => handleDeleteNotification(notification.id)}>Delete</button>
                   </td>
                   {/* <td>{notification.read}</td> */}
                 </tr>
@@ -68,6 +94,7 @@ function Notifications() {
           <h1 className="no-notification"> You have No notification 🔔</h1>
         )}
       </section>
+      {error && <p className="errors">{error}</p>}
     </div>
   );
 }
