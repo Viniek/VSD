@@ -95,7 +95,7 @@ const [deleting,setDeleting]=useState(false)
                   <td>
                     <h2 className="delete-button" onClick={() => handleDeleteNotification(notification.id)}>{deleting? "Deleting":"delete"}</h2>
                   </td>
-                  
+                  <td className="view-details-button"><h2>View Details</h2></td>
                 </tr>
               </tbody>
             </table>
