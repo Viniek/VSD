@@ -1,5 +1,115 @@
- .help-page {
-  margin-top: var(--top);
+.help-page {
+  margin-top: 12rem;
+  /* z-index: 0; */
 }
+.help-section {
+  display: flex;
+  justify-content: space-around;
+  width: 100%;
+  flex-wrap: wrap;
+}
+.help-wrapper {
+  width: 20%;
+  background-color: rgb(220, 224, 224);
+  padding: 1rem;
+  position: relative;
+  margin: 2.5rem 1rem;
+  border-radius: 10px;
+  border: outset var(--skyblue);
+}
+.helpsvg {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.help-heading {
+  margin-top: 5rem;
+  text-transform: capitalize;
+  display: flex;
+  justify-content: center;
+  font-weight: 600;
+  margin-bottom: 1rem;
+}
+.help-wrapper img {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 30%;
+  border: solid var(--skyblue);
+  border-radius: 50%;
+  position: absolute;
 
+}
+.helpActions {
+  display: flex;
+  justify-content: center;
+  margin-top: 1rem;
+  gap: 3%;
+}
+.helpActions button {
+  width: 40%;
+  border-radius: 10px;
+}
+.view-help-btn {
+  background-color: orange;
+  text-transform: capitalize;
+  font-weight: 600;
+  cursor: pointer;
+}
+.message-button {
+  background-color: var(--skyblue);
+  text-transform: capitalize;
+  font-weight: 600;
+  cursor: pointer;
+}
+.help-socials {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10%;
+  border-top: solid black 1px;
 
+  padding-top: 1rem;
+}
+.help-socials button {
+  display: flex;
+  font-size: 1.5rem;
+  align-items: center;
+  justify-content: center;
+  border: 10px;
+  padding: 0;
+  height: 100%;
+  bottom: 0;
+}
+.faq-section {
+  display: flex;
+  margin: 1rem;
+
+  gap: 10%;
+}
+.faq-section p:hover {
+  /* border-bottom: solid 1px; */
+  color: blue;
+}
+.question-section {
+  display: flex;
+  flex-direction: column;
+  padding: 1rem;
+  width: 50%;
+}
+.question-section textarea {
+  padding: 1rem;
+  min-height: 20vh;
+  max-height: 20vh;
+  margin-bottom: 1rem;
+  width: 70%;
+}
+.faq-section textarea:hover {
+  border: solid var(--skyblue) 1px;
+}
+.faq-section button {
+  background-color: var(--skyblue);
+  font-weight: 600;
+  width: 70%;
+}

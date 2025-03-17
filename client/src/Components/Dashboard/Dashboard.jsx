@@ -22,7 +22,6 @@ function Dashboard() {
           { path: "/Emergencies", label: "🚑 Emergencies" },
           { path: "/HealthCenters", label: "🏥 Health Centers" },
           { path: "/Help", label: "🆘 Help" },
-          { path: "/Statistics", label: "📊 Statistics" },
           { path: "/Schedules", label: "📅 Schedules" },
           { path: "/About", label: "ℹ️ About" },
           user && { path: `/Profile/${user.id}`, label: "👤 Manage Account" },
@@ -44,9 +43,7 @@ function Dashboard() {
         {/* Switch Mode Button */}
         <div id="h">
           <li onClick={handleChangeTheme}>
-            
-              {isDarkMode ? "🌞 Light Mode" : "🌗 Dark Mode"}
-            
+            {isDarkMode ? "🌞 Light Mode" : "🌗 Dark Mode"}
           </li>
         </div>
       </ul>

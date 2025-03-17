@@ -6,7 +6,7 @@
   width: 100%;
   top: 0;
   z-index: 1000;
-  padding: .5rem 2rem;
+  padding: 0.5rem 2rem;
   background-color: var(--grey);
   color: var(--white);
 }
@@ -26,7 +26,7 @@
   color: rgb(0, 217, 255);
   text-transform: capitalize;
 }
-.welcome-message{
+.welcome-message {
   text-transform: capitalize;
   font-family: sans-serif;
 }
@@ -47,25 +47,25 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  list-style: none;  
+  list-style: none;
   gap: 5rem;
   text-transform: capitalize;
   font-weight: 600;
 }
 .logout-btn {
-display: flex;
-background-color: rgb(204, 89, 89);
-padding-left:1rem ;
-padding-right: 1rem;
-border-radius: 8px;
-cursor: pointer;
+  display: flex;
+  background-color: rgb(204, 89, 89);
+  padding-left: 1rem;
+  padding-right: 1rem;
+  border-radius: 8px;
+  cursor: pointer;
 }
 .open {
   display: none;
 }
 .nav-list1 li {
   list-style: none;
-  
+
   margin-bottom: 2.5rem;
   border-bottom: var(--white) 1px solid;
   width: 100%;
