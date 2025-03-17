@@ -119,11 +119,13 @@ function Schedules() {
 
   return (
     <div className="schedule-section">
-      <div></div>
+     
+     <ScheduleDashboard />
 
       <div className="contentContainer">
+        
         <div className="schedule-dashboard-container">
-          <ScheduleDashboard />
+          
         </div>
       </div>
 

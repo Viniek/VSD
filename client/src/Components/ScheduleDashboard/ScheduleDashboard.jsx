@@ -133,6 +133,8 @@ function ScheduleDashboard() {
   async function handleDeleteAppointment(id){
     const response = await axios.delete(`${api_url}api/appointment/deleteAppointment/${id}`,{withCredentials:true})
    if(response.data.success===true){
+  await axios.post(`${api_url}`)
+    setAppointments((previousState)=>previousState.filter((appointments)=>appointments.id !==id))
     toast(`${response.data.message}🍞`, { theme: "success" });
    };
     
@@ -145,7 +147,7 @@ function ScheduleDashboard() {
         <p className="loading">Loading...</p>
       ) : appointments.length > 0 ? (
         <div className="appointment-container">
-          {appointments.map((item) => (
+          {appointments && appointments.map((item) => (
             <div key={item.id} className="appointment-card">
               <div className="appointment-info">
                 <p>

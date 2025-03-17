@@ -9,8 +9,6 @@ function Notifications() {
   const [notifications, setNotifications] = useState(false);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
-  const [notificationsAvailable,setNotificationsAvailable]=useState(null)
-  const [deletedNotificationId,setDeletedNotificationId]= useState(null)
   const [read, setRead] = useState(null);
 const [deleting,setDeleting]=useState(false)
 
@@ -53,7 +51,9 @@ const [deleting,setDeleting]=useState(false)
     const response = await axios.delete(`${api_url}api/notifications/deleteNotification/${id}`,{withCredentials:true})
     if(response.data.success ===true) 
       toast(`${response.data.message}🍞`, { theme: "success" });
-      setNotifications(notifications.filter((notification)=>notification.id ==!id))
+    // setNotifications(notifications.filter((notification) => notification.id !== id));
+    setNotifications((prev) => prev.filter((notification) => notification.id !== id));
+
        
     } catch (error) {
       setError(response.data.message)

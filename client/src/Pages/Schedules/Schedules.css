@@ -2,20 +2,20 @@
   display: flex;
   flex-direction: row;
   margin-top: var(--top);
-  justify-content: space-between;
+background-color: grey;
+margin-left: 0;
   background-color: rgb(247, 247, 247);
 }
 .book-Appointment-Form-section {
   display: flex;
   flex-direction: column;
   background-color: rgb(226, 235, 236);
-  width: 80%;
-
-  padding: 3rem;
+  width: 100%;
+ padding-left: 1rem;
   padding-top: 2rem;
-  height: 100vh;
-  margin: 2rem;
-}
+  height: 85vh;
+
+} 
 .book-Appointment-Form-section h1 {
   background-color: rgb(188, 191, 194);
   padding: 1rem;
