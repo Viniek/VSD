@@ -4,13 +4,11 @@ import { useFormik } from "formik";
 import useUserStore from "../../../Store/userStore";
 import axios from "axios";
 import { api_url } from "../../../utills/config";
-import "./Schedules.css"
+import toast, { toastConfig } from "react-simple-toasts";
+import "./Schedules.css";
 import ScheduleDashboard from "../../Components/ScheduleDashboard/ScheduleDashboard";
 
-
 function Schedules() {
-
-
   const hospitals = [
     "Aga Khan University Hospital",
     "Nairobi Hospital",
@@ -85,42 +83,49 @@ function Schedules() {
       }
       return errors;
     },
-    onSubmit: async(values) => {
+    onSubmit: async (values) => {
       console.log("Form Submitted: ", values);
-      const  details_section = document.getElementById("details-of-booking");
+      const details_section = document.getElementById("details-of-booking");
       // details_section.style.display = "block";
-      try{
-        const data={
-         date: String(values.dateOfAppointment),
-         hospital:values.hospital
-        }
-        const res = await axios.post(`${api_url}api/appointment/bookAppointment`,data,{withCredentials:true});
-console.log(res);
-      }catch(error){
+      try {
+        const data = {
+          date: String(values.dateOfAppointment),
+          hospital: values.hospital,
+        };
+        const res = await axios.post(
+          `${api_url}api/appointment/bookAppointment`,
+          data,
+          { withCredentials: true },
+        );
+       
+        
+        if(res.data.success===true){
+          formik.resetForm()
+          toast(`Booking succesfull🍞`, { theme: "success" });
+          const notificationData ={
+            message:"you bokked an appointment",
+            details:`..`
+          }
+        
+          const response =  await axios.post(`${api_url}api/notifications/createNotification`,notificationData,{withCredentials:true})
+        ;
+          
+        };
+      } catch (error) {
         console.log(error.message);
       }
     },
   });
 
-  
-
   return (
     <div className="schedule-section">
-      <div>
+      <div></div>
 
-      </div>
-
-     <div className="contentContainer">
-
-     
+      <div className="contentContainer">
         <div className="schedule-dashboard-container">
           <ScheduleDashboard />
         </div>
-      
-     </div>
-
-
-
+      </div>
 
       <div className="book-Appointment-Form-section">
         <h1>Book An Appointment</h1>
@@ -169,7 +174,7 @@ console.log(res);
               <p>
                 <strong>Name: </strong>
                 {user.firstname}
-              </p> 
+              </p>
               <p>
                 <strong>Sex: </strong>
                 {user.gender}

@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { api_url } from "../../../utills/config";
 import "./ScheduleDashboard.css";
+import toast, { toastConfig } from "react-simple-toasts";
 
 function ScheduleDashboard() {
   const [loading, setLoading] = useState(false);
@@ -91,7 +92,7 @@ function ScheduleDashboard() {
     setHospitals(hospitalList);
   };
 
-  // Handle Explore (Edit)
+  // Handle Explore Click
   const handleExplore = (appointment) => {
     setSelectedAppointment(appointment);
     setEditData({ hospital: appointment.hospital, date: appointment.date });
@@ -110,9 +111,15 @@ function ScheduleDashboard() {
       const res = await axios.patch(
         `${api_url}api/appointment/editAppointment/${selectedAppointment.id}`,
         editData,
-        { withCredentials: true }
+        { withCredentials: true },
       );
       if (res.data.success) {
+        toast(`${response.data.message}🍞`, { theme: "success" });
+        const notificationData = {
+          message:"you edited your appointment Details",
+          details:`your  choice was `
+        }
+        await axios.post(`${api_url}api/notifications/createNotification`,notificationData,{withCredentials:true})
         setSelectedAppointment(null);
         handleGetAppointments();
       }
@@ -123,23 +130,13 @@ function ScheduleDashboard() {
     }
   };
 
-  // Handle Delete Appointment
-  const handleDeleteAppointment = async (id) => {
-    setLoading(true);
-    try {
-      const res = await axios.delete(`${api_url}api/appointment/deleteAppointment/${id}`, {
-        withCredentials: true,
-      });
-
-      if (res.data.success) {
-        setAppointments(appointments.filter((appointment) => appointment.id !== id));
-      }
-    } catch (error) {
-      console.log(error.message);
-    } finally {
-      setLoading(false);
-    }
-  };
+  async function handleDeleteAppointment(id){
+    const response = await axios.delete(`${api_url}api/appointment/deleteAppointment/${id}`,{withCredentials:true})
+   if(response.data.success===true){
+    toast(`${response.data.message}🍞`, { theme: "success" });
+   };
+    
+  }
 
   return (
     <section className="schedulePage">
@@ -151,15 +148,21 @@ function ScheduleDashboard() {
           {appointments.map((item) => (
             <div key={item.id} className="appointment-card">
               <div className="appointment-info">
-                <p><strong>Hospital:</strong> {item.hospital}</p>
-                <p><strong>Date:</strong> {item.date}</p>
+                <p>
+                  <strong>Hospital:</strong> {item.hospital}
+                </p>
+                <p>
+                  <strong>Date:</strong> {item.date}
+                </p>
                 <div>
-                  <button className="appointmentUpdateBtn" onClick={() => handleExplore(item)}>
+                  <button
+                    className="appointmentUpdateBtn"
+                    onClick={() => handleExplore(item)}
+                  >
                     Edit
                   </button>
-                  <button className="appointment-delete-btn" onClick={() => handleDeleteAppointment(item.id)}>
-                    Delete
-                  </button>
+
+                  <button className="appointment-delete-btn" onClick={()=>handleDeleteAppointment(item.id)}>delete</button>
                 </div>
               </div>
             </div>
@@ -174,18 +177,36 @@ function ScheduleDashboard() {
         <div className="floating-card">
           <h2>Edit Appointment</h2>
           <label>Hospital:</label>
-          <select name="hospital" value={editData.hospital} onChange={handleChange}>
+          <select
+            name="hospital"
+            value={editData.hospital}
+            onChange={handleChange}
+          >
             <option value="">Select Hospital</option>
             {hospitals.map((hospital, index) => (
-              <option key={index} value={hospital}>{hospital}</option>
+              <option key={index} value={hospital}>
+                {hospital}
+              </option>
             ))}
           </select>
 
           <label>Date:</label>
-          <input type="date" name="date" value={editData.date} onChange={handleChange} />
+          <input
+            type="date"
+            name="date"
+            value={editData.date}
+            onChange={handleChange}
+          />
 
-          <button className="save-btn" onClick={handleEditAppointment}>Save Changes</button>
-          <button className="close-btn" onClick={() => setSelectedAppointment(null)}>Close</button>
+          <button className="save-btn" onClick={handleEditAppointment}>
+            Save Changes
+          </button>
+          <button
+            className="close-btn"
+            onClick={() => setSelectedAppointment(null)}
+          >
+            Close
+          </button>
         </div>
       )}
     </section>

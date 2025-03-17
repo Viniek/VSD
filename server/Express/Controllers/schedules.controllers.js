@@ -5,7 +5,7 @@ const prisma = new PrismaClient();
 
 export const createAppointment = async (req, res) => {
   const { hospital, date } = req.body;
-console.log(req.body);
+// console.log(req.body);
   const userid = req.user?.id; 
 
   if (!userid) {
@@ -53,7 +53,7 @@ export const getApppointment= async (req,res)=>{
             return res.status(404).json({success:false,message:"No booked appointments found"});
 
         }
-        console.log(schedule,"schedule");
+       
         res.status(200).json({success:true,data:schedule})
     }catch(error){
         console.log("Error fetching booked appointments",error.message);
@@ -96,31 +96,28 @@ export const updateAppointment = async (req, res) => {
     return res.status(500).json({ success: false, message: "Internal server error!" });
   }
 };
-
-// Delete Appointment
-export const deleteAppointment = async (request, response) => {
-  const { id } = request.params;
-  const userid = request.user?.id; 
-
-  if (!userid) {
-    return response.status(401).json({ success: false, message: "Unauthorized: User not found" });
-  }
-
+export async function deleteAllAppointments(request,response){
   try {
-    const appointment = await prisma.schedule.findUnique({ where: { id } });
+    const appointments = await prisma.schedule.findMany({})
+    if (appointments.length===0)return response.status(404).json({success:false, message:"No appointments found"})
 
-    if (!appointment) {
-      return response.status(404).json({ success: false, message: "Appointment not found" });
-    }
-   if (appointment.userid !== userid) {
-      return response.status(403).json({ success: false, message: "Forbidden: You cannot delete this appointment" });
-    }
-
-    await prisma.schedule.delete({ where: { id } });
-
-    return response.status(200).json({ success: true, message: "Appointment deleted successfully" });
+      await prisma.schedule.deleteMany({})
+      response.status(200).json({success:true,message:"All Appointments deleted"})
   } catch (error) {
-    console.error("Error deleting appointment:", error.message);
-    return response.status(500).json({ success: false, message: "Internal server error" });
+    console.log(error.message);
+    return response.status(500).json({success:false,message:"internal server error"})
+    
   }
-};
+}
+export async function deleteAppointment(request,response){
+  const {id} =request.params;
+  try {
+    const appointment = await prisma.schedule.findUnique({where:{id:id}})
+    if(!appointment)return response.status(404).json({success:false, message:"Appointment not found"})
+      await prisma.schedule.delete({where:{id:id}})
+    response.status(200).json({success:true,message:"Appointment deleted"})
+  } catch (error) {
+    console.log("error deleting an appointment",error.message);
+    return response.status(500).json({success:false,message:"internal server error"})
+  }
+}

@@ -10,7 +10,9 @@ function History() {
   async function handleGetHistory() {
     setLoading(true);
     try {
-      const response = await axios.get(`${api_url}api/history/getHistory`, { withCredentials: true });
+      const response = await axios.get(`${api_url}api/history/getHistory`, {
+        withCredentials: true,
+      });
 
       if (response.data.success) {
         setHistory(response.data.data); // Store the fetched history
@@ -36,10 +38,21 @@ function History() {
         <ul>
           {history.map((item) => (
             <li key={item.id}>
-              <p><strong>Test Date:</strong> {new Date(item.testDate).toLocaleString()}</p>
-              <p><strong>User ID:</strong> {item.userId}</p>
-              <p><strong>Test Result:</strong> {JSON.stringify(item.testResult, null, 2)}</p>
-              <p><strong>Factors:</strong> {JSON.stringify(item.factors, null, 2)}</p>
+              <p>
+                <strong>Test Date:</strong>{" "}
+                {new Date(item.testDate).toLocaleString()}
+              </p>
+              <p>
+                <strong>User ID:</strong> {item.userId}
+              </p>
+              <p>
+                <strong>Test Result:</strong>{" "}
+                {JSON.stringify(item.testResult, null, 2)}
+              </p>
+              <p>
+                <strong>Factors:</strong>{" "}
+                {JSON.stringify(item.factors, null, 2)}
+              </p>
             </li>
           ))}
         </ul>

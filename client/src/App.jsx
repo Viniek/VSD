@@ -1,15 +1,8 @@
 import React from "react";
 import { useState, useEffect } from "react";
 import "../Globals.css";
-import {
-  BrowserRouter,
-  Routes,
-  Route,
-  useNavigate,
-  Navigate,
-} from "react-router-dom";
+import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import Header from "./Components/Header/Header";
-import Records from "./Pages/Records/Records";
 import Profile from "./Pages/Profile/Profile";
 import Home from "./Pages/Home/Home";
 import Login from "./Pages/Login/Login";
@@ -17,7 +10,6 @@ import Signup from "./Pages/Signup/Signup";
 import useUserStore from "../Store/userStore";
 import About from "./Components/About/About";
 import Schedules from "./Pages/Schedules/Schedules";
-import Statistics from "./Components/Statistics/Statistics";
 import Help from "./Components/Help/Help";
 import HealthCenters from "./Components/HealthCenters/HealthCenters";
 import Emergencies from "./Components/Emergencies/Emergencies";
@@ -59,14 +51,7 @@ function App() {
             </Protected>
           }
         />
-        <Route
-          path="/Records"
-          element={
-            <Protected>
-              <Records />
-            </Protected>
-          }
-        />
+
         <Route
           path="/Profile/:userid"
           element={
@@ -92,14 +77,7 @@ function App() {
             </Protected>
           }
         />
-        <Route
-          path="/Statistics"
-          element={
-            <Protected>
-              <Statistics />
-            </Protected>
-          }
-        />
+
         <Route
           path="/Help"
           element={
@@ -141,7 +119,7 @@ function App() {
           }
         />
 
-<Route path="/ScheduleDashboard" element={<ScheduleDashboard/>} />
+        <Route path="/ScheduleDashboard" element={<ScheduleDashboard />} />
         <Route
           path="/ScheduleDashboard"
           element={
@@ -150,7 +128,6 @@ function App() {
             </Protected>
           }
         />
-
       </Routes>
     </BrowserRouter>
   );

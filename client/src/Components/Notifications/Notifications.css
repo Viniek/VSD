@@ -1,3 +1,105 @@
-.notification-page{
-    margin-top: var(--top);
+.notification-page {
+  margin-top: var(--top);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: whitesmoke;
+  height: 100vh;
+}
+.notification-section {
+  width: 50%;
+  background-color: gray;
+}
+
+th,
+td {
+  
+  border-bottom: 1px solid;
+  margin-top: 0.5rem;
+  max-width: 30%;
+  padding: 1rem 1rem;
+  background-color: white;
+  border: none;
+  text-transform: capitalize;
+
+}
+td:hover{
+  background-color: whitesmoke;
+}
+.table {
+  width: 100%;
+  margin-top: 3rem;
+  background-color: rgb(220, 224, 224);
+  border:none;
+  padding: .3rem;
+  margin-bottom: 2rem;
+}
+.noTable{
+background-color: white;
+}
+table button {
+  padding: 0;
+  justify-content: center;
+  background-color: var(--white);
+  border: none;
+}
+.read-button {
+  
+}
+.notification-container {
+  display: flex;
+  justify-content: center;
+  /* background-color: blue; */
+}
+.read{
+color: green;
+font-size: 1.5rem;
+cursor: pointer;
+}
+.unread{
+  color: rgb(51, 146, 190);
+  font-size: 1.5rem;
+  cursor: pointer;
+}
+.delete-button{
+  color: red;
+   font-size: 1.5rem;
+  /* padding-top: 1rem; */
+  width: 100%;
+  height: 100%;
+}
+.view-details-button{
+  width: 100%;
+  height: 100%;
+  font-size: 1rem;
+}
+.no-notification {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: orange;
+  padding: 3rem;
+  text-transform: capitalize;
+  border-radius: 100px;
+  margin-top: 5rem;
+}
+.clear_notification-btn{
+  display: flex;
+  justify-content: center;
+  text-transform: capitalize; 
+  margin-top: 2rem;
+  width: 20%;
+  background-color: rgb(158, 88, 62);
+  color: var(--white);
+  font-weight: 600;
+  font-size: 1.5rem;
+  border: none;
+  border-radius: 20px;
+}
+.clear_notification-btn:hover{
+  background-color: rgb(190, 145, 128);
+  color: var(--black);
+}
+.no-clear_notification-btn{
+  display: none;
 }

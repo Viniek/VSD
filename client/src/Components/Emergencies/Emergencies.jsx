@@ -4,6 +4,7 @@ import "./Emergencies.css";
 import useUserStore from "../../../Store/userStore";
 import axios from "axios";
 import Loader from "../Loader/Loader";
+import { api_url } from "../../../utills/config";
 
 const EmergencyReport = () => {
   const [location, setLocation] = useState(null);
@@ -33,6 +34,11 @@ const EmergencyReport = () => {
             `https://nominatim.openstreetmap.org/reverse?lat=${latitude}&lon=${longitude}&format=json`,
           );
           setAddress(response.data.display_name);
+          const notificationData ={
+            message:"your emergency submission was succesful",
+            details:`Your Location was${address},and your emergency was ${formik.values.description}`
+          }
+          await axios.post(`${api_url}api/notifications/createNotification`,notificationData,{withCredentials:true})
         } catch (error) {
           setError("Failed to get location details.");
         }
