@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { api_url } from "../../../utills/config";
 import "./ScheduleDashboard.css";
-import hospital from "./../../assets/hospital.jpeg";
 
 function ScheduleDashboard() {
   const [loading, setLoading] = useState(false);
@@ -14,7 +13,7 @@ function ScheduleDashboard() {
   useEffect(() => {
     handleGetAppointments();
     fetchHospitals();
-  }, []); 
+  }, []);
 
   // Fetch Appointments
   const handleGetAppointments = async () => {
@@ -37,62 +36,62 @@ function ScheduleDashboard() {
   const fetchHospitals = async () => {
     const hospitalList = [
       "Aga Khan University Hospital",
-    "Nairobi Hospital",
-    "Kenya National Hospital",
-    "Kenya Medical Research Institute",
-    "Kenyatta National Hospital",
-    "MP Shah Hospital",
-    "Coptic Hospital",
-    "Mater Misericordiae Hospital",
-    "Mombasa Hospital",
-    "Nyanza Provincial Hospital",
-    "Kisumu District Hospital",
-    "Nakuru Provincial Hospital",
-    "Eldoret Hospital",
-    "Kabras Health Center",
-    "Eldama Ravine Hospital",
-    "Embu Level 5 Hospital",
-    "Thika Level 5 Hospital",
-    "Kitale District Hospital",
-    "Kisii Teaching and Referral Hospital",
-    "Kajiado Referral Hospital",
-    "Mombasa County Referral Hospital",
-    "Nakuru County Referral Hospital",
-    "Machakos Level 5 Hospital",
-    "Meru Teaching and Referral Hospital",
-    "Bomet County Referral Hospital",
-    "Bungoma County Referral Hospital",
-    "Bomet District Hospital",
-    "Chuka General Hospital",
-    "County Referral Hospital",
-    "Nyeri Provincial Hospital",
-    "Vihiga District Hospital",
-    "Isiolo Referral Hospital",
-    "Kericho District Hospital",
-    "Kirinyaga County Referral Hospital",
-    "Kisumu City Hospital",
-    "Lamu County Referral Hospital",
-    "Lodwar Hospital",
-    "Mandera County Referral Hospital",
-    "Marsabit County Referral Hospital",
-    "Nakuru Town Hospital",
-    "Nyeri Teaching and Referral Hospital",
-    "PCEA Kikuyu Hospital",
-    "Pumwani Maternity Hospital",
-    "Ruiru Level 5 Hospital",
-    "St. Francis Community Hospital",
-    "St. Joseph’s Mission Hospital",
-    "St. Mary's Mission Hospital",
-    "Thika District Hospital",
-    "Voi District Hospital",
-    "Webuye County Referral Hospital",
-    "Wote District Hospital",
-    "Zambezi Mission Hospital",
+      "Nairobi Hospital",
+      "Kenya National Hospital",
+      "Kenya Medical Research Institute",
+      "Kenyatta National Hospital",
+      "MP Shah Hospital",
+      "Coptic Hospital",
+      "Mater Misericordiae Hospital",
+      "Mombasa Hospital",
+      "Nyanza Provincial Hospital",
+      "Kisumu District Hospital",
+      "Nakuru Provincial Hospital",
+      "Eldoret Hospital",
+      "Kabras Health Center",
+      "Eldama Ravine Hospital",
+      "Embu Level 5 Hospital",
+      "Thika Level 5 Hospital",
+      "Kitale District Hospital",
+      "Kisii Teaching and Referral Hospital",
+      "Kajiado Referral Hospital",
+      "Mombasa County Referral Hospital",
+      "Nakuru County Referral Hospital",
+      "Machakos Level 5 Hospital",
+      "Meru Teaching and Referral Hospital",
+      "Bomet County Referral Hospital",
+      "Bungoma County Referral Hospital",
+      "Bomet District Hospital",
+      "Chuka General Hospital",
+      "County Referral Hospital",
+      "Nyeri Provincial Hospital",
+      "Vihiga District Hospital",
+      "Isiolo Referral Hospital",
+      "Kericho District Hospital",
+      "Kirinyaga County Referral Hospital",
+      "Kisumu City Hospital",
+      "Lamu County Referral Hospital",
+      "Lodwar Hospital",
+      "Mandera County Referral Hospital",
+      "Marsabit County Referral Hospital",
+      "Nakuru Town Hospital",
+      "Nyeri Teaching and Referral Hospital",
+      "PCEA Kikuyu Hospital",
+      "Pumwani Maternity Hospital",
+      "Ruiru Level 5 Hospital",
+      "St. Francis Community Hospital",
+      "St. Joseph’s Mission Hospital",
+      "St. Mary's Mission Hospital",
+      "Thika District Hospital",
+      "Voi District Hospital",
+      "Webuye County Referral Hospital",
+      "Wote District Hospital",
+      "Zambezi Mission Hospital",
     ];
     setHospitals(hospitalList);
   };
 
-  // Handle Explore Click
+  // Handle Explore (Edit)
   const handleExplore = (appointment) => {
     setSelectedAppointment(appointment);
     setEditData({ hospital: appointment.hospital, date: appointment.date });
@@ -114,8 +113,26 @@ function ScheduleDashboard() {
         { withCredentials: true }
       );
       if (res.data.success) {
-        setSelectedAppointment(null); 
-        handleGetAppointments(); 
+        setSelectedAppointment(null);
+        handleGetAppointments();
+      }
+    } catch (error) {
+      console.log(error.message);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  // Handle Delete Appointment
+  const handleDeleteAppointment = async (id) => {
+    setLoading(true);
+    try {
+      const res = await axios.delete(`${api_url}api/appointment/deleteAppointment/${id}`, {
+        withCredentials: true,
+      });
+
+      if (res.data.success) {
+        setAppointments(appointments.filter((appointment) => appointment.id !== id));
       }
     } catch (error) {
       console.log(error.message);
@@ -134,20 +151,16 @@ function ScheduleDashboard() {
           {appointments.map((item) => (
             <div key={item.id} className="appointment-card">
               <div className="appointment-info">
-                <p>
-                  <strong>Hospital:</strong> {item.hospital}
-                </p>
-                <p>
-                  <strong>Date:</strong> {item.date}
-                </p>
-<div>
-  
-<button className="appointmentUpdateBtn" onClick={() => handleExplore(item)}>
-                  Edit
-                </button>
-
-                <button className="appointment-delete-btn">delete</button>
-</div>
+                <p><strong>Hospital:</strong> {item.hospital}</p>
+                <p><strong>Date:</strong> {item.date}</p>
+                <div>
+                  <button className="appointmentUpdateBtn" onClick={() => handleExplore(item)}>
+                    Edit
+                  </button>
+                  <button className="appointment-delete-btn" onClick={() => handleDeleteAppointment(item.id)}>
+                    Delete
+                  </button>
+                </div>
               </div>
             </div>
           ))}
@@ -164,9 +177,7 @@ function ScheduleDashboard() {
           <select name="hospital" value={editData.hospital} onChange={handleChange}>
             <option value="">Select Hospital</option>
             {hospitals.map((hospital, index) => (
-              <option key={index} value={hospital}>
-                {hospital}
-              </option>
+              <option key={index} value={hospital}>{hospital}</option>
             ))}
           </select>
 
