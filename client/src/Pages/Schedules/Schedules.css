@@ -2,15 +2,17 @@
   display: flex;
   flex-direction: row;
   margin-top: var(--top);
-background-color: grey;
+background-color: rgb(243, 241, 241);
 margin-left: 0;
-  background-color: rgb(247, 247, 247);
+  /* background-color: rgb(247, 247, 247); */
 }
 .book-Appointment-Form-section {
   display: flex;
   flex-direction: column;
-  background-color: rgb(226, 235, 236);
-  width: 100%;
+  background-color: white;
+  border-radius: 5px;
+  width: 80%;
+  margin-right: 5%;
  padding-left: 1rem;
   padding-top: 2rem;
   height: 85vh;

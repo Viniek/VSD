@@ -113,7 +113,8 @@ function ScheduleDashboard() {
         editData,
         { withCredentials: true },
       );
-      if (res.data.success) {
+      if (res.data.success===true) {
+        handleGetAppointments()
         toast(`${response.data.message}🍞`, { theme: "success" });
         const notificationData = {
           message:"you edited your appointment Details",
@@ -121,7 +122,7 @@ function ScheduleDashboard() {
         }
         await axios.post(`${api_url}api/notifications/createNotification`,notificationData,{withCredentials:true})
         setSelectedAppointment(null);
-        handleGetAppointments();
+        ;
       }
     } catch (error) {
       console.log(error.message);
@@ -133,7 +134,11 @@ function ScheduleDashboard() {
   async function handleDeleteAppointment(id){
     const response = await axios.delete(`${api_url}api/appointment/deleteAppointment/${id}`,{withCredentials:true})
    if(response.data.success===true){
-  await axios.post(`${api_url}`)
+    const notificationData ={
+      message:"You deleted an Appointment",
+      details:"no details"
+    }
+  await axios.post(`${api_url}api/notifications/createNotification`,notificationData,{withCredentials:true})
     setAppointments((previousState)=>previousState.filter((appointments)=>appointments.id !==id))
     toast(`${response.data.message}🍞`, { theme: "success" });
    };

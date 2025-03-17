@@ -3,8 +3,9 @@
   flex-direction: column;
   text-align: center;
     padding: 2rem;
+    border-right: solid 1px;
     margin-left: 1rem;
-  background-color: rgb(188, 191, 194);
+  background-color: rgb(238, 241, 245);
   width: 30%;
 }
 

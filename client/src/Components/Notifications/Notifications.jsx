@@ -4,12 +4,16 @@ import { api_url } from "../../../utills/config";
 import axios from "axios";
 import Loader from "../Loader/Loader";
 import toast, { toastConfig } from "react-simple-toasts";
+import useNotificationStore from "../../../Store/notificationsStore";
+
 
 function Notifications() {
+  const changeNotificationCount = useNotificationStore((state)=>state.updateNotificationCount)
+  const clear_notification = useNotificationStore((state)=>state.clearNotifications)
   const [notifications, setNotifications] = useState(false);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
-  const [read, setRead] = useState(null);
+  const [read, setRead] = useState(true);
 const [deleting,setDeleting]=useState(false)
 
 
@@ -24,9 +28,10 @@ const [deleting,setDeleting]=useState(false)
       if (response.data.success === true) {
         setNotifications(response.data.data);
         
-        
+        changeNotificationCount(response.data.data.length)
         // toast(`${response.data.message}🍞`, { theme: "success" });
         setRead(response.data.data.read)
+        
            
       }
       
@@ -65,6 +70,7 @@ const [deleting,setDeleting]=useState(false)
    async function handleClearNotifications(){
     try {
       const response = await axios.delete(`${api_url}api/notifications/deleteAllNotifications`,{withCredentials:true})
+      console.log(response);
       
       toast(`${response.data.message}🍞`, { theme: "success" });
       
@@ -74,6 +80,8 @@ const [deleting,setDeleting]=useState(false)
       
     }
    }
+  
+   
   // console.log(read, "read status");
 
   return (
