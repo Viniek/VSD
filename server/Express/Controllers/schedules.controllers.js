@@ -96,3 +96,28 @@ export const updateAppointment = async (req, res) => {
     return res.status(500).json({ success: false, message: "Internal server error!" });
   }
 };
+export async function deleteAllAppointments(request,response){
+  try {
+    const appointments = await prisma.schedule.findMany({})
+    if (appointments.length===0)return response.status(404).json({success:false, message:"No appointments found"})
+
+      await prisma.schedule.deleteMany({})
+      response.status(200).json({success:true,message:"All Appointments deleted"})
+  } catch (error) {
+    console.log(error.message);
+    return response.status(500).json({success:false,message:"internal server error"})
+    
+  }
+}
+export async function deleteAppointment(request,response){
+  const {id} =request.params;
+  try {
+    const appointment = await prisma.schedule.findUnique({where:{id:id}})
+    if(!appointment)return response.status(404).json({success:false, message:"Appointment not found"})
+      await prisma.schedule.delete({where:{id:id}})
+    response.status(200).json({success:true,message:"Appointment deleted"})
+  } catch (error) {
+    console.log("error deleting an appointment",error.message);
+    return response.status(500).json({success:false,message:"internal server error"})
+  }
+}
