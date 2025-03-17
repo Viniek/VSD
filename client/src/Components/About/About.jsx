@@ -1,5 +1,6 @@
 import React from "react";
 import "./About.css";
+
 import heart from "../../assets/heart1.webp";
 import detection from "../../assets/heartDetect.png";
 import recomend from "../../assets/recommend.png";
@@ -51,6 +52,7 @@ function About() {
             </ul>
           </div>
         </section>
+
 
         {/* section image */}
         <section className="aboutCenter">
