@@ -96,3 +96,31 @@ export const updateAppointment = async (req, res) => {
     return res.status(500).json({ success: false, message: "Internal server error!" });
   }
 };
+
+// Delete Appointment
+export const deleteAppointment = async (request, response) => {
+  const { id } = request.params;
+  const userid = request.user?.id; 
+
+  if (!userid) {
+    return response.status(401).json({ success: false, message: "Unauthorized: User not found" });
+  }
+
+  try {
+    const appointment = await prisma.schedule.findUnique({ where: { id } });
+
+    if (!appointment) {
+      return response.status(404).json({ success: false, message: "Appointment not found" });
+    }
+   if (appointment.userid !== userid) {
+      return response.status(403).json({ success: false, message: "Forbidden: You cannot delete this appointment" });
+    }
+
+    await prisma.schedule.delete({ where: { id } });
+
+    return response.status(200).json({ success: true, message: "Appointment deleted successfully" });
+  } catch (error) {
+    console.error("Error deleting appointment:", error.message);
+    return response.status(500).json({ success: false, message: "Internal server error" });
+  }
+};
