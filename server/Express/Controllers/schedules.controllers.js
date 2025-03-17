@@ -5,7 +5,7 @@ const prisma = new PrismaClient();
 
 export const createAppointment = async (req, res) => {
   const { hospital, date } = req.body;
-console.log(req.body);
+// console.log(req.body);
   const userid = req.user?.id; 
 
   if (!userid) {
@@ -53,7 +53,7 @@ export const getApppointment= async (req,res)=>{
             return res.status(404).json({success:false,message:"No booked appointments found"});
 
         }
-        console.log(schedule,"schedule");
+       
         res.status(200).json({success:true,data:schedule})
     }catch(error){
         console.log("Error fetching booked appointments",error.message);

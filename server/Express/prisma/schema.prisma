@@ -27,7 +27,7 @@ model users {
   next_of_kin_phone String?
   history history []
   schedule schedule []
-  notifications Notification[]  // Add this line
+  notifications notification[]  // Add this line
 }
 
 
@@ -48,13 +48,13 @@ model schedule{
   hospital String 
   date String
 }
-model Notification {
+model notification {
   id        String  @id @default(uuid()) @unique
   user      users   @relation(fields: [userid], references: [id])
   userid    String
   message   String
   createdAt DateTime @default(now())
-  read      Boolean @default(false)
+  read      Boolean? @default(false) 
 }
 
 
