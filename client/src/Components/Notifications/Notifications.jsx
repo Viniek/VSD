@@ -8,7 +8,8 @@ import useNotificationStore from "../../../Store/notificationsStore";
 
 
 function Notifications() {
-  const changeNotificationCount = useNotificationStore((state)=>state.updateNotificationCount)
+  const incrementNotificationCount = useNotificationStore((state)=>state.incrementNotification)
+  const decerementNotification = useNotificationStore((state)=>state.decrementNotificationCount)
   const clear_notification = useNotificationStore((state)=>state.clearNotifications)
   const [notifications, setNotifications] = useState(false);
   const [loading, setLoading] = useState(false);
@@ -28,7 +29,7 @@ const [deleting,setDeleting]=useState(false)
       if (response.data.success === true) {
         setNotifications(response.data.data);
         
-        changeNotificationCount(response.data.data.length)
+        // changeNotificationCount(response.data.data.length)
         // toast(`${response.data.message}🍞`, { theme: "success" });
         setRead(response.data.data.read)
         
@@ -58,7 +59,7 @@ const [deleting,setDeleting]=useState(false)
       toast(`${response.data.message}🍞`, { theme: "success" });
     // setNotifications(notifications.filter((notification) => notification.id !== id));
     setNotifications((prev) => prev.filter((notification) => notification.id !== id));
-
+    decerementNotification()
        
     } catch (error) {
       setError(response.data.message)
@@ -71,7 +72,8 @@ const [deleting,setDeleting]=useState(false)
     try {
       const response = await axios.delete(`${api_url}api/notifications/deleteAllNotifications`,{withCredentials:true})
       console.log(response);
-      
+      clear_notification()
+      changeNotificationCount(0)
       toast(`${response.data.message}🍞`, { theme: "success" });
       
     } catch (error) {

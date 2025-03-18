@@ -3,6 +3,7 @@ import axios from "axios";
 import { api_url } from "../../../utills/config";
 import "./ScheduleDashboard.css";
 import toast, { toastConfig } from "react-simple-toasts";
+import useNotificationStore from "../../../Store/notificationsStore";
 
 function ScheduleDashboard() {
   const [loading, setLoading] = useState(false);
@@ -10,6 +11,7 @@ function ScheduleDashboard() {
   const [selectedAppointment, setSelectedAppointment] = useState(null);
   const [editData, setEditData] = useState({ hospital: "", date: "" });
   const [hospitals, setHospitals] = useState([]);
+   const incrementNotificationCount = useNotificationStore((state)=>state.incrementNotification)
 
   useEffect(() => {
     handleGetAppointments();
@@ -94,8 +96,12 @@ function ScheduleDashboard() {
 
   // Handle Explore Click
   const handleExplore = (appointment) => {
+    const openOvellay = document.getElementById("floating-card")
+// if(openOvellay.classList.contains("close"))openOvellay.classList.remove()
+
     setSelectedAppointment(appointment);
     setEditData({ hospital: appointment.hospital, date: appointment.date });
+ 
   };
 
   // Handle Input Change
@@ -115,6 +121,11 @@ function ScheduleDashboard() {
       );
       if (res.data.success===true) {
         handleGetAppointments()
+        const closeOvellay=document.getElementById("floating-card")
+        
+        // closeOvellay.classList.toggle("close")
+        
+  
         toast(`${response.data.message}🍞`, { theme: "success" });
         const notificationData = {
           message:"you edited your appointment Details",
@@ -122,6 +133,7 @@ function ScheduleDashboard() {
         }
         await axios.post(`${api_url}api/notifications/createNotification`,notificationData,{withCredentials:true})
         setSelectedAppointment(null);
+        incrementNotificationCount()
         ;
       }
     } catch (error) {
@@ -141,6 +153,7 @@ function ScheduleDashboard() {
   await axios.post(`${api_url}api/notifications/createNotification`,notificationData,{withCredentials:true})
     setAppointments((previousState)=>previousState.filter((appointments)=>appointments.id !==id))
     toast(`${response.data.message}🍞`, { theme: "success" });
+    incrementNotificationCount()
    };
     
   }
@@ -181,7 +194,7 @@ function ScheduleDashboard() {
 
       {/* Floating Card for Editing */}
       {selectedAppointment && (
-        <div className="floating-card">
+        <div className="floating-card" id="floating-card">
           <h2>Edit Appointment</h2>
           <label>Hospital:</label>
           <select

@@ -181,21 +181,21 @@ function Schedules() {
             <div className="details">
               <p>
                 <strong>Name: </strong>
-                {user.firstname}
+                {user&& user.firstname}
               </p>
               <p>
                 <strong>Sex: </strong>
-                {user.gender}
+                {user&& user.gender}
               </p>
             </div>
             <div className="details">
               <p>
                 <strong>Phone: </strong>
-                {user.phone}
+                {user&& user.phone}
               </p>
               <p>
                 <strong>Status: </strong>
-                {user.maritual_status}
+                {user&& user.maritual_status}
               </p>
             </div>
             <div className="details">
