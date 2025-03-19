@@ -1,105 +1,56 @@
 from flask import Flask, request, jsonify
 from flask_cors import CORS
-import pandas as pd
-import pickle
 import numpy as np
+import pandas as pd  # Add Pandas for named DataFrame input
+import joblib
 
+# Initialize Flask app
 app = Flask(__name__)
-CORS(app)  # Allow requests from frontend
+CORS(app)  # Enable CORS
 
-# Load trained models
-vsd_model = pickle.load(open("vsd_model.pkl", "rb"))
-severity_model = pickle.load(open("severity_model.pkl", "rb"))
-condition_model = pickle.load(open("condition_model.pkl", "rb"))
+# Load trained model
+try:
+    model = joblib.load("vsd_model.pkl")
+    feature_names = ["age", "gender", "oxygenSaturation", "ejectionFraction", 
+                     "weight", "cholesterol", "height", "heartRate", "cyanosis",
+                     "murmur", "systolic", "diastolic", "vsdSize", "familyHistory"]
+except Exception as e:
+    model = None
+    print("Error loading model:", str(e))
 
-# Function to determine treatment recommendation
-def get_treatment_recommendation(condition, severity):
-    if condition == "Tetralogy of Fallot":
-        return "Surgical repair is recommended."
-    elif condition == "Ventricular Septal Defect" and severity == "Mild":
-        return "Regular monitoring; surgery may not be necessary."
-    elif condition == "Ventricular Septal Defect" and severity == "Severe":
-        return "Surgical intervention required."
-    else:
-        return "Consult a cardiologist for a detailed evaluation."
-
-# Function to make predictions
-def make_prediction(data):
-    # Remove "cholesterol" from the data if it wasn't in the training data
-    if "cholesterol" in data:
-        del data["cholesterol"]
-    
-    # Rename input fields to match training dataset
-    column_mapping = {
-        "age": "Age",
-        "gender": "Gender",
-        "oxygenSaturation": "Oxygen Saturation (%)",
-        "ejectionFraction": "Ejection Fraction (%)",
-        "weight": "Weight (kg)",
-        "height": "Height (cm)",
-        "heartRate": "Heart Rate (bpm)",
-        "cyanosis": "Cyanosis",
-        "murmur": "Murmur",
-        "systolic": "Systolic",
-        "diastolic": "Diastolic",
-        "vsdSize": "VSD Size (mm)",
-        "familyHistory": "Family History"
-    }
-
-    # Convert received data to DataFrame
-    df = pd.DataFrame([data])
-
-    # Rename columns to match the training data
-    df.rename(columns=column_mapping, inplace=True)
-
-    # Encode Gender as a numeric value (Male -> 1, Female -> 0)
-    df["Gender"] = df["Gender"].map({"Male": 1, "Female": 0})
-
-    # Ensure columns are in the correct order expected by the model
-    expected_columns = [
-        "Age", "Gender", "Weight (kg)", "Height (cm)", "VSD Size (mm)", "Oxygen Saturation (%)", 
-        "Ejection Fraction (%)", "Heart Rate (bpm)", "Cyanosis", "Murmur", "Systolic", "Diastolic", 
-        "Family History"
-    ]
-    df = df[expected_columns]
-
-    # Predict VSD
-    vsd_pred = vsd_model.predict(df)[0]
-    vsd_status = "Has VSD" if vsd_pred == 1 else "VSD absent"
-
-    # Predict Severity
-    severity_pred = severity_model.predict(df)[0]
-
-    # Predict Other Condition
-    condition_pred = condition_model.predict(df)[0]
-
-    # Get Treatment Recommendation
-    treatment = get_treatment_recommendation(condition_pred, severity_pred)
-
-    return {
-        "vsd_status": vsd_status,
-        "severity": severity_pred,
-        "condition": condition_pred,
-        "treatment": treatment  # Include treatment recommendation in response
-    }
-
-# API Endpoint to receive patient data
 @app.route('/predict', methods=['POST'])
 def predict():
-    data = request.json  # Get JSON data from frontend
+    try:
+        data = request.json
 
-    # Validate required fields
-    required_fields = ["age", "gender", "oxygenSaturation", "ejectionFraction", "weight",
-                       "cholesterol", "height", "heartRate", "cyanosis", "murmur",
-                       "systolic", "diastolic", "vsdSize", "familyHistory"]
+        # Convert categorical fields
+        data["gender"] = 1 if data["gender"].lower() == "male" else 0
 
-    for field in required_fields:
-        if field not in data:
-            return jsonify({"error": f"Missing field: {field}"}), 400
+        # Create DataFrame with proper feature names
+        input_df = pd.DataFrame([data], columns=feature_names)
 
-    # Make Prediction
-    prediction = make_prediction(data)
-    return jsonify(prediction)
+        # Ensure model is loaded
+        if model is None:
+            return jsonify({"error": "Model not found"}), 500
+
+        # Make prediction
+        prediction = model.predict(input_df)[0]
+
+        # Map results to readable format
+        status = "Has VSD" if prediction == 1 else "No VSD"
+        severity = "Mild" if prediction == 1 else "None"
+        condition = "Tetralogy of Fallot" if prediction == 1 else "Normal"
+        treatment = "Medication & Monitoring" if prediction == 1 else "No treatment needed"
+
+        return jsonify({
+            "vsd_status": status,
+            "severity": severity,
+            "condition": condition,
+            "treatment": treatment
+        })
+
+    except Exception as e:
+        return jsonify({"error": str(e)}), 500
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(debug=True, port=5000)

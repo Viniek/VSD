@@ -21,6 +21,7 @@
   flex-direction: row;
   gap: 3rem;
   list-style-type: none;
+  
 }
 .functionsList li {
   display: flex;
@@ -28,13 +29,13 @@
   justify-content: center;
   align-items: center;
   padding: 2rem;
+  border:2px outset grey;
 }
 
 
 .aboutCenter img {
   height: 70rem;
   width: 100%;
-n
 }
 .aboutRight {
   background-color: var(--grey);
