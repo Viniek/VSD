@@ -1,7 +1,7 @@
 import React from "react";
 import "./About.css";
 
-import heart from "../../assets/heart1.webp";
+import hero from "../../assets/img6.jpg";
 import detection from "../../assets/heartDetect.png";
 import recomend from "../../assets/recommend.png";
 import integrate from "../../assets/integrate.png";
@@ -13,81 +13,83 @@ import linkedin from "../../assets/linkedIn.webp";
 import github from "../../assets/github.png";
 import twitter from "../../assets/x.png";
 
-function About() {
+function About() {  
   return (
-    <>
-      <mainSection className="aboutPage">
-        {/* section functions */}
-        <section className="aboutLeft">
-          <h1>Medical Medicine learning AI</h1>
-          <div className="aboutIntroduction"></div>
-          {/* <p>VSD (Ventricular Septal Defect) is a congenital heart condition characterized by a hole in the heart's septum. This project aims to help in detecting VSD and other heart conditions using machine learning, recommending treatment options, and integrating an emergency response system.</p> */}
-          <div className="features">
-            <h1>WHAT WE OFFER?</h1>
-            <ul className="functionsList">
-              <li>
-                <img src={detection} />
-                <h2>Detection</h2> Uses machine learning algorithms to analyze
-                patient health data.
-              </li>
-              <li>
-                <img src={recomend} />
-                <h2>Treatment</h2>Provides suggested treatments based on
-                condition severity levels.
-              </li>
-              <li>
-                <img src={integrate} /> <h2>Emergencies </h2>Connects to
-                emergency services for immediate medical assistance.
-              </li>
-              <li>
-                {" "}
-                <img src={notification} />
-                <h2>Notifications</h2> Users receive real-time notifications for
-                bookings and account updates.
-              </li>
-              <li>
-                <img src={UI} /> <h2>Interactive UI</h2> Built with React.js and
-                Flask for seamless user experience.
-              </li>
-            </ul>
-          </div>
-        </section>
+    <div className="about-section-wrapper">       
+      <div className="about-hero">
+        <img src={hero} alt={hero} />
+        <div className="about-description">
+          <h1>WHAT WE OFFER</h1>
+<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Illo ut vero asperiores tenetur voluptas molestiae quae laborum nemo commodi neque.</p>
+<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatibus, possimus.</p>
+<p>Lorem ipsum dolor sit amet.</p>
+<button>More details</button>
+
+        </div>
+      </div>
+   
 
 
-        {/* section image */}
-        <section className="aboutCenter">
-          <img src={heart} alt="heart" />
-        </section>
+     <section className="about-offers">
 
-        {/* section Contacts */}
-        <section className="aboutRight">
-          <h1>CONTACT US TODAY</h1>
-          <ul className="aboutContacts">
-            <li>
-              <img src={email} />
-              <h2>Email</h2>njerivictory52@gmail.com
-            </li>
-            <li>
-              <img src={phone} />
-              <h2>Phone</h2>+254743209259
-            </li>
-            <li>
-              <img src={github} />
-              <h2>Github</h2>https://github.com/viniek{" "}
-            </li>
-            <li>
-              <img src={twitter} />
-              <h2>Twitter(X)</h2>https://github.com/viniek
-            </li>
-            <li>
-              <img src={linkedin} />
-              <h2>LinkedIn</h2>{" "}
-              https://www.linkedin.com/in/victory-njeri-b0a359308/{" "}
-            </li>
-          </ul>
-        </section>
-      </mainSection>
-    </>
+     <div className="offers-container">
+      <img src={recomend} />
+                <h2>Treatment</h2>
+                <p>Provides suggested treatments based on
+                condition severity levels.</p>
+      </div>
+
+      <div className="offers-container">
+      <img src={integrate} />
+       <h2>Emergencies </h2>
+      <p> Connects to
+      emergency services for immediate medical assistance.</p>
+      </div>
+
+      <div className="offers-container">
+      <img src={notification} />
+
+                <h2>Notifications</h2> 
+                <p>Users receive real-time notifications for
+                bookings and account updates.</p>
+      </div>
+
+      <div className="offers-container">
+          <img src={UI} />
+       <h2>Interactive UI</h2> 
+<p>       Built with React.js and
+Flask for seamless user experience.</p>
+      </div>
+     </section>
+
+
+<div className="contact-us-wrapper">
+
+<div className="contact-us-container">
+  <div className="contact-us-elements">
+  <img src={email} />
+
+  </div>
+
+  <div className="contact-us-elements">
+  <img src={github} />
+
+  </div>
+
+  <div className="contact-us-elements">
+  <img src={twitter} />
+
+  </div>
+
+  <div className="contact-us-elements">
+  <img src={linkedin} />
+
+  </div>
+</div>
+</div>
+
+      
+    </div>
   );
 }
 
