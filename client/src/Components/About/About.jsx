@@ -92,6 +92,7 @@ Flask for seamless user experience.</p>
 <img src={aboutImage} alt="contact us" />
   </div>
 <form onSubmit={formik.handleSubmit}>
+  <h2>Talk to us today</h2>
   <div className="contact-form-inputs">
     <label >Full name</label>
     <input type="text" name="fullName" placeholder="Enter your name" value={formik.values.fullName}   onChange={formik.handleChange} onBlur={formik.handleBlur} required/>
@@ -131,22 +132,22 @@ Flask for seamless user experience.</p>
 <div className="contact-us-container">
   <div className="contact-us-elements">
   <img src={email} />
-
+<p>Email</p>
   </div>
 
   <div className="contact-us-elements">
   <img src={github} />
-
+<p>Github</p>
   </div>
 
   <div className="contact-us-elements">
   <img src={twitter} />
-
+<p>Twitter</p>
   </div>
 
   <div className="contact-us-elements">
   <img src={linkedin} />
-
+<p>LinkedIn</p>
   </div>
 </div>
 </div>

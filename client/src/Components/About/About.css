@@ -49,6 +49,35 @@ border-radius: 20px;
 }
 .about-hero img{opacity: .7;}
 
+.about-offers{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    margin-top: 5rem;
+    padding: 1rem;
+    gap: 3rem;
+}
+.offers-container{
+    display: flex;
+    flex-direction: column;
+    width: 27%;
+    
+    padding: 1rem;
+    border: outset;
+}
+.offers-container h2{
+    margin-bottom: 1rem;
+}
+.offers-container img{
+    width: 20%;
+    margin-bottom: 5rem;
+   
+}
+.offers-container p{
+    margin-bottom: 2rem;
+}
+
 .contact-form-section{
     display: flex;
     flex-direction: row-reverse;
@@ -99,30 +128,7 @@ border-radius: 20px;
     border-radius: 20px;
 }
 
-.about-offers{
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-    margin-top: 5rem;
-    padding: 1rem;
-    gap: 3rem;
-}
-.offers-container{
-    display: flex;
-    flex-direction: column;
-    width: 27%;
-    
-    padding: 1rem;
-    border: outset;
-}
-.offers-container h2{
-    margin-bottom: 1rem;
-}
-.offers-container img{
-    width: 20%;
-   
-}
+
 .contact-us-wrapper{
     display: flex;
     flex-direction: column;
@@ -141,11 +147,14 @@ border-radius: 20px;
 .contact-us-elements{
     display: flex;
     width: 30%;
+    gap: 2rem;
+    align-items: center;
+    color: var(--white);
     /* margin-top: 5rem; */
    
 }
 .contact-us-elements img{
-    width: 30%;
+    width: 15%;
     /* border: 1px var(--gray) solid; */
     border-radius: 60%;
     background-color: white;
