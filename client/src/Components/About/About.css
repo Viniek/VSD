@@ -55,8 +55,18 @@ border-radius: 20px;
     width: 100%;
     margin: 1rem;
     padding: 1rem;
+    background-color: var(--gray);
     /* align-items: center; */
 
+}
+.contact-image{
+    width: 100%;
+}
+.contact-image img{
+    width: 100%;
+    opacity: .9;
+    border: 2px solid var(--gray);
+    border-radius: 10px;
 }
 .contact-form-section form{
     display: flex;
@@ -64,6 +74,9 @@ border-radius: 20px;
     width: 100%;
     align-items: center;
     padding: 1rem;
+    justify-content: center;
+    background-color: var(--white);
+    border-radius: 10px;
 
     /* justify-content: center; */
 }
@@ -78,6 +91,12 @@ border-radius: 20px;
 .contact-form-inputs input,textarea,button{
     padding: 1rem;
     width: 70%;
+}
+.contact-form-inputs button{
+    background-color: var(--gray);
+    font-weight: 600;
+    border: .1px var(--skyblue) solid;
+    border-radius: 20px;
 }
 
 .about-offers{

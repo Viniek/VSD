@@ -7,6 +7,7 @@ import recomend from "../../assets/recommend.png";
 import integrate from "../../assets/integrate.png";
 import notification from "../../assets/notification.png";
 import UI from "../../assets/UI.png";
+import aboutImage from '../../assets/img1.jpg'
 import email from "../../assets/email.png";
 import phone from "../../assets/phone.png";
 import linkedin from "../../assets/linkedIn.webp";
@@ -32,9 +33,9 @@ function About() {
     validate:function(values){
 const errors ={}
 if(!values.fullName)errors.fullName="Full Name is required!"
-if(!values.phone)errors.phone="Full Name is required!"
-if(!values.email)errors.email="Full Name is required!"
-if(!values.contactMessage)errors.contactMessage="Full Name is required!"
+if(!values.phone)errors.phone="phone is required!"
+if(!values.email)errors.email="email is required!"
+if(!values.contactMessage)errors.contactMessage="message is required!"
 return errors
     }
   })
@@ -88,7 +89,7 @@ Flask for seamless user experience.</p>
 
 <div className="contact-form-section">
   <div className="contact-image">
-<img src={hero} alt="contact us" />
+<img src={aboutImage} alt="contact us" />
   </div>
 <form onSubmit={formik.handleSubmit}>
   <div className="contact-form-inputs">
