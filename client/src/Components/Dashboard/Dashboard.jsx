@@ -2,8 +2,10 @@ import React, { useState } from "react";
 import "./Dashboard.css";
 import { Link, useLocation } from "react-router-dom";
 import useUserStore from "../../../Store/userStore";
+import useNotificationStore from "../../../Store/notificationsStore";
 
 function Dashboard() {
+  const notificationCount = useNotificationStore((state)=>state.notificationsCount)
   const user = useUserStore((state) => state.user);
   const location = useLocation();
   const [isDarkMode, setIsDarkMode] = useState(false);
@@ -12,13 +14,14 @@ function Dashboard() {
     setIsDarkMode(!isDarkMode);
     document.body.classList.toggle("dark"); // Toggle dark mode on body
   }
+// console.log(notificationCount);
 
   return (
     <div className="dashboard">
       <ul>
         {[
           { path: "/History", label: "📜 History" },
-          { path: "/Notifications", label: "🔔 Notifications" },
+          { path: "/Notifications", label: `🔔(${notificationCount}) Notifications` },
           { path: "/Emergencies", label: "🚑 Emergencies" },
           { path: "/HealthCenters", label: "🏥 Health Centers" },
           { path: "/Help", label: "🆘 Help" },

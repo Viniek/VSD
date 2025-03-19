@@ -5,12 +5,14 @@ import useUserStore from "../../../Store/userStore";
 import axios from "axios";
 import Loader from "../Loader/Loader";
 import { api_url } from "../../../utills/config";
+import useNotificationStore from "../../../Store/notificationsStore";
 
 const EmergencyReport = () => {
   const [location, setLocation] = useState(null);
   const [address, setAddress] = useState("");
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
+  const incrementNotificationCount = useNotificationStore((state)=>state.incrementNotification)
   const user = useUserStore((state) => state.user);
 
   const fetchLocation = async (values) => {
@@ -39,6 +41,7 @@ const EmergencyReport = () => {
             details:`Your Location was${address},and your emergency was ${formik.values.description}`
           }
           await axios.post(`${api_url}api/notifications/createNotification`,notificationData,{withCredentials:true})
+          incrementNotificationCount()
         } catch (error) {
           setError("Failed to get location details.");
         }
