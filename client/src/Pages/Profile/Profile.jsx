@@ -16,12 +16,14 @@ import "react-simple-toasts/dist/theme/failure.css";
 import axios from "axios";
 import { api_url } from "../../../utills/config";
 import { useParams } from "react-router-dom";
+import useNotificationStore from "../../../Store/notificationsStore";
 
 function Profile() {
   const user = useUserStore((state) => state.user);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
   const { userid } = useParams();
+  const incrementNotificationCount = useNotificationStore((state)=>state.incrementNotification)
   useEffect(() => {
     const getUser = async () => {
       console.log(document.cookie);
@@ -41,6 +43,7 @@ function Profile() {
             details:`No details found`
           }
           await axios.post(`${api_url}api/notifications/createNotification`,notificationData,{withCredentials:true})
+          incrementNotificationCount()
         }
       } catch (error) {
         setError("error");

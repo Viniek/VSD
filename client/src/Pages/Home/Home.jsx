@@ -136,6 +136,9 @@ const Home = () => {
                   onChange={handleChange}
                   required
                 />
+
+                <label htmlFor="">attach a photo</label>
+                <input type="file" />
               </div>
 
               <div className="form-group2">
