@@ -14,6 +14,7 @@ import github from "../../assets/github.png";
 import twitter from "../../assets/x.png";
 
 import { useFormik}  from 'formik'
+import toast, { toastConfig } from "react-simple-toasts";
 function About() {  
 
   const formik = useFormik({
@@ -25,6 +26,7 @@ function About() {
     },
     onSubmit:async function(values){
       console.log(formik.values);
+      toast(`Message sent 🍞`, { theme: "success" });
       
     }
   })
