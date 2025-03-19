@@ -62,6 +62,40 @@ Flask for seamless user experience.</p>
       </div>
      </section>
 
+<div className="contact-form-section">
+  <div className="contact-image">
+<img src={hero} alt="contact us" />
+  </div>
+<form >
+  <div className="contact-form-inputs">
+    <label >Full name</label>
+    <input type="text" placeholder="Enter your name" />
+  </div>
+
+  <div className="contact-form-inputs">
+    <label >Phone</label>
+    <input type="text" placeholder="Enter your phone Number" />
+  </div>
+
+  <div className="contact-form-inputs">
+    <label >Email</label>
+    <input type="email" placeholder="Enter your Email" />
+  </div>
+
+  <div className="contact-form-inputs">
+    <label >Message</label>
+    <textarea name="contactMessage"  placeholder="Write your message here"></textarea>
+  </div>
+
+  <div className="contact-form-inputs">
+ <button>Send Message</button>
+  </div>
+</form>
+  <div className="contact-form">
+
+  </div>
+</div>
+
 
 <div className="contact-us-wrapper">
 

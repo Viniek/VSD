@@ -48,6 +48,38 @@ border-radius: 20px;
     width: 30%;
 }
 .about-hero img{opacity: .7;}
+
+.contact-form-section{
+    display: flex;
+    flex-direction: row-reverse;
+    width: 100%;
+    margin: 1rem;
+    padding: 1rem;
+    /* align-items: center; */
+
+}
+.contact-form-section form{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    align-items: center;
+    padding: 1rem;
+
+    /* justify-content: center; */
+}
+.contact-form-inputs{
+   
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 1rem;
+    /* align-items: center; */
+}
+.contact-form-inputs input,textarea,button{
+    padding: 1rem;
+    width: 70%;
+}
+
 .about-offers{
     display: flex;
     flex-direction: row;
