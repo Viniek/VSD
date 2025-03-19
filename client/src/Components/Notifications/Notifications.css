@@ -43,9 +43,9 @@ table button {
   background-color: var(--white);
   border: none;
 }
-.read-button {
+/* .read-button {
   
-}
+} */
 .notification-container {
   display: flex;
   justify-content: center;

@@ -18,6 +18,9 @@
 .close {
   display: none;
 }
+.open{
+  display: block;
+}
 #bottom {
   margin-top: 10rem;
 }

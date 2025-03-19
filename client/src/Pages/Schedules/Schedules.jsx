@@ -1,14 +1,16 @@
-import React from "react";
+import React, { useState } from "react";
 import "./Schedules.css";
 import { useFormik } from "formik";
 import useUserStore from "../../../Store/userStore";
 import axios from "axios";
 import { api_url } from "../../../utills/config";
 import toast, { toastConfig } from "react-simple-toasts";
+
 import "./Schedules.css";
 import ScheduleDashboard from "../../Components/ScheduleDashboard/ScheduleDashboard";
 
 function Schedules() {
+  const [loading, setLoading]=useState(false)
   const hospitals = [
     "Aga Khan University Hospital",
     "Nairobi Hospital",
@@ -84,10 +86,10 @@ function Schedules() {
       return errors;
     },
     onSubmit: async (values) => {
-      console.log("Form Submitted: ", values);
-      const details_section = document.getElementById("details-of-booking");
+        const details_section = document.getElementById("details-of-booking");
       // details_section.style.display = "block";
       try {
+        setLoading(true)
         const data = {
           date: String(values.dateOfAppointment),
           hospital: values.hospital,
@@ -100,6 +102,7 @@ function Schedules() {
        
         
         if(res.data.success===true){
+          await axios.get(`${api_url}api/appointment/viewAppointment`, {withCredentials: true, });
           formik.resetForm()
           toast(`Booking succesfull🍞`, { theme: "success" });
           const notificationData ={
@@ -107,23 +110,28 @@ function Schedules() {
             details:`..`
           }
         
-          const response =  await axios.post(`${api_url}api/notifications/createNotification`,notificationData,{withCredentials:true})
-        ;
+          await axios.post(`${api_url}api/notifications/createNotification`,notificationData,{withCredentials:true}) ;
           
         };
       } catch (error) {
         console.log(error.message);
       }
+      finally{
+        setLoading(false)
+      }
+
     },
   });
 
   return (
     <div className="schedule-section">
-      <div></div>
+     
+     <ScheduleDashboard />
 
       <div className="contentContainer">
+        
         <div className="schedule-dashboard-container">
-          <ScheduleDashboard />
+          
         </div>
       </div>
 
@@ -166,28 +174,28 @@ function Schedules() {
           </div>
 
           <div className="bookAppointmentInput">
-            <button type="submit">Submit</button>
+            <button type="submit" disabled={loading}>{loading?"Booking appointment..":"Book Appointment"}</button>
           </div>
           <div className="details-of-booking" id="details-of-booking">
             <h2>Booking Details</h2>
             <div className="details">
               <p>
                 <strong>Name: </strong>
-                {user.firstname}
+                {user&& user.firstname}
               </p>
               <p>
                 <strong>Sex: </strong>
-                {user.gender}
+                {user&& user.gender}
               </p>
             </div>
             <div className="details">
               <p>
                 <strong>Phone: </strong>
-                {user.phone}
+                {user&& user.phone}
               </p>
               <p>
                 <strong>Status: </strong>
-                {user.maritual_status}
+                {user&& user.maritual_status}
               </p>
             </div>
             <div className="details">

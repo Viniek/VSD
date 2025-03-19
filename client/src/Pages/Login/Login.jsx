@@ -9,11 +9,13 @@ import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 import axios from "axios";
 import { api_url } from "../../../utills/config";
+import useNotificationStore from "../../../Store/notificationsStore";
 
 function Login() {
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
+  const NotificationCount = useNotificationStore((state)=>state.updateNotificationCount)
   const changeUserInformation = useUserStore(
     (state) => state.changeUserInformation,
   );
@@ -25,15 +27,24 @@ function Login() {
       const response = await axios.post(`${api_url}api/users/Login`, values, {
         withCredentials: true,
       });
-      // console.log("response",response);
-      const data = response.data;
-      // console.log("data",data.success);
-
-      navigate("/Home");
-      changeUserInformation(data.data);
+      if(response.data.success===true){
+        const data = response.data;
+  
+  
+        navigate("/Home");
+        changeUserInformation(data.data);
+       const notifications = await axios.get(
+                `${api_url}api/notifications/getNotifications`,
+                { withCredentials: true },
+              );
+              {NotificationCount(notifications.data.data.length)};
+              console.log(notifications.data.data.length);
+              
+              
+      }
+   
     } catch (error) {
-      // console.log("err",error);
-
+    
       setError(error.response.data.message);
     } finally {
       setLoading(false);
