@@ -12,7 +12,15 @@
     align-items: center;
     background-color: var(--gray);
     gap: 5rem;
+    margin: 1rem;
+    /* padding: .5rem; */
+    border-radius: 40px;
 
+}
+.about-hero img{
+    /* border-radius: 40px; */
+    border-top-left-radius: 8%;
+    border-bottom-left-radius: 8%;
 }
 .about-description{
     display: flex;
@@ -25,6 +33,7 @@ gap: 1rem;
     justify-content: center;
     align-items: center; 
     font-family:  sans-serif;
+    margin-bottom: 2rem;
 }
 .about-description button{
     display: flex;
@@ -55,6 +64,9 @@ border-radius: 20px;
     
     padding: 1rem;
     border: outset;
+}
+.offers-container h2{
+    margin-bottom: 1rem;
 }
 .offers-container img{
     width: 20%;
