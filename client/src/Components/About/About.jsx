@@ -13,7 +13,21 @@ import linkedin from "../../assets/linkedIn.webp";
 import github from "../../assets/github.png";
 import twitter from "../../assets/x.png";
 
+import { useFormik}  from 'formik'
 function About() {  
+
+  const formik = useFormik({
+    initialValues:{
+      fullName:"",
+      phone:"",
+      email:"",
+      contactMessage:""
+    },
+    onSubmit:async function(values){
+      console.log(formik.values);
+      
+    }
+  })
   return (
     <div className="about-section-wrapper">       
       <div className="about-hero">
@@ -66,29 +80,29 @@ Flask for seamless user experience.</p>
   <div className="contact-image">
 <img src={hero} alt="contact us" />
   </div>
-<form >
+<form onSubmit={formik.handleSubmit}>
   <div className="contact-form-inputs">
     <label >Full name</label>
-    <input type="text" placeholder="Enter your name" />
+    <input type="text" name="fullName" placeholder="Enter your name" value={formik.values.fullName}   onChange={formik.handleChange} onBlur={formik.handleBlur} required/>
   </div>
 
   <div className="contact-form-inputs">
     <label >Phone</label>
-    <input type="text" placeholder="Enter your phone Number" />
+    <input type="text"name="phone" placeholder="Enter your phone Number" value={formik.values.phone}  onChange={formik.handleChange} onBlur={formik.handleBlur} required />
   </div>
 
   <div className="contact-form-inputs">
     <label >Email</label>
-    <input type="email" placeholder="Enter your Email" />
+    <input type="email" name="email" placeholder="Enter your Email" value={formik.values.email}  onChange={formik.handleChange} onBlur={formik.handleBlur} required />
   </div>
 
   <div className="contact-form-inputs">
     <label >Message</label>
-    <textarea name="contactMessage"  placeholder="Write your message here"></textarea>
+    <textarea name="contactMessage"  placeholder="Write your message here" value={formik.values.contactMessage}  onChange={formik.handleChange} onBlur={formik.handleBlur} required></textarea>
   </div>
 
   <div className="contact-form-inputs">
- <button>Send Message</button>
+ <button type="submit">Send Message</button>
   </div>
 </form>
   <div className="contact-form">
