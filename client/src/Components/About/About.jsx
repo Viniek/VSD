@@ -28,6 +28,14 @@ function About() {
       console.log(formik.values);
       toast(`Message sent 🍞`, { theme: "success" });
       
+    },
+    validate:function(values){
+const errors ={}
+if(!values.fullName)errors.fullName="Full Name is required!"
+if(!values.phone)errors.phone="Full Name is required!"
+if(!values.email)errors.email="Full Name is required!"
+if(!values.contactMessage)errors.contactMessage="Full Name is required!"
+return errors
     }
   })
   return (
@@ -86,21 +94,25 @@ Flask for seamless user experience.</p>
   <div className="contact-form-inputs">
     <label >Full name</label>
     <input type="text" name="fullName" placeholder="Enter your name" value={formik.values.fullName}   onChange={formik.handleChange} onBlur={formik.handleBlur} required/>
+    {formik.touched.fullName && formik.errors.fullName && (<p className="errors">{formik.errors.fullName}</p>)}
   </div>
 
   <div className="contact-form-inputs">
     <label >Phone</label>
     <input type="text"name="phone" placeholder="Enter your phone Number" value={formik.values.phone}  onChange={formik.handleChange} onBlur={formik.handleBlur} required />
+    {formik.touched.phone && formik.errors.phone && (<p className="errors">{formik.errors.phone}</p>)}
   </div>
 
   <div className="contact-form-inputs">
     <label >Email</label>
     <input type="email" name="email" placeholder="Enter your Email" value={formik.values.email}  onChange={formik.handleChange} onBlur={formik.handleBlur} required />
+    {formik.touched.email && formik.errors.email && (<p className="errors">{formik.errors.email}</p>)}
   </div>
 
   <div className="contact-form-inputs">
     <label >Message</label>
     <textarea name="contactMessage"  placeholder="Write your message here" value={formik.values.contactMessage}  onChange={formik.handleChange} onBlur={formik.handleBlur} required></textarea>
+    {formik.touched.contactMessage && formik.errors.contactMessage && (<p className="errors">{formik.errors.contactMessage}</p>)}
   </div>
 
   <div className="contact-form-inputs">
