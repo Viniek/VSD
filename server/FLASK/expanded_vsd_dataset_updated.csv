@@ -1,0 +1,22 @@
+Age,Gender,Weight (kg),Height (cm),VSD Size (mm),Oxygen Saturation (%),Ejection Fraction (%),Heart Rate (bpm),Cyanosis,Murmur,Systolic,Diastolic,Cholesterol,Family History,Has VSD,Other Condition,Severity,Xray_Image_URL
+16.0,1.0,34.19,112.61,4.91,92.53,52.87,62.0,1.0,1.0,89.0,69.0,1.0,1.0,1.0,None,Moderate,https://res.cloudinary.com/demo/image/upload/v1700000000/xray_sample_0.jpg
+5.0,1.0,15.17,71.61,7.56,98.6,69.47,114.0,1.0,1.0,92.0,43.0,0.0,0.0,1.0,Atrial Septal Defect,Severe,https://res.cloudinary.com/demo/image/upload/v1700000000/xray_sample_1.jpg
+8.0,0.0,29.14,82.34,0.0,90.97,68.83,105.0,0.0,1.0,99.0,76.0,0.0,0.0,0.0,Tetralogy of Fallot,Mild,https://res.cloudinary.com/demo/image/upload/v1700000000/xray_sample_2.jpg
+15.0,1.0,43.01,103.04,4.32,95.63,55.68,97.0,0.0,0.0,119.0,40.0,1.0,1.0,1.0,None,Moderate,https://res.cloudinary.com/demo/image/upload/v1700000000/xray_sample_3.jpg
+11.0,0.0,31.85,65.9,7.82,92.21,69.23,91.0,1.0,0.0,80.0,67.0,1.0,1.0,1.0,None,Severe,https://res.cloudinary.com/demo/image/upload/v1700000000/xray_sample_4.jpg
+12.0,1.0,36.11,90.67,1.46,94.03,57.62,101.0,0.0,1.0,112.0,45.0,0.0,0.0,0.0,Congenital Heart Disease,Mild,https://res.cloudinary.com/demo/image/upload/v1700000000/xray_sample_5.jpg
+15.0,0.0,37.45,129.46,5.14,98.37,60.3,96.0,1.0,1.0,89.0,42.0,0.0,0.0,1.0,None,Moderate,https://res.cloudinary.com/demo/image/upload/v1700000000/xray_sample_6.jpg
+8.0,0.0,29.14,82.34,4.54,90.97,68.83,105.0,0.0,1.0,99.0,76.0,0.0,0.0,0.0,Tetralogy of Fallot,Mild,https://res.cloudinary.com/demo/image/upload/v1700000000/xray_sample_7.jpg
+9.0,1.0,19.32,89.6,3.19,92.13,63.47,73.0,0.0,0.0,103.0,64.0,0.0,0.0,0.0,None,Mild,https://res.cloudinary.com/demo/image/upload/v1700000000/xray_sample_8.jpg
+17.0,0.0,50.93,110.15,2.76,99.59,51.79,76.0,0.0,0.0,90.0,75.0,1.0,1.0,0.0,None,Mild,https://res.cloudinary.com/demo/image/upload/v1700000000/xray_sample_9.jpg
+,,,,,,,,,,,,,,,,,https://res.cloudinary.com/demo/image/upload/v1700000000/xray_sample_10.jpg
+,,,,,,,,,,,,,,,,,https://res.cloudinary.com/demo/image/upload/v1700000000/xray_sample_11.jpg
+,,,,,,,,,,,,,,,,,https://res.cloudinary.com/demo/image/upload/v1700000000/xray_sample_12.jpg
+,,,,,,,,,,,,,,,,,https://res.cloudinary.com/demo/image/upload/v1700000000/xray_sample_13.jpg
+,,,,,,,,,,,,,,,,,https://res.cloudinary.com/demo/image/upload/v1700000000/xray_sample_14.jpg
+,,,,,,,,,,,,,,,,,https://res.cloudinary.com/demo/image/upload/v1700000000/xray_sample_15.jpg
+,,,,,,,,,,,,,,,,,https://res.cloudinary.com/demo/image/upload/v1700000000/xray_sample_16.jpg
+,,,,,,,,,,,,,,,,,https://res.cloudinary.com/demo/image/upload/v1700000000/xray_sample_17.jpg
+,,,,,,,,,,,,,,,,,https://res.cloudinary.com/demo/image/upload/v1700000000/xray_sample_18.jpg
+,,,,,,,,,,,,,,,,,https://res.cloudinary.com/demo/image/upload/v1700000000/xray_sample_19.jpg
+,,,,,,,,5.0,,,,,,,,,https://res.cloudinary.com/demo/image/upload/v1700000000/xray_sample_20.jpg

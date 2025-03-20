@@ -1,105 +1,89 @@
 from flask import Flask, request, jsonify
 from flask_cors import CORS
+import os
+import joblib
 import pandas as pd
-import pickle
-import numpy as np
 
+# Initialize Flask app
 app = Flask(__name__)
-CORS(app)  # Allow requests from frontend
+CORS(app)
 
-# Load trained models
-vsd_model = pickle.load(open("vsd_model.pkl", "rb"))
-severity_model = pickle.load(open("severity_model.pkl", "rb"))
-condition_model = pickle.load(open("condition_model.pkl", "rb"))
+# Define Upload Folder for Images
+UPLOAD_FOLDER = "uploads"
+os.makedirs(UPLOAD_FOLDER, exist_ok=True)
+app.config["UPLOAD_FOLDER"] = UPLOAD_FOLDER
 
-# Function to determine treatment recommendation
-def get_treatment_recommendation(condition, severity):
-    if condition == "Tetralogy of Fallot":
-        return "Surgical repair is recommended."
-    elif condition == "Ventricular Septal Defect" and severity == "Mild":
-        return "Regular monitoring; surgery may not be necessary."
-    elif condition == "Ventricular Septal Defect" and severity == "Severe":
-        return "Surgical intervention required."
-    else:
-        return "Consult a cardiologist for a detailed evaluation."
+# Load trained model
+MODEL_FILE = "expanded_vsd_dataset_updated.csv"
 
-# Function to make predictions
-def make_prediction(data):
-    # Remove "cholesterol" from the data if it wasn't in the training data
-    if "cholesterol" in data:
-        del data["cholesterol"]
-    
-    # Rename input fields to match training dataset
-    column_mapping = {
-        "age": "Age",
-        "gender": "Gender",
-        "oxygenSaturation": "Oxygen Saturation (%)",
-        "ejectionFraction": "Ejection Fraction (%)",
-        "weight": "Weight (kg)",
-        "height": "Height (cm)",
-        "heartRate": "Heart Rate (bpm)",
-        "cyanosis": "Cyanosis",
-        "murmur": "Murmur",
-        "systolic": "Systolic",
-        "diastolic": "Diastolic",
-        "vsdSize": "VSD Size (mm)",
-        "familyHistory": "Family History"
-    }
+try:
+    model = joblib.load(MODEL_FILE)
+    print("✅ Model loaded successfully")
+except Exception as e:
+    model = None
+    print(f"❌ Error loading model: {e}")
 
-    # Convert received data to DataFrame
-    df = pd.DataFrame([data])
+# Load dataset to extract feature names
+DATASET_FILE = "expanded_vsd_dataset_updated.csv"
+try:
+    df = pd.read_csv(DATASET_FILE)
+    feature_names = list(df.columns[:-1])  # Exclude target column
+    print(f"✅ Feature names extracted: {feature_names}")
+except Exception as e:
+    feature_names = []
+    print(f"❌ Error loading dataset: {e}")
 
-    # Rename columns to match the training data
-    df.rename(columns=column_mapping, inplace=True)
-
-    # Encode Gender as a numeric value (Male -> 1, Female -> 0)
-    df["Gender"] = df["Gender"].map({"Male": 1, "Female": 0})
-
-    # Ensure columns are in the correct order expected by the model
-    expected_columns = [
-        "Age", "Gender", "Weight (kg)", "Height (cm)", "VSD Size (mm)", "Oxygen Saturation (%)", 
-        "Ejection Fraction (%)", "Heart Rate (bpm)", "Cyanosis", "Murmur", "Systolic", "Diastolic", 
-        "Family History"
-    ]
-    df = df[expected_columns]
-
-    # Predict VSD
-    vsd_pred = vsd_model.predict(df)[0]
-    vsd_status = "Has VSD" if vsd_pred == 1 else "VSD absent"
-
-    # Predict Severity
-    severity_pred = severity_model.predict(df)[0]
-
-    # Predict Other Condition
-    condition_pred = condition_model.predict(df)[0]
-
-    # Get Treatment Recommendation
-    treatment = get_treatment_recommendation(condition_pred, severity_pred)
-
-    return {
-        "vsd_status": vsd_status,
-        "severity": severity_pred,
-        "condition": condition_pred,
-        "treatment": treatment  # Include treatment recommendation in response
-    }
-
-# API Endpoint to receive patient data
 @app.route('/predict', methods=['POST'])
 def predict():
-    data = request.json  # Get JSON data from frontend
+    try:
+        # Extract form data
+        data = request.form.to_dict()
+        image_file = request.files.get("imageFile")
 
-    # Validate required fields
-    required_fields = ["age", "gender", "oxygenSaturation", "ejectionFraction", "weight",
-                       "cholesterol", "height", "heartRate", "cyanosis", "murmur",
-                       "systolic", "diastolic", "vsdSize", "familyHistory"]
+        print("📥 Received Data:", data)  # Debugging output
 
-    for field in required_fields:
-        if field not in data:
-            return jsonify({"error": f"Missing field: {field}"}), 400
+        # Handle image upload
+        image_url = data.get("imageUrl", "")
+        if image_file:
+            image_path = os.path.join(app.config["UPLOAD_FOLDER"], image_file.filename)
+            image_file.save(image_path)
+            image_url = f"http://localhost:5000/{image_path}"
 
-    # Make Prediction
-    prediction = make_prediction(data)
-    return jsonify(prediction)
+        # Convert categorical values if necessary
+        if "gender" in data:
+            data["gender"] = 1 if data["gender"].lower() == "male" else 0
 
-if __name__ == '__main__':
+        # Convert all inputs to float
+        for key in feature_names:
+            if key not in data or data[key] == "":
+                return jsonify({"error": f"Missing value for {key}"}), 400
+            try:
+                data[key] = float(data[key])
+            except ValueError:
+                return jsonify({"error": f"Invalid value for {key}"}), 400
+
+        # Ensure the model is loaded
+        if not model:
+            return jsonify({"error": "Model not loaded"}), 500
+
+        # Prepare input for prediction
+        input_features = [[data[feature] for feature in feature_names]]
+        prediction = model.predict(input_features)[0]
+
+        # Construct response
+        result = {
+            "vsd_status": "Detected" if prediction == 1 else "Not Detected",
+            "severity": "Severe" if prediction > 0.7 else "Mild",
+            "condition": "VSD",
+            "treatment": "Refer to a cardiologist",
+            "image": image_url
+        }
+
+        return jsonify(result)
+
+    except Exception as e:
+        print(f"❌ Prediction Error: {e}")
+        return jsonify({"error": str(e)}), 500
+
+if __name__ == "__main__":
     app.run(debug=True)
