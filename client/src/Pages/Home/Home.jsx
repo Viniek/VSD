@@ -118,7 +118,7 @@ const Home = () => {
               </div>
             )}
             <button type="submit" className="home-form-inputs-button">Run Test</button>
-          </form
+          </form>
         </div>
         <div className="result-area">
           <h2>Results</h2>
