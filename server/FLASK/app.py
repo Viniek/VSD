@@ -55,7 +55,7 @@ def predict():
             "vsd_status": "Detected" if prediction == 1 else "Not Detected",
             "severity": "Severe" if prediction > 0.7 else "Mild",
             "condition": "VSD",
-            "treatment": "Refer to a cardiologist"
+            "treatment": "Refer to a cardiologist",
         }
 
         return jsonify(result)
