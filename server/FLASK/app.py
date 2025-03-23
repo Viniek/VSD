@@ -1,73 +1,53 @@
 from flask import Flask, request, jsonify
-from flask_cors import CORS
-import os
 import joblib
-import pandas as pd
+import numpy as np
+import os
 
-# Initialize Flask app
 app = Flask(__name__)
-CORS(app)
 
-# Define Upload Folder for Images
-UPLOAD_FOLDER = "uploads"
-os.makedirs(UPLOAD_FOLDER, exist_ok=True)
-app.config["UPLOAD_FOLDER"] = UPLOAD_FOLDER
-
-# Load trained model
-MODEL_FILE = "expanded_vsd_dataset_updated.csv"
-
-try:
+# Load the model
+MODEL_FILE = "vsd_model.pkl"
+if os.path.exists(MODEL_FILE):
     model = joblib.load(MODEL_FILE)
     print("✅ Model loaded successfully")
-except Exception as e:
+else:
     model = None
-    print(f"❌ Error loading model: {e}")
+    print("❌ Model file not found!")
 
-# Load dataset to extract feature names
-DATASET_FILE = "expanded_vsd_dataset_updated.csv"
-try:
-    df = pd.read_csv(DATASET_FILE)
-    feature_names = list(df.columns[:-1])  # Exclude target column
-    print(f"✅ Feature names extracted: {feature_names}")
-except Exception as e:
-    feature_names = []
-    print(f"❌ Error loading dataset: {e}")
+# Required features
+feature_names = ["age", "gender", "heartRate", "bloodPressure", "cholesterol", "oxygenLevel"]
 
-@app.route('/predict', methods=['POST'])
+@app.route("/predict", methods=["POST"])
 def predict():
     try:
         # Extract form data
         data = request.form.to_dict()
         image_file = request.files.get("imageFile")
 
-        print("📥 Received Data:", data)  # Debugging output
+        print("📥 Received Data:", data)
 
-        # Handle image upload
-        image_url = data.get("imageUrl", "")
-        if image_file:
-            image_path = os.path.join(app.config["UPLOAD_FOLDER"], image_file.filename)
-            image_file.save(image_path)
-            image_url = f"http://localhost:5000/{image_path}"
+        # Validate required fields
+        missing_fields = [field for field in feature_names if field not in data or data[field] == ""]
+        if missing_fields:
+            return jsonify({"error": f"Missing values for: {', '.join(missing_fields)}"}), 400
 
-        # Convert categorical values if necessary
+        # Convert gender to numeric
         if "gender" in data:
             data["gender"] = 1 if data["gender"].lower() == "male" else 0
 
-        # Convert all inputs to float
-        for key in feature_names:
-            if key not in data or data[key] == "":
-                return jsonify({"error": f"Missing value for {key}"}), 400
-            try:
+        # Convert inputs to float
+        try:
+            for key in feature_names:
                 data[key] = float(data[key])
-            except ValueError:
-                return jsonify({"error": f"Invalid value for {key}"}), 400
+        except ValueError:
+            return jsonify({"error": f"Invalid value for {key}"}), 400
 
-        # Ensure the model is loaded
+        # Ensure model is loaded
         if not model:
             return jsonify({"error": "Model not loaded"}), 500
 
         # Prepare input for prediction
-        input_features = [[data[feature] for feature in feature_names]]
+        input_features = np.array([[data[feature] for feature in feature_names]])
         prediction = model.predict(input_features)[0]
 
         # Construct response
@@ -75,8 +55,7 @@ def predict():
             "vsd_status": "Detected" if prediction == 1 else "Not Detected",
             "severity": "Severe" if prediction > 0.7 else "Mild",
             "condition": "VSD",
-            "treatment": "Refer to a cardiologist",
-            "image": image_url
+            "treatment": "Refer to a cardiologist"
         }
 
         return jsonify(result)
