@@ -59,6 +59,7 @@ def predict():
         }
 
         return jsonify(result)
+    
 
     except Exception as e:
         print(f"❌ Prediction Error: {e}")
