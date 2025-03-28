@@ -8,9 +8,12 @@ import toast, { toastConfig } from "react-simple-toasts";
 
 import "./Schedules.css";
 import ScheduleDashboard from "../../Components/ScheduleDashboard/ScheduleDashboard";
-
+import useNotificationStore from "../../../Store/notificationsStore";
 function Schedules() {
-  const [loading, setLoading]=useState(false)
+  const increaseNotification = useNotificationStore(
+    (state) => state.incrementNotification,
+  );
+  const [loading, setLoading] = useState(false);
   const hospitals = [
     "Aga Khan University Hospital",
     "Nairobi Hospital",
@@ -86,10 +89,10 @@ function Schedules() {
       return errors;
     },
     onSubmit: async (values) => {
-        const details_section = document.getElementById("details-of-booking");
+      const details_section = document.getElementById("details-of-booking");
       // details_section.style.display = "block";
       try {
-        setLoading(true)
+        setLoading(true);
         const data = {
           date: String(values.dateOfAppointment),
           hospital: values.hospital,
@@ -99,40 +102,39 @@ function Schedules() {
           data,
           { withCredentials: true },
         );
-       
-        
-        if(res.data.success===true){
-          await axios.get(`${api_url}api/appointment/viewAppointment`, {withCredentials: true, });
-          formik.resetForm()
+
+        if (res.data.success === true) {
+          increaseNotification();
+          await axios.get(`${api_url}api/appointment/viewAppointment`, {
+            withCredentials: true,
+          });
+          formik.resetForm();
           toast(`Booking succesfull🍞`, { theme: "success" });
-          const notificationData ={
-            message:"you bokked an appointment",
-            details:`..`
-          }
-        
-          await axios.post(`${api_url}api/notifications/createNotification`,notificationData,{withCredentials:true}) ;
-          
-        };
+          const notificationData = {
+            message: "you bokked an appointment",
+            details: `..`,
+          };
+
+          await axios.post(
+            `${api_url}api/notifications/createNotification`,
+            notificationData,
+            { withCredentials: true },
+          );
+        }
       } catch (error) {
         console.log(error.message);
+      } finally {
+        setLoading(false);
       }
-      finally{
-        setLoading(false)
-      }
-
     },
   });
 
   return (
     <div className="schedule-section">
-     
-     <ScheduleDashboard />
+      <ScheduleDashboard />
 
       <div className="contentContainer">
-        
-        <div className="schedule-dashboard-container">
-          
-        </div>
+        <div className="schedule-dashboard-container"></div>
       </div>
 
       <div className="book-Appointment-Form-section">
@@ -174,28 +176,30 @@ function Schedules() {
           </div>
 
           <div className="bookAppointmentInput">
-            <button type="submit" disabled={loading}>{loading?"Booking appointment..":"Book Appointment"}</button>
+            <button type="submit" disabled={loading}>
+              {loading ? "Booking appointment.." : "Book Appointment"}
+            </button>
           </div>
           <div className="details-of-booking" id="details-of-booking">
             <h2>Booking Details</h2>
             <div className="details">
               <p>
                 <strong>Name: </strong>
-                {user&& user.firstname}
+                {user && user.firstname}
               </p>
               <p>
                 <strong>Sex: </strong>
-                {user&& user.gender}
+                {user && user.gender}
               </p>
             </div>
             <div className="details">
               <p>
                 <strong>Phone: </strong>
-                {user&& user.phone}
+                {user && user.phone}
               </p>
               <p>
                 <strong>Status: </strong>
-                {user&& user.maritual_status}
+                {user && user.maritual_status}
               </p>
             </div>
             <div className="details">

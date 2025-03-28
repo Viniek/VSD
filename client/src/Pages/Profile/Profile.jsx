@@ -22,8 +22,11 @@ function Profile() {
   const user = useUserStore((state) => state.user);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
+  const [updateSuccessfull, setUpdateSuccesful] = useState(false);
   const { userid } = useParams();
-  const incrementNotificationCount = useNotificationStore((state)=>state.incrementNotification)
+  const incrementNotificationCount = useNotificationStore(
+    (state) => state.incrementNotification,
+  );
   useEffect(() => {
     const getUser = async () => {
       console.log(document.cookie);
@@ -39,11 +42,14 @@ function Profile() {
         if (response.data.success == true) {
           formik.setValues(response.data.data);
           const notificationData = {
-            message:"You updated your profile",
-            details:`No details found`
-          }
-          await axios.post(`${api_url}api/notifications/createNotification`,notificationData,{withCredentials:true})
-          incrementNotificationCount()
+            message: "You updated your profile",
+            details: `No details found`,
+          };
+          await axios.post(
+            `${api_url}api/notifications/createNotification`,
+            notificationData,
+            { withCredentials: true },
+          );
         }
       } catch (error) {
         setError("error");
@@ -74,6 +80,10 @@ function Profile() {
       console.log("patch response", response.data.success);
 
       if (response.data.success == true) {
+        setUpdateSuccesful(true);
+
+        incrementNotificationCount();
+
         toast(`${response.data.message}🍞`, { theme: "success" });
       }
     } catch (error) {
@@ -141,6 +151,7 @@ function Profile() {
       return error;
     },
   });
+
   return (
     <div className="profile">
       <div className="welcome-wrapper">
