@@ -15,7 +15,9 @@ function Login() {
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
-  const NotificationCount = useNotificationStore((state)=>state.updateNotificationCount)
+  const NotificationCount = useNotificationStore(
+    (state) => state.updateNotificationCount,
+  );
   const changeUserInformation = useUserStore(
     (state) => state.changeUserInformation,
   );
@@ -27,24 +29,21 @@ function Login() {
       const response = await axios.post(`${api_url}api/users/Login`, values, {
         withCredentials: true,
       });
-      if(response.data.success===true){
+      if (response.data.success === true) {
         const data = response.data;
-  
-  
+
         navigate("/Home");
         changeUserInformation(data.data);
-       const notifications = await axios.get(
-                `${api_url}api/notifications/getNotifications`,
-                { withCredentials: true },
-              );
-              {NotificationCount(notifications.data.data.length)};
-              console.log(notifications.data.data.length);
-              
-              
+        const notifications = await axios.get(
+          `${api_url}api/notifications/getNotifications`,
+          { withCredentials: true },
+        );
+        {
+          NotificationCount(notifications.data.data.length);
+        }
+        console.log(notifications.data.data.length);
       }
-   
     } catch (error) {
-    
       setError(error.response.data.message);
     } finally {
       setLoading(false);

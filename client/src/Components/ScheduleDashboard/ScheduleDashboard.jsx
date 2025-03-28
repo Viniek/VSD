@@ -11,7 +11,9 @@ function ScheduleDashboard() {
   const [selectedAppointment, setSelectedAppointment] = useState(null);
   const [editData, setEditData] = useState({ hospital: "", date: "" });
   const [hospitals, setHospitals] = useState([]);
-   const incrementNotificationCount = useNotificationStore((state)=>state.incrementNotification)
+  const incrementNotificationCount = useNotificationStore(
+    (state) => state.incrementNotification,
+  );
 
   useEffect(() => {
     handleGetAppointments();
@@ -96,12 +98,11 @@ function ScheduleDashboard() {
 
   // Handle Explore Click
   const handleExplore = (appointment) => {
-    const openOvellay = document.getElementById("floating-card")
-// if(openOvellay.classList.contains("close"))openOvellay.classList.remove()
+    const openOvellay = document.getElementById("floating-card");
+    // if(openOvellay.classList.contains("close"))openOvellay.classList.remove()
 
     setSelectedAppointment(appointment);
     setEditData({ hospital: appointment.hospital, date: appointment.date });
- 
   };
 
   // Handle Input Change
@@ -119,22 +120,24 @@ function ScheduleDashboard() {
         editData,
         { withCredentials: true },
       );
-      if (res.data.success===true) {
-        handleGetAppointments()
-        const closeOvellay=document.getElementById("floating-card")
-        
+      if (res.data.success === true) {
+        incrementNotificationCount();
+        handleGetAppointments();
+        const closeOvellay = document.getElementById("floating-card");
+
         // closeOvellay.classList.toggle("close")
-        
-  
+
         toast(`${response.data.message}🍞`, { theme: "success" });
         const notificationData = {
-          message:"you edited your appointment Details",
-          details:`your  choice was `
-        }
-        await axios.post(`${api_url}api/notifications/createNotification`,notificationData,{withCredentials:true})
+          message: "you edited your appointment Details",
+          details: `your  choice was `,
+        };
+        await axios.post(
+          `${api_url}api/notifications/createNotification`,
+          notificationData,
+          { withCredentials: true },
+        );
         setSelectedAppointment(null);
-        incrementNotificationCount()
-        ;
       }
     } catch (error) {
       console.log(error.message);
@@ -143,19 +146,27 @@ function ScheduleDashboard() {
     }
   };
 
-  async function handleDeleteAppointment(id){
-    const response = await axios.delete(`${api_url}api/appointment/deleteAppointment/${id}`,{withCredentials:true})
-   if(response.data.success===true){
-    const notificationData ={
-      message:"You deleted an Appointment",
-      details:"no details"
+  async function handleDeleteAppointment(id) {
+    const response = await axios.delete(
+      `${api_url}api/appointment/deleteAppointment/${id}`,
+      { withCredentials: true },
+    );
+    if (response.data.success === true) {
+      incrementNotificationCount();
+      const notificationData = {
+        message: "You deleted an Appointment",
+        details: "no details",
+      };
+      await axios.post(
+        `${api_url}api/notifications/createNotification`,
+        notificationData,
+        { withCredentials: true },
+      );
+      setAppointments((previousState) =>
+        previousState.filter((appointments) => appointments.id !== id),
+      );
+      toast(`${response.data.message}🍞`, { theme: "success" });
     }
-  await axios.post(`${api_url}api/notifications/createNotification`,notificationData,{withCredentials:true})
-    setAppointments((previousState)=>previousState.filter((appointments)=>appointments.id !==id))
-    toast(`${response.data.message}🍞`, { theme: "success" });
-    incrementNotificationCount()
-   };
-    
   }
 
   return (
@@ -165,28 +176,34 @@ function ScheduleDashboard() {
         <p className="loading">Loading...</p>
       ) : appointments.length > 0 ? (
         <div className="appointment-container">
-          {appointments && appointments.map((item) => (
-            <div key={item.id} className="appointment-card">
-              <div className="appointment-info">
-                <p>
-                  <strong>Hospital:</strong> {item.hospital}
-                </p>
-                <p>
-                  <strong>Date:</strong> {item.date}
-                </p>
-                <div>
-                  <button
-                    className="appointmentUpdateBtn"
-                    onClick={() => handleExplore(item)}
-                  >
-                    Edit
-                  </button>
+          {appointments &&
+            appointments.map((item) => (
+              <div key={item.id} className="appointment-card">
+                <div className="appointment-info">
+                  <p>
+                    <strong>Hospital:</strong> {item.hospital}
+                  </p>
+                  <p>
+                    <strong>Date:</strong> {item.date}
+                  </p>
+                  <div>
+                    <button
+                      className="appointmentUpdateBtn"
+                      onClick={() => handleExplore(item)}
+                    >
+                      Edit
+                    </button>
 
-                  <button className="appointment-delete-btn" onClick={()=>handleDeleteAppointment(item.id)}>delete</button>
+                    <button
+                      className="appointment-delete-btn"
+                      onClick={() => handleDeleteAppointment(item.id)}
+                    >
+                      delete
+                    </button>
+                  </div>
                 </div>
               </div>
-            </div>
-          ))}
+            ))}
         </div>
       ) : (
         <p>No appointments found.</p>
