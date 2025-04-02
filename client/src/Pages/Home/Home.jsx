@@ -7,6 +7,7 @@ const Home = () => {
   const [previewImage, setPreviewImage] = useState(null);
   const [result, setResult] = useState(null);
   const [error, setError] = useState(null);
+  const [loading, setLoading]=useState(false)
 
   // Handle file selection
   const handleFileChange = (event) => {
@@ -31,6 +32,7 @@ const Home = () => {
     data.append("image", formData.imageFile);
 
     try {
+      setLoading(true)
       const response = await axios.post("http://localhost:5000/predict", data);
       console.log("Prediction Response:", response);
       setResult(response.data); 
@@ -42,6 +44,8 @@ const Home = () => {
       } else {
         setError("❌ Network or server error. Please try again.");
       }
+    }finally{
+      setLoading(false)
     }
   };
 
@@ -60,14 +64,14 @@ const Home = () => {
               </div>
             )}
 
-            <button type="submit" className="home-form-inputs-button">Analyze</button>
+            <button type="submit" className="home-form-inputs-button" disabled={loading}>{loading?"Loading please wait":"Analyze"}</button>
           </form>
         </div>
 
         {error && <p className="error-message">{error}</p>}
 
         <div className="result-area">
-          <h2>Results</h2>
+          <h2>{loading?<h3 className="loading">Analyzing the image.Please wait...</h3>:"Results"}</h2>
           {result && (
             <div className="results">
               <p><strong>Diagnosis:</strong> 
@@ -75,7 +79,7 @@ const Home = () => {
                   ? "✅ No heart issue detected" 
                   : <div>
                     <p>⚠️ Vsd  issue detected.</p>
-                    <h1>Recomendation</h1>
+                    <h3>Recomendation</h3>
                     <p> Consult a doctor.</p>
                     </div>}
               </p>
