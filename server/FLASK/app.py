@@ -1,69 +1,68 @@
 from flask import Flask, request, jsonify
-import joblib
+from flask_cors import CORS
+import tensorflow as tf
+
 import numpy as np
+from PIL import Image
 import os
+import io
 
 app = Flask(__name__)
+CORS(app)
 
-# Load the model
-MODEL_FILE = "vsd_model.pkl"
-if os.path.exists(MODEL_FILE):
-    model = joblib.load(MODEL_FILE)
-    print("✅ Model loaded successfully")
-else:
-    model = None
-    print("❌ Model file not found!")
+# Load model 
+try:
+    image_model = tf.keras.models.load_model("image_model.h5", safe_mode=False)
 
-# Required features
-feature_names = ["age", "gender", "heartRate", "bloodPressure", "cholesterol", "oxygenLevel"]
+    print("✅ Model loaded successfully.")
+except Exception as e:
+    print(f"❌ Error loading model: {e}")
+    image_model = None  # Prevent crashes if model loading fails
+
+UPLOAD_FOLDER = "uploads"
+os.makedirs(UPLOAD_FOLDER, exist_ok=True)
 
 @app.route("/predict", methods=["POST"])
 def predict():
     try:
-        # Extract form data
-        data = request.form.to_dict()
-        image_file = request.files.get("imageFile")
+        if "image" not in request.files:
+            print("❌ No image uploaded")
+            return jsonify({"error": "No image uploaded"}), 400
 
-        print("📥 Received Data:", data)
+        file = request.files["image"]
+        img_bytes = file.read()
 
-        # Validate required fields
-        missing_fields = [field for field in feature_names if field not in data or data[field] == ""]
-        if missing_fields:
-            return jsonify({"error": f"Missing values for: {', '.join(missing_fields)}"}), 400
-
-        # Convert gender to numeric
-        if "gender" in data:
-            data["gender"] = 1 if data["gender"].lower() == "male" else 0
-
-        # Convert inputs to float
+        # Convert bytes to image
         try:
-            for key in feature_names:
-                data[key] = float(data[key])
-        except ValueError:
-            return jsonify({"error": f"Invalid value for {key}"}), 400
+            img = Image.open(io.BytesIO(img_bytes))
+            img = img.convert("RGB")  # Convert all images to RGB
+            img = img.resize((128, 128))
+            img = np.array(img) / 255.0  # Normalize pixel values
+            img = img.reshape(1, 128, 128, 3)
+        except Exception as e:
+            print(f"❌ Image Processing Error: {e}")
+            return jsonify({"error": "Invalid image format"}), 400
 
-        # Ensure model is loaded
-        if not model:
+        if image_model is None:
+            print("❌ Model not loaded")
             return jsonify({"error": "Model not loaded"}), 500
 
-        # Prepare input for prediction
-        input_features = np.array([[data[feature] for feature in feature_names]])
-        prediction = model.predict(input_features)[0]
+        prediction = image_model.predict(img)
+        predicted_class = int(np.argmax(prediction))
 
-        # Construct response
-        result = {
-            "vsd_status": "Detected" if prediction == 1 else "Not Detected",
-            "severity": "Severe" if prediction > 0.7 else "Mild",
-            "condition": "VSD",
-            "treatment": "Refer to a cardiologist",
-        }
-
-        return jsonify(result)
-    
+        print(f"✅ Prediction Successful: {predicted_class}")
+        return jsonify({"prediction": predicted_class})
 
     except Exception as e:
-        print(f"❌ Prediction Error: {e}")
-        return jsonify({"error": str(e)}), 500
+        print(f"❌ Server Error: {e}")  # Debugging info
+        return jsonify({"error": "Internal server error"}), 500
 
 if __name__ == "__main__":
     app.run(debug=True)
+# import tensorflow as tf
+
+# try:
+#     model = tf.keras.models.load_model("image_model.h5")
+#     print("✅ Model loaded successfully.")
+# except Exception as e:
+#     print(f"❌ Model loading error: {e}")
