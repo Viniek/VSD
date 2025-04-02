@@ -33,11 +33,10 @@ const Home = () => {
     try {
       const response = await axios.post("http://localhost:5000/predict", data);
       console.log("Prediction Response:", response);
-      setResult(response.data); // assuming your backend returns { prediction: 'your_class' }
+      setResult(response.data); 
       setError(null);
     } catch (error) {
       console.error("Error:", error);
-      // More specific error handling
       if (error.response) {
         setError(`❌ ${error.response.data.error || "Prediction failed. Please try again."}`);
       } else {
