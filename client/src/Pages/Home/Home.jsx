@@ -70,7 +70,15 @@ const Home = () => {
           <h2>Results</h2>
           {result && (
             <div className="results">
-              <p><strong>Prediction:</strong> {result.prediction}</p>
+              <p><strong>Diagnosis:</strong> 
+                {result.prediction === 0 
+                  ? "✅ No heart issue detected" 
+                  : <div>
+                    <p>⚠️ Vsd  issue detected.</p>
+                    <h1>Recomendation</h1>
+                    <p> Consult a doctor.</p>
+                    </div>}
+              </p>
             </div>
           )}
         </div>
