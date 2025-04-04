@@ -3,22 +3,9 @@ const prisma = new PrismaClient();
 
 export async function CreateHistory(request, response) {
     const { 
-        vsd_status,
-        severity,
-        condition, 
-        age,
-        gender,
-        oxygenSaturation,
-        ejectionFraction,
-        weight,
-        height,
-        heartRate,
-        cyanosis,
-        murmur,
-        systolic,
-        diastolic,
-        vsdSize,
-        familyHistory } = request.body;
+        historyTittle,
+        details,
+        } = request.body;
 
     // Extract user from the middleware
     const userId = request.user?.id; // Get user ID from authenticated user
@@ -41,26 +28,9 @@ export async function CreateHistory(request, response) {
         const newHistory = await prisma.history.create({
             data: {
                 userId,
-                testResult:{
-                    vsd_status,
-                    severity,
-                    condition,
-                },
-                factors: { 
-                    age,
-                    gender,
-                    oxygenSaturation,
-                    ejectionFraction,
-                    weight,
-                    height,
-                    heartRate,
-                    cyanosis,
-                    murmur,
-                    systolic,
-                    diastolic,
-                    vsdSize,
-                    familyHistory
-                },
+                historyTittle,
+                details
+
             },
         });
 

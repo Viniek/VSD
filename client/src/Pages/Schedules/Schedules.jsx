@@ -138,23 +138,25 @@ function Schedules() {
       </div>
 
       <div className="book-Appointment-Form-section">
-        <h1>Book An Appointment</h1>
+        <h1 title="book an appointment">Book An Appointment</h1>
         <form onSubmit={formik.handleSubmit}>
           <div className="bookAppointmentInput">
             <label>Hospital of Choice:</label>
-            <select
-              name="hospital"
-              value={formik.values.hospital}
-              onChange={formik.handleChange}
-              onBlur={formik.handleBlur}
+            <input list="hospitals" 
+                name="hospital"
+                value={formik.values.hospital}
+                onChange={formik.handleChange}
+                onBlur={formik.handleBlur}/>
+            <datalist id="hospitals"
+          
             >
-              <option value="">Select Hospital</option>
+              
               {hospitals.map((hospital, index) => (
                 <option key={index} value={hospital}>
                   {hospital}
                 </option>
               ))}
-            </select>
+            </datalist>
             {formik.touched.hospital && formik.errors.hospital && (
               <div className="errors">{formik.errors.hospital}</div>
             )}
