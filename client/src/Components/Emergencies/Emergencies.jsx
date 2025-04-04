@@ -12,7 +12,9 @@ const EmergencyReport = () => {
   const [address, setAddress] = useState("");
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
-  const incrementNotificationCount = useNotificationStore((state)=>state.incrementNotification)
+  const incrementNotificationCount = useNotificationStore(
+    (state) => state.incrementNotification,
+  );
   const user = useUserStore((state) => state.user);
 
   const fetchLocation = async (values) => {
@@ -36,12 +38,17 @@ const EmergencyReport = () => {
             `https://nominatim.openstreetmap.org/reverse?lat=${latitude}&lon=${longitude}&format=json`,
           );
           setAddress(response.data.display_name);
-          const notificationData ={
-            message:"your emergency submission was succesful",
-            details:`Your Location was${address},and your emergency was ${formik.values.description}`
-          }
-          await axios.post(`${api_url}api/notifications/createNotification`,notificationData,{withCredentials:true})
           incrementNotificationCount()
+          const notificationData = {
+            message: "your emergency submission was succesful",
+            details: `Your Location was${address},and your emergency was ${formik.values.description}`,
+          };
+          await axios.post(
+            `${api_url}api/notifications/createNotification`,
+            notificationData,
+            { withCredentials: true },
+          );
+          
         } catch (error) {
           setError("Failed to get location details.");
         }
