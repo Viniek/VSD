@@ -1,102 +1,92 @@
 import React, { useState } from "react";
 import axios from "axios";
+import "./Home.css";
 
 const Home = () => {
-  const [formData, setFormData] = useState({
-    age: "",
-    gender: "",
-    heartRate: "",
-    bloodPressure: "",
-    cholesterol: "",
-    oxygenLevel: "",
-    imageFile: null,
-  });
-
+  const [formData, setFormData] = useState({ imageFile: null });
+  const [previewImage, setPreviewImage] = useState(null);
   const [result, setResult] = useState(null);
   const [error, setError] = useState(null);
+  const [loading, setLoading]=useState(false)
 
-  const handleChange = (e) => {
-    const { name, value, type } = e.target;
-    if (type === "file") {
-      setFormData((prev) => ({ ...prev, [name]: e.target.files[0] }));
-    } else {
-      setFormData((prev) => ({ ...prev, [name]: value }));
+  // Handle file selection
+  const handleFileChange = (event) => {
+    const file = event.target.files[0];
+    if (file) {
+      const fileUrl = URL.createObjectURL(file);
+      setFormData({ imageFile: file });
+      setPreviewImage(fileUrl);
+      setError(null); // Reset error when a new image is selected
     }
   };
 
+  // Handle form submission
   const handleSubmit = async (e) => {
     e.preventDefault();
+    if (!formData.imageFile) {
+      setError("❌ Please upload an image before analyzing.");
+      return;
+    }
+
     const data = new FormData();
-
-    Object.keys(formData).forEach((key) => {
-      if (formData[key] !== null && formData[key] !== "") {
-        data.append(key, formData[key]);
-      }
-    });
-
-    console.log("📤 Sending Data:", Object.fromEntries(data.entries()));
+    data.append("image", formData.imageFile);
 
     try {
-      const response = await axios.post("http://localhost:5000/predict", data, {
-        headers: { "Content-Type": "multipart/form-data" },
-      });
-      setResult(response.data);
+      setLoading(true)
+      const response = await axios.post("http://localhost:5000/predict", data);
+      console.log("Prediction Response:", response);
+      setResult(response.data); 
       setError(null);
     } catch (error) {
-      setError(error.response ? error.response.data.error : "Server error");
+      console.error("Error:", error);
+      if (error.response) {
+        setError(`❌ ${error.response.data.error || "Prediction failed. Please try again."}`);
+      } else {
+        setError("❌ Network or server error. Please try again.");
+      }
+    }finally{
+      setLoading(false)
     }
   };
 
   return (
-    <div className="container">
-      <h1>VSD Prediction</h1>
-      <form onSubmit={handleSubmit}>
-        <label>
-          Age:
-          <input type="number" name="age" value={formData.age} onChange={handleChange} required />
-        </label>
-        <label>
-          Gender:
-          <select name="gender" value={formData.gender} onChange={handleChange} required>
-            <option value="">Select</option>
-            <option value="male">Male</option>
-            <option value="female">Female</option>
-          </select>
-        </label>
-        <label>
-          Heart Rate:
-          <input type="number" name="heartRate" value={formData.heartRate} onChange={handleChange} required />
-        </label>
-        <label>
-          Blood Pressure:
-          <input type="number" name="bloodPressure" value={formData.bloodPressure} onChange={handleChange} required />
-        </label>
-        <label>
-          Cholesterol:
-          <input type="number" name="cholesterol" value={formData.cholesterol} onChange={handleChange} required />
-        </label>
-        <label>
-          Oxygen Level:
-          <input type="number" name="oxygenLevel" value={formData.oxygenLevel} onChange={handleChange} required />
-        </label>
-        <label>
-          Upload X-ray Image:
-          <input type="file" name="imageFile" accept="image/*" onChange={handleChange} required />
-        </label>
-        <button type="submit">Predict</button>
-      </form>
+    <div className="home">
+      <div className="home-section">
+        <div className="home-form-section">
+          <form onSubmit={handleSubmit}>
+            <label>Upload an X-ray Image</label>
+            <input type="file" accept="image/*" onChange={handleFileChange} />
 
-      {error && <p className="error">Error: {error}</p>}
+            {previewImage && (
+              <div className="image-preview">
+                <h3>Image Preview</h3>
+                <img src={previewImage} alt="Preview" style={{ width: "100%", maxHeight: "300px" }} />
+              </div>
+            )}
 
-      {result && (
-        <div className="result">
-          <h2>Prediction Result</h2>
-          <p><strong>Condition:</strong> {result.condition}</p>
-          <p><strong>Status:</strong> {result.vsd_status}</p>
-          <p><strong>Severity:</strong> {result.severity}</p>
-          <p><strong>Treatment:</strong> {result.treatment}</p>
+            <button type="submit" className="home-form-inputs-button" disabled={loading}>{loading?"Loading please wait":"Analyze"}</button>
+          </form>
         </div>
-      )}
+
+        {error && <p className="error-message">{error}</p>}
+
+        <div className="result-area">
+          <h2>{loading?<h3 className="loading">Analyzing the image.Please wait...</h3>:"Results"}</h2>
+          {result && (
+            <div className="results">
+              <p><strong>Diagnosis:</strong> 
+                {result.prediction === 0 
+                  ? "✅ No heart issue detected" 
+                  : <div>
+                    <p>⚠️ Vsd  issue detected.</p>
+                    <h3>Recomendation</h3>
+                    <p> Consult a doctor.</p>
+                    </div>}
+              </p>
+            </div>
+          )}
+        </div>
+      </div>
     </div>
   );
 };

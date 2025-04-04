@@ -122,3 +122,11 @@
   background-color: rgb(255, 195, 97);
 }
 
+.loading{
+  background-color: white;
+  padding: 1rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+}
