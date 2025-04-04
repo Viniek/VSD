@@ -44,9 +44,9 @@ function History() {
     <th>Date</th>
   </tr>
   <tr>
-    <th>{JSON.stringify(item.historyTittle, null, 2)}</th>
-    <th>{JSON.stringify(item.details, null, 2)}</th>
-    <th>{new Date(item.createdAt).toLocaleString()}</th>
+    <td>{JSON.stringify(item.historyTittle, null, 2)}</td>
+    <td>{JSON.stringify(item.details, null, 2)}</td>
+    <td>{new Date(item.createdAt).toLocaleString()}</td>
   </tr>
              
             </table>
