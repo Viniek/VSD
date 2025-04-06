@@ -73,4 +73,6 @@ history = model.fit(train_data, validation_data=val_data, epochs=EPOCHS, class_w
 
 # Save Model
 model.save("image_model.h5")
+
+
 print("✅ Model training complete. Saved as image_model.h5")
