@@ -4,9 +4,15 @@
 *::before {
   margin: 0;
   padding: 0;
+  color: black;
   box-sizing: border-box;
   font-family: sans-serif;
 }
+
+body.dark { color: white; }
+
+body.light { color: black; }
+
 ::selection {
   background-color: rgb(166, 255, 0);
   color: black;
@@ -24,6 +30,9 @@ body {
   font-size: 1.6rem;
   line-height: 1.5;
   max-width: 112.5em;
+display:flex;
+flex-direction: column;
+
 }
 
 p,

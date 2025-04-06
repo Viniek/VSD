@@ -14,7 +14,7 @@ This project is an AI-powered system designed to recognize Ventricular Septal De
 
 ## 🏗️ Technologies Used
 
-- **Frontend:** JavaScript, React (optional), HTML, CSS
+- **Frontend:** JavaScript, React, HTML, CSS
 - **Backend:** Flask, Python
 - **Machine Learning:** Scikit-Learn, TensorFlow/Keras (depending on model used)
 - **Database:** SQLite/PostgreSQL

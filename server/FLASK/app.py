@@ -9,7 +9,6 @@ import io
 app = Flask(__name__)
 CORS(app)
 
-# Load Model
 try:
     image_model = tf.keras.models.load_model("image_model.h5", safe_mode=False)
     print("✅ Model loaded successfully.")
@@ -29,12 +28,11 @@ def predict():
         file = request.files["image"]
         img_bytes = file.read()
 
-        # Convert bytes to image
         try:
             img = Image.open(io.BytesIO(img_bytes))
             img = img.convert("RGB")
             img = img.resize((128, 128))
-            img = np.array(img) / 255.0  # Normalize
+            img = np.array(img) / 255.0 
             img = img.reshape(1, 128, 128, 3)
         except Exception as e:
             return jsonify({"error": "Invalid image format"}), 400
@@ -46,7 +44,7 @@ def predict():
         predicted_class = int(np.argmax(prediction))
 
         print(f"✅ Prediction Successful: {predicted_class}")
-        print("Raw Model Output:", prediction)  # Debugging
+        print("Raw Model Output:", prediction)  
         print("FLASK SERVER IS RUNNING SUCCESFULLY")
 
         return jsonify({"prediction": predicted_class})

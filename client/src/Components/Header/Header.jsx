@@ -10,6 +10,8 @@ import { BiSolidAmbulance } from "react-icons/bi";
 import { FaHeartbeat } from "react-icons/fa";
 import { IoIosStats } from "react-icons/io";
 import { useEffect } from "react";
+import logo from "../../assets/logo1.png"
+
 
 function Header(icon) {
   const changeUserInformation = useUserStore(
@@ -45,6 +47,9 @@ function Header(icon) {
   return (
     <header className="app-header">
       <h3>
+     
+    <Link to={"/Home"}><img src={logo} alt="anatomic heart logo" /></Link>
+     
         ventricular Septal <span className="span">Defect</span> Analysis System
       </h3>
       <p className="welcome-message">Welcome back {user && user.firstname}</p>

@@ -93,12 +93,9 @@ function HealthCenters() {
 
   return (
     <>
-      {nearbyCenters && (
-        <div className="hospitalsNearYou">
-          <h1>Health Centers Near You</h1>
-        </div>
-      )}
+      {/* <div className="hospitalsNearYou"><h1>Health Centers Near You</h1></div> */}
       <div className="health-center-section" id="home">
+        <h1>Health Centers Near You</h1>
         <section className="health-center-section2">
           {loading ? (
             <Loader loading={loading} type="Oval" color="blue" size={80} />

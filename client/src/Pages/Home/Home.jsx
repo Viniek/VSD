@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import axios from "axios";
 import "./Home.css";
 
+
 const Home = () => {
   const [formData, setFormData] = useState({ imageFile: null });
   const [previewImage, setPreviewImage] = useState(null);
@@ -16,7 +17,7 @@ const Home = () => {
       const fileUrl = URL.createObjectURL(file);
       setFormData({ imageFile: file });
       setPreviewImage(fileUrl);
-      setError(null); // Reset error when a new image is selected
+      setError(null); 
     }
   };
 
