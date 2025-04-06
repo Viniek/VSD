@@ -39,7 +39,6 @@
   border: solid var(--skyblue);
   border-radius: 50%;
   position: absolute;
-
 }
 .helpActions {
   display: flex;

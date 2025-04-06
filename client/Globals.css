@@ -6,6 +6,7 @@
   --skyblue: rgb(0, 217, 255);
   --grey: #6a6c6d;
   --top: 8rem;
+  --gray: rgb(220, 224, 224);
 }
 
 .dark {
@@ -18,7 +19,7 @@
 .close {
   display: none;
 }
-.open{
+.open {
   display: block;
 }
 #bottom {

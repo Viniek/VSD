@@ -12,7 +12,7 @@ app.use(express.json())
 app.use(cookieParser());
 app.use(
   cors({
-    origin: "http://localhost:5173", // ✅ Ensure this matches your frontend URL
+    origin: ["http://localhost:5173","http://localhost:5174"], // ✅ Ensure this matches your frontend URL
     credentials: true, // ✅ Allow cookies
     methods: ["GET", "POST", "PATCH", "PUT", "DELETE"], // ✅ Ensure PATCH is allowed
   })
