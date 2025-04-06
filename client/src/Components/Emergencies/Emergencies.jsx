@@ -185,9 +185,10 @@ const EmergencyReport = () => {
                 </p>
               )}
             </div>
-            <h4 style={{ marginTop: "2rem", color: "grey" }}>
+            <h4 style={{ marginTop: "2rem", color: "green" }}>
               {" "}
-              Your emergency was sent to our emergency team ✅
+              ✅ Your emergency was sent to our emergency team <br/>
+              🚀 Our response team has been dispatched. Usitense 
             </h4>
           </div>
         )}

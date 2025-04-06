@@ -1,8 +1,9 @@
 .health-center-section {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   justify-content: space-between;
   margin-top: var(--top);
+  align-items: center;
 }
 
 .health-center-section2 {

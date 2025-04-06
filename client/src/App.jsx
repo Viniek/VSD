@@ -18,9 +18,9 @@ import History from "./Components/History/History";
 import Dashboard from "./Components/Dashboard/Dashboard";
 import ScheduleDashboard from "./Components/ScheduleDashboard/ScheduleDashboard";
 import Protected from "./Components/Protected/Protected";
-// use protected routes
+
 function App() {
-  // const navigate  = useNavigate()
+  
   const user = useUserStore((state) => state.user);
   const [isUser, setisUser] = useState(false);
 

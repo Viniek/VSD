@@ -1,11 +1,12 @@
 .dashboard {
   display: block;
-  position: fixed;
-  top: 5%;
+  /* position: fixed;
+  top: 5%; */
   padding: 1rem;
   width: 100%;
   background-color: rgb(220, 224, 224);
-  margin-bottom: 1rem;
+  /* margin-bottom: 1rem; */
+  /* margin-top: 10rem; */
 }
 
 /* Hide dashboard on smaller screens */
