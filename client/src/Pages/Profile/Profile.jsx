@@ -42,7 +42,7 @@ function Profile() {
         if (response.data.success == true) {
           formik.setValues(response.data.data);
           const notificationData = {
-            message: "You updated your profile",
+            message: "your profile was updated",
             details: `No details found`,
           };
           await axios.post(

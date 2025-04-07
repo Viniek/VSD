@@ -4,6 +4,8 @@ import { Link, useLocation } from "react-router-dom";
 import useUserStore from "../../../Store/userStore";
 import useNotificationStore from "../../../Store/notificationsStore";
 
+
+
 function Dashboard() {
   const notificationCount = useNotificationStore(
     (state) => state.notificationsCount,
@@ -27,7 +29,7 @@ function Dashboard() {
             path: "/Notifications",
             label: `🔔(${notificationCount}) Notifications`,
           },
-          { path: "/Emergencies", label: "🚑 Emergencies" },
+          { path: "/Emergencies", label: "🚑 Emergencies",title:"jgg" },
           { path: "/HealthCenters", label: "🏥 Health Centers" },
           { path: "/Help", label: "🆘 Help" },
           { path: "/Schedules", label: "📅 Schedules" },
@@ -38,18 +40,20 @@ function Dashboard() {
           .map((item) => (
             <div className="actions" key={item.path}>
               <li>
-                <Link
-                  to={item.path}
-                  className={location.pathname === item.path ? "active" : ""}
-                >
+                <Link title={item.title} to={item.path} className={location.pathname === item.path ? "active" : "" }   >
                   {item.label}
                 </Link>
               </li>
             </div>
           ))}
 
+<<<<<<< HEAD
        
         <div id="h">
+=======
+        {/* Switch Mode Button */}
+        <div id="h" >
+>>>>>>> a68bfdb1858832321dce7bcabbec736a79ceceab
           <li onClick={handleChangeTheme}>
             {isDarkMode ? "🌞 Light Mode" : "🌗 Dark Mode"}
           </li>

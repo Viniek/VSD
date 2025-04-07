@@ -47,6 +47,11 @@ const EmergencyReport = () => {
             notificationData,
             { withCredentials: true },
           );
+const createHistoryData={
+  historyTittle:"Emergency",
+  details:"You sent an emergency details"
+}
+          await axios.post(`${api_url}api/history/create`,createHistoryData,{withCredentials:true})
           
         } catch (error) {
           setError("Failed to get location details.");
