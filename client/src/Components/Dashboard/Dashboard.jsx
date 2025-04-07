@@ -16,7 +16,7 @@ function Dashboard() {
 
   function handleChangeTheme() {
     setIsDarkMode(!isDarkMode);
-    document.body.classList.toggle("dark"); // Toggle dark mode on body
+    document.body.classList.toggle("dark"); 
   }
   console.log(notificationCount);
 
@@ -47,8 +47,13 @@ function Dashboard() {
             </div>
           ))}
 
+<<<<<<< HEAD
+       
+        <div id="h">
+=======
         {/* Switch Mode Button */}
         <div id="h" >
+>>>>>>> a68bfdb1858832321dce7bcabbec736a79ceceab
           <li onClick={handleChangeTheme}>
             {isDarkMode ? "🌞 Light Mode" : "🌗 Dark Mode"}
           </li>
