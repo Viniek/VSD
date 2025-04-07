@@ -1,105 +1,59 @@
 from flask import Flask, request, jsonify
 from flask_cors import CORS
-import pandas as pd
-import pickle
+import tensorflow as tf
 import numpy as np
+from PIL import Image
+import os
+import io
 
 app = Flask(__name__)
-CORS(app)  # Allow requests from frontend
+CORS(app)
 
-# Load trained models
-vsd_model = pickle.load(open("vsd_model.pkl", "rb"))
-severity_model = pickle.load(open("severity_model.pkl", "rb"))
-condition_model = pickle.load(open("condition_model.pkl", "rb"))
+# Load Model
+try:
+    image_model = tf.keras.models.load_model("image_model.h5", safe_mode=False)
+    print("✅ Model loaded successfully.")
+except Exception as e:
+    print(f"❌ Error loading model: {e}")
+    image_model = None 
 
-# Function to determine treatment recommendation
-def get_treatment_recommendation(condition, severity):
-    if condition == "Tetralogy of Fallot":
-        return "Surgical repair is recommended."
-    elif condition == "Ventricular Septal Defect" and severity == "Mild":
-        return "Regular monitoring; surgery may not be necessary."
-    elif condition == "Ventricular Septal Defect" and severity == "Severe":
-        return "Surgical intervention required."
-    else:
-        return "Consult a cardiologist for a detailed evaluation."
+UPLOAD_FOLDER = "uploads"
+os.makedirs(UPLOAD_FOLDER, exist_ok=True)
 
-# Function to make predictions
-def make_prediction(data):
-    # Remove "cholesterol" from the data if it wasn't in the training data
-    if "cholesterol" in data:
-        del data["cholesterol"]
-    
-    # Rename input fields to match training dataset
-    column_mapping = {
-        "age": "Age",
-        "gender": "Gender",
-        "oxygenSaturation": "Oxygen Saturation (%)",
-        "ejectionFraction": "Ejection Fraction (%)",
-        "weight": "Weight (kg)",
-        "height": "Height (cm)",
-        "heartRate": "Heart Rate (bpm)",
-        "cyanosis": "Cyanosis",
-        "murmur": "Murmur",
-        "systolic": "Systolic",
-        "diastolic": "Diastolic",
-        "vsdSize": "VSD Size (mm)",
-        "familyHistory": "Family History"
-    }
-
-    # Convert received data to DataFrame
-    df = pd.DataFrame([data])
-
-    # Rename columns to match the training data
-    df.rename(columns=column_mapping, inplace=True)
-
-    # Encode Gender as a numeric value (Male -> 1, Female -> 0)
-    df["Gender"] = df["Gender"].map({"Male": 1, "Female": 0})
-
-    # Ensure columns are in the correct order expected by the model
-    expected_columns = [
-        "Age", "Gender", "Weight (kg)", "Height (cm)", "VSD Size (mm)", "Oxygen Saturation (%)", 
-        "Ejection Fraction (%)", "Heart Rate (bpm)", "Cyanosis", "Murmur", "Systolic", "Diastolic", 
-        "Family History"
-    ]
-    df = df[expected_columns]
-
-    # Predict VSD
-    vsd_pred = vsd_model.predict(df)[0]
-    vsd_status = "Has VSD" if vsd_pred == 1 else "VSD absent"
-
-    # Predict Severity
-    severity_pred = severity_model.predict(df)[0]
-
-    # Predict Other Condition
-    condition_pred = condition_model.predict(df)[0]
-
-    # Get Treatment Recommendation
-    treatment = get_treatment_recommendation(condition_pred, severity_pred)
-
-    return {
-        "vsd_status": vsd_status,
-        "severity": severity_pred,
-        "condition": condition_pred,
-        "treatment": treatment  # Include treatment recommendation in response
-    }
-
-# API Endpoint to receive patient data
-@app.route('/predict', methods=['POST'])
+@app.route("/predict", methods=["POST"])
 def predict():
-    data = request.json  # Get JSON data from frontend
+    try:
+        if "image" not in request.files:
+            return jsonify({"error": "No image uploaded"}), 400
 
-    # Validate required fields
-    required_fields = ["age", "gender", "oxygenSaturation", "ejectionFraction", "weight",
-                       "cholesterol", "height", "heartRate", "cyanosis", "murmur",
-                       "systolic", "diastolic", "vsdSize", "familyHistory"]
+        file = request.files["image"]
+        img_bytes = file.read()
 
-    for field in required_fields:
-        if field not in data:
-            return jsonify({"error": f"Missing field: {field}"}), 400
+        # Convert bytes to image
+        try:
+            img = Image.open(io.BytesIO(img_bytes))
+            img = img.convert("RGB")
+            img = img.resize((128, 128))
+            img = np.array(img) / 255.0  # Normalize
+            img = img.reshape(1, 128, 128, 3)
+        except Exception as e:
+            return jsonify({"error": "Invalid image format"}), 400
 
-    # Make Prediction
-    prediction = make_prediction(data)
-    return jsonify(prediction)
+        if image_model is None:
+            return jsonify({"error": "Model not loaded"}), 500
 
-if __name__ == '__main__':
+        prediction = image_model.predict(img)
+        predicted_class = int(np.argmax(prediction))
+
+        print(f"✅ Prediction Successful: {predicted_class}")
+        print("Raw Model Output:", prediction)  # Debugging
+        print("FLASK SERVER IS RUNNING SUCCESFULLY")
+
+        return jsonify({"prediction": predicted_class})
+
+    except Exception as e:
+        print(f"❌ Server Error: {e}")
+        return jsonify({"error": "Internal server error"}), 500
+
+if __name__ == "__main__":
     app.run(debug=True)
