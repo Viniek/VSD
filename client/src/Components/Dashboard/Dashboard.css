@@ -1,22 +1,18 @@
 .dashboard {
   display: block;
-  /* position: fixed;
-  top: 5%; */
   padding: 1rem;
   width: 100%;
   background-color: rgb(220, 224, 224);
-  /* margin-bottom: 1rem; */
-  /* margin-top: 10rem; */
 }
 
-/* Hide dashboard on smaller screens */
+
 @media screen and (max-width: 37.5em) {
   .dashboard {
     display: none;
   }
 }
 
-/* Style for the list */
+
 .dashboard ul {
   display: flex;
   justify-content: space-evenly;
@@ -26,7 +22,7 @@
   flex-wrap: wrap;
 }
 
-/* Default link styles */
+
 .dashboard a {
   text-decoration: none;
   color: var(--black);
@@ -36,18 +32,18 @@
   transition: all 400ms ease-out;
 }
 
-/* Hover effect */
+
 .dashboard a:hover {
   text-decoration: underline;
   color: rgb(8, 134, 156);
 }
 
-/* Active link styling (Skyblue color) */
+
 .dashboard a.active {
   color: blue;
 }
 
-/* Dark mode link styling */
+
 body.dark-mode .dashboard a {
   color: white;
 }
@@ -56,7 +52,7 @@ body.dark-mode .dashboard a.active {
   color: skyblue;
 }
 
-/* Action container styles */
+
 .actions {
   display: flex;
   flex-direction: row-reverse;
@@ -65,7 +61,7 @@ body.dark-mode .dashboard a.active {
   gap: 1rem;
 }
 
-/* Button styles */
+
 #h li {
   background: none;
   border: none;

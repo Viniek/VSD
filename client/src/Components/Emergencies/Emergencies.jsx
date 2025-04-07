@@ -33,7 +33,6 @@ const EmergencyReport = () => {
         setLocation({ latitude, longitude });
 
         try {
-          // Fetch human-readable address using Nominatim API
           const response = await axios.get(
             `https://nominatim.openstreetmap.org/reverse?lat=${latitude}&lon=${longitude}&format=json`,
           );
@@ -69,7 +68,7 @@ const EmergencyReport = () => {
       description: "",
     },
     onSubmit: (values) => {
-      fetchLocation(values); // Get accurate user location
+      fetchLocation(values); 
     },
     validate: function (values) {
       const errors = {};

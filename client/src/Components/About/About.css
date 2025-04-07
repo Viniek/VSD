@@ -12,11 +12,9 @@
   background-color: var(--gray);
   gap: 5rem;
   margin: 1rem;
-  /* padding: .5rem; */
   border-radius: 40px;
 }
 .about-hero img {
-  /* border-radius: 40px; */
   border-top-left-radius: 8%;
   border-bottom-left-radius: 8%;
 }
@@ -84,7 +82,6 @@
   margin: 1rem;
   padding: 1rem;
   background-color: var(--gray);
-  /* align-items: center; */
 }
 .contact-image {
   width: 100%;
@@ -105,14 +102,14 @@
   background-color: var(--white);
   border-radius: 10px;
 
-  /* justify-content: center; */
+ 
 }
 .contact-form-inputs {
   width: 100%;
   display: flex;
   flex-direction: column;
   margin-bottom: 1rem;
-  /* align-items: center; */
+ 
 }
 .contact-form-inputs input,
 textarea,
@@ -148,11 +145,10 @@ button {
   gap: 2rem;
   align-items: center;
   color: var(--white);
-  /* margin-top: 5rem; */
+
 }
 .contact-us-elements img {
   width: 15%;
-  /* border: 1px var(--gray) solid; */
   border-radius: 60%;
   background-color: white;
   padding: 0.3rem;
