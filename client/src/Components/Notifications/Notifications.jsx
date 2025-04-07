@@ -12,7 +12,7 @@ function Notifications() {
   );
   const decerementNotification = useNotificationStore(
     (state) => state.decrementNotificationCount,
-  );
+  ); 
   const clear_notification = useNotificationStore(
     (state) => state.clearNotifications,
   );

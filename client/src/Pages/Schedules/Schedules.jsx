@@ -108,6 +108,7 @@ function Schedules() {
           await axios.get(`${api_url}api/appointment/viewAppointment`, {
             withCredentials: true,
           });
+
           formik.resetForm();
           toast(`Booking succesfull🍞`, { theme: "success" });
           const notificationData = {
@@ -120,6 +121,12 @@ function Schedules() {
             notificationData,
             { withCredentials: true },
           );
+
+          const createHistoryData={
+            historyTittle:"Appointment",
+            details:`You book an appointment to ${formik.values.hospital} which  you will visit on ${formik.values.dateOfAppointment}`
+          }
+                    await axios.post(`${api_url}api/history/create`,createHistoryData,{withCredentials:true})
         }
       } catch (error) {
         console.log(error.message);
@@ -138,23 +145,25 @@ function Schedules() {
       </div>
 
       <div className="book-Appointment-Form-section">
-        <h1>Book An Appointment</h1>
+        <h1 title="book an appointment">Book An Appointment</h1>
         <form onSubmit={formik.handleSubmit}>
           <div className="bookAppointmentInput">
             <label>Hospital of Choice:</label>
-            <select
-              name="hospital"
-              value={formik.values.hospital}
-              onChange={formik.handleChange}
-              onBlur={formik.handleBlur}
+            <input list="hospitals" 
+                name="hospital"
+                value={formik.values.hospital}
+                onChange={formik.handleChange}
+                onBlur={formik.handleBlur}/>
+            <datalist id="hospitals"
+          
             >
-              <option value="">Select Hospital</option>
+              
               {hospitals.map((hospital, index) => (
                 <option key={index} value={hospital}>
                   {hospital}
                 </option>
               ))}
-            </select>
+            </datalist>
             {formik.touched.hospital && formik.errors.hospital && (
               <div className="errors">{formik.errors.hospital}</div>
             )}

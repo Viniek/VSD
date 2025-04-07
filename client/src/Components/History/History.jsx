@@ -37,28 +37,29 @@ function History() {
       ) : history.length > 0 ? (
         <ul>
           {history.map((item) => (
-            <li key={item.id}>
-              <p>
-                <strong>Test Date:</strong>{" "}
-                {new Date(item.testDate).toLocaleString()}
-              </p>
-              <p>
-                <strong>User ID:</strong> {item.userId}
-              </p>
-              <p>
-                <strong>Test Result:</strong>{" "}
-                {JSON.stringify(item.testResult, null, 2)}
-              </p>
-              <p>
-                <strong>Factors:</strong>{" "}
-                {JSON.stringify(item.factors, null, 2)}
-              </p>
-            </li>
+            <table key={item.id}>
+               <tr>
+    <th>Action</th>
+    <th>Details</th>
+    <th>Date</th>
+  </tr>
+  <tr>
+    <td>{JSON.stringify(item.historyTittle, null, 2)}</td>
+    <td>{JSON.stringify(item.details, null, 2)}</td>
+    <td>{new Date(item.createdAt).toLocaleString()}</td>
+  </tr>
+             
+            </table>
           ))}
         </ul>
       ) : (
         <p>No history found.</p>
       )}
+
+
+ 
+
+
     </div>
   );
 }

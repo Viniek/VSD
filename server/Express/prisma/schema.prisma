@@ -35,9 +35,9 @@ model history{
   id String @id @default(uuid()) @unique
   user users @relation(fields: [userId], references: [id])
   userId  String  @default(uuid())
-  testResult Json
-  testDate   DateTime @default(now()) 
-  factors    Json 
+  historyTittle String?
+  createdAt   DateTime @default(now()) 
+  details String?   
   
 }
 
